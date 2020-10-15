@@ -1,0 +1,18 @@
+.input {
+    margin-bottom: 5px;
+    outline: none;
+    color: var(--orange_color);
+}
+
+.input:hover {
+    border-color: var(--purple_color);
+    box-shadow: 0 0 0 2px var(--purple_color);
+}
+
+.input:focus {
+    border-color: var(--purple_color);
+    box-shadow: 0 0 0 2px var(--purple_color);
+}
+
+
+
