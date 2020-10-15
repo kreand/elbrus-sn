@@ -52,7 +52,13 @@ router.route('/login')
         return res.status(400).json({ message: 'Пароль введен некорректно' })
       }
       const token = jwt.sign(
-        { userEmail: user.email },
+        {
+          userName: user.name,
+          userRating: user.rating,
+          userStatus: user.status,
+          userCoins: user.coins,
+          userSkills: user.skills
+        },
         process.env.SECRET_KEY_FOR_JWT_TOKEN,
         { expiresIn: '1h' }
       )
