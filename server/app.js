@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config({ path: '../.env' })
 
+const loginRouter = require('./routers/authorization')
+
 const app = express()
 
 const PORT = process.env.PORT_FOR_DEV || 6000
@@ -23,5 +25,7 @@ const start = () => {
     console.log('Error on server...', e.message)
   }
 }
+
+app.use('/', loginRouter)
 
 start()
