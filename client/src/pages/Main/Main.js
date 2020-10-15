@@ -1,10 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Main = () => {
   return (
-    <div>
-      <h1>Hello Main</h1>
-    </div>
+    <>
+      <Link to='/events'>Эвенты</Link><br/>
+      <Link to='/employers'>Работодатели</Link><br/>
+      <Link to='/auth'>Авторизация</Link><br/>
+      <Link to='/ratings'>Рейтинг студентов</Link><br/>
+      <Link to='/profile'>Профиль</Link><br/>
+    </>
   )
 }
 
