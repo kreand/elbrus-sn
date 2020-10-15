@@ -1,0 +1,50 @@
+.profileBody {
+  max-width: 80%;
+  margin: 0 15% 20% 15%;
+}
+
+.profileTop {
+  display: flex;
+}
+
+.containerForUserPhoto {
+  width: 30em;
+  height: 30em;
+  background-color: darkgray;
+  z-index: 0;
+  text-align: center;
+}
+
+.userPhoto {
+  border-radius: 50%;
+  max-height: 30em;
+  z-index: 1;
+}
+
+.userName {
+  margin: 1em 3em 0 3em;
+}
+
+.userGeneralInfo {
+  text-align: center;
+}
+
+.roundBtn {
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+}
+
+.header {
+  display: flex;
+}
+
+.skills {
+  display: flex;
+  text-align: left;
+  margin-left: 3em;
+}
+
+.skillsMargin {
+  margin-left: 3em;
+}
