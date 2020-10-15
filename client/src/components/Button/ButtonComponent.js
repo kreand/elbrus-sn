@@ -1,12 +1,14 @@
 import React from 'react'
-import { Button } from 'antd'
+import { Button, Col, Row } from 'antd'
 import style from './ButtonComponent.module.css'
 
-const ButtonComponent = ({title, color}) => {
+const ButtonComponent = ({ title, color, justify, loading ,size}) => {
   return (
-    <>
-      <Button className={style[color]} type="primary">{title}</Button>
-    </>
+    <Row justify={justify || 'center'}>
+      <Col>
+        <Button size={size || 'middle'} loading={loading} className={style[color] || style.button} type="primary">{title}</Button>
+      </Col>
+    </Row>
   )
 }
 
