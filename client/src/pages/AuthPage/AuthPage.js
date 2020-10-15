@@ -1,4 +1,6 @@
 import React from 'react'
+
+import ButtonComponent from '../../components/Button/ButtonComponent'
 import InputComponent from '../../components/Input/InputComponent'
 
 const AuthPage = () => {
@@ -8,6 +10,7 @@ const AuthPage = () => {
       <InputComponent placeholder='Ваше Имя'/>
       <InputComponent placeholder='Ваше Email'/>
       <InputComponent placeholder='Ваше Пароль' type='password'/>
+      <ButtonComponent title='Name'/>
     </div>
   )
 }
