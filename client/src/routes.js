@@ -6,6 +6,7 @@ import EmployersPage from './pages/EmployersPage/EmployersPage'
 import EventsPage from './pages/EventsPage/EventsPage'
 import Main from './pages/Main/Main'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent'
 import RatingsPage from './pages/RatingsPage/RatingsPage'
 
 export const useRoutes = isAuthenticated => {
@@ -23,6 +24,9 @@ export const useRoutes = isAuthenticated => {
         </Route>
         <Route path="/profile" exact>
           <ProfilePage />
+        </Route>
+        <Route path="/student" exact>
+          <RatingOfOneStudent />
         </Route>
         <Redirect to="/profile" exact/>
         <Route path="/">
