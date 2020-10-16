@@ -7,8 +7,9 @@ const Main = () => {
       <Link to='/events'>Эвенты</Link><br/>
       <Link to='/employers'>Работодатели</Link><br/>
       <Link to='/auth'>Авторизация</Link><br/>
-      <Link to='/ratings'>Рейтинг студентов</Link><br/>
+      <Link to='/ratings'>Рейтинг всех студентов</Link><br/>
       <Link to='/profile'>Профиль</Link><br/>
+      <Link to='/student'>Рейтинг одного студента</Link><br/>
     </>
   )
 }
