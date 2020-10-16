@@ -6,6 +6,7 @@ import EventsPage from './pages/EventsPage/EventsPage';
 import Main from './pages/Main/Main';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import RatingsPage from './pages/RatingsPage/RatingsPage';
+import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/ratings">
           <RatingsPage />
+        </Route>
+        <Route path="/student">
+          <RatingOfOneStudent />
         </Route>
         <Route path="/profile">
           <ProfilePage />
