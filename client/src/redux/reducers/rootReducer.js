@@ -7,6 +7,6 @@ import {employerReducer} from './employerReducer';
 export const rootReducer = combineReducers({
   profile: profileReducer,
   auth: authReducer,
-  employer: employerReducer,
+  employers: employerReducer,
   app: appReducer
 })

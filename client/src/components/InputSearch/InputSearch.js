@@ -1,9 +1,9 @@
 import React from 'react';
 import {Col, Row} from 'antd';
 import Search from 'antd/es/input/Search';
-import style from './InputSearchEmployers.module.css'
+import style from './InputSearch.module.css'
 
-const InputSearchEmployers = ({span, offset, placeholder}) => {
+const InputSearch = ({span, offset, placeholder}) => {
   return (
     <Row justify='center'>
       <Col span={span || 12} offset={offset || 0}>
@@ -13,4 +13,4 @@ const InputSearchEmployers = ({span, offset, placeholder}) => {
   );
 };
 
-export default InputSearchEmployers;
+export default InputSearch;

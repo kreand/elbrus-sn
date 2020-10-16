@@ -5,7 +5,7 @@ const initialState = []
 export const employerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EMPLOYER:
-      return [...state, {name: action.payload.name, review: action.payload.review}]
+      return [...state, action.payload]
     case ADD_EMPLOYERS:
       return [...action.payload]
     default:

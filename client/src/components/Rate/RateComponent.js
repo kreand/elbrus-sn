@@ -1,8 +1,8 @@
-import {Col, Rate, Row} from 'antd';
-
 import React from 'react';
+import {Col, Rate, Row} from 'antd';
+import style from './RateComponent.module.css'
 
-const RateComponent = ({justify, title, name, changeRating}) => {
+const RateComponent = ({justify, title, changeRating, rate, disabled}) => {
 
   return (
     <Row justify={justify || 'center'}>
@@ -11,9 +11,10 @@ const RateComponent = ({justify, title, name, changeRating}) => {
       </Col>
       <Col>
         <Rate
-          name={name}
+          className={style.rate}
           allowHalf
-          defaultValue={0}
+          disabled={disabled}
+          defaultValue={rate || 0}
           onChange={value => changeRating(value)}
         />
       </Col>

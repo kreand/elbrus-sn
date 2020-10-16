@@ -8,16 +8,17 @@ router.get('/get-all-employers', async (req, res) => {
 
 router.post('/create-employer', async (req, res) => {
   const {name, review, rating} = req.body
+
   const employer = new Employer({
     name,
-    allReviews: [
+    allReviews: [{
       review,
-      rating
-    ]
+      rating,
+    }]
   })
   await employer.save();
 
-  res.status(201).json({message: 'Работодатель создан'})
+  res.status(201).json({employer, message: 'Работодатель создан'})
 })
 
 module.exports = router;
