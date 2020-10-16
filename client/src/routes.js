@@ -12,19 +12,19 @@ export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/employers">
+        <Route path="/employers" exact>
           <EmployersPage />
         </Route>
-        <Route path="/events">
+        <Route path="/events" exact>
           <EventsPage />
         </Route>
-        <Route path="/ratings">
+        <Route path="/ratings" exact>
           <RatingsPage />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile" exact>
           <ProfilePage />
         </Route>
-        <Redirect to="/profile" />
+        <Redirect to="/profile" exact/>
         <Route path="/">
           <Main />
         </Route>
@@ -33,7 +33,7 @@ export const useRoutes = isAuthenticated => {
   }
   return (
     <Switch>
-      <Route path="/auth">
+      <Route path="/auth" exact>
         <AuthPage />
       </Route>
       <Redirect to="/auth" />
