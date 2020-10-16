@@ -17,12 +17,15 @@ function * authSagaWorker ({ user }) {
     })
     return await response.json()
   })
-  if(response.errors) {
+  if (response.errors) {
     console.log(response.message)
   }
-  yield put(authUserAC(user))
+  yield put(authUserAC(response.user))
   yield put(auth())
-  console.log(response.user)
+  yield localStorage.setItem('userData', JSON.stringify({
+    token: response.token,
+    user: response.user
+  }))
 }
 
 export function * authSagaWatcher () {
@@ -44,11 +47,15 @@ function * registrationSagaWorker ({ user }) {
     })
     return await response.json()
   })
-  if(response.errors) {
+  if (response.errors) {
     console.log(response.message)
   }
-  yield put(registrationUserAC(user))
-  console.log(response.message)
+  yield put(registrationUserAC(response.user))
+  yield put(auth())
+  yield localStorage.setItem('userData', JSON.stringify({
+    token: response.token,
+    user: response.user
+  }))
 }
 
 export function * registrationSagaWatcher () {

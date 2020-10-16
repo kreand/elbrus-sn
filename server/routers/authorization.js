@@ -25,7 +25,18 @@ router.route('/registration')
       const hashPassword = await bcrypt.hash(password, 15)
       const user = await new User({ name, email, password: hashPassword })
       await user.save()
-      res.status(201).json({ message: 'Пользователь создан успешно' })
+      const token = jwt.sign(
+        {
+          userName: user.name,
+          userRating: user.rating,
+          userStatus: user.status,
+          userCoins: user.coins,
+          userSkills: user.skills
+        },
+        process.env.SECRET_KEY_FOR_JWT_TOKEN,
+        { expiresIn: '1h' }
+      )
+      res.status(201).json({ message: 'Пользователь создан успешно', token, user })
     } catch (e) {
       res.status(500).json({ message: 'Что то пошло не так на сервере' })
     }
@@ -62,7 +73,7 @@ router.route('/login')
         process.env.SECRET_KEY_FOR_JWT_TOKEN,
         { expiresIn: '1h' }
       )
-      res.json({ token, user })
+      res.json({message: 'Пользователь авторизирован успешно', token, user })
     } catch (e) {
       res.status(500).json({ message: 'Что то пошло не так на сервере' })
     }
