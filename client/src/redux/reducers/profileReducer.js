@@ -13,12 +13,12 @@ const initialState = {
   skills: ['HTML', 'CSS', 'Пирожки с картошкой']
 }
 
-export function profileReducer(state = initialState, action) {
+export function profileReducer (state = initialState, action) {
   switch (action.type) {
     case GET_USER:
-      return action.payload
+      return { ...state, user: action.payload }
     case REGISTRATION_USER:
-      return action.payload
+      return { ...state, user: action.payload }
     default:
       return state
   }

@@ -1,9 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
+import { hideLoaderAC, showErrorAC, showLoaderAC } from '../actionCreators/appAC'
 import { auth } from '../actionCreators/authAC'
 import { authUserAC, registrationUserAC } from '../actionCreators/profileAC'
 import { GET_DEFAULT_USER, REGISTRATION_DEFAULT_USER } from '../actionTypes/types'
 
 function * authSagaWorker ({ user }) {
+  yield put(showLoaderAC())
   const response = yield call(async () => {
     const response = await fetch('/login', {
       method: 'POST',
@@ -17,12 +19,16 @@ function * authSagaWorker ({ user }) {
     })
     return await response.json()
   })
-  if(response.errors) {
-    console.log(response.message)
+  if (response.error) {
+    yield put(showErrorAC(response.message))
   }
-  yield put(authUserAC(user))
+  yield put(authUserAC(response.user))
   yield put(auth())
-  console.log(response.user)
+  yield localStorage.setItem('userData', JSON.stringify({
+    token: response.token,
+    user: response.user
+  }))
+  yield put(hideLoaderAC())
 }
 
 export function * authSagaWatcher () {
@@ -30,6 +36,7 @@ export function * authSagaWatcher () {
 }
 
 function * registrationSagaWorker ({ user }) {
+  yield put(showLoaderAC())
   const response = yield call(async () => {
     const response = await fetch('/registration', {
       method: 'POST',
@@ -44,11 +51,16 @@ function * registrationSagaWorker ({ user }) {
     })
     return await response.json()
   })
-  if(response.errors) {
-    console.log(response.message)
+  if (response.errors) {
+    yield put(showErrorAC(response.message))
   }
-  yield put(registrationUserAC(user))
-  console.log(response.message)
+  yield put(registrationUserAC(response.user))
+  yield put(auth())
+  yield localStorage.setItem('userData', JSON.stringify({
+    token: response.token,
+    user: response.user
+  }))
+  yield put(hideLoaderAC())
 }
 
 export function * registrationSagaWatcher () {
