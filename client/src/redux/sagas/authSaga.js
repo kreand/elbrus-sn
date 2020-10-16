@@ -19,7 +19,6 @@ function * authSagaWorker ({ user }) {
     return await response.json()
   })
   if (response.error) {
-    console.log(response)
     yield put(showErrorAC(response.message))
   }
   yield put(authUserAC(response.user))
