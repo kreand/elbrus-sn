@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
+import { auth } from '../actionCreators/authAC'
 import { authUserAC, registrationUserAC } from '../actionCreators/profileAC'
 import { GET_DEFAULT_USER, REGISTRATION_DEFAULT_USER } from '../actionTypes/types'
 
@@ -20,6 +21,7 @@ function * authSagaWorker ({ user }) {
     console.log(response.message)
   }
   yield put(authUserAC(user))
+  yield put(auth())
   console.log(response.user)
 }
 
