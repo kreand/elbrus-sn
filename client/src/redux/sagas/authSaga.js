@@ -20,7 +20,8 @@ function * authSagaWorker ({ user }) {
     return await response.json()
   })
   if (response.error) {
-    yield put(showErrorAC(response.message))
+    yield put(hideLoaderAC())
+    return yield put(showErrorAC(response.message))
   }
   yield put(authUserAC(response.user))
   yield put(auth())
@@ -52,7 +53,8 @@ function * registrationSagaWorker ({ user }) {
     return await response.json()
   })
   if (response.errors) {
-    yield put(showErrorAC(response.message))
+    yield put(hideLoaderAC())
+    return yield put(showErrorAC(response.message))
   }
   yield put(registrationUserAC(response.user))
   yield put(auth())
