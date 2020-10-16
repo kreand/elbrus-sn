@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+import { GET_USER, REGISTRATION_USER } from '../actionTypes/types'
+
 const initialState = {
   name: 'Даша Петрова',
   photo: 'http://starlife.com.ua/media/photo/big/FPLA1TNZAS.jpg',
@@ -11,11 +12,6 @@ const initialState = {
   rating: 12,
   skills: ['HTML', 'CSS', 'Пирожки с картошкой']
 }
-=======
-import { GET_USER, REGISTRATION_USER } from '../actionTypes/types'
-
-const initialState = {}
->>>>>>> 4c257b91ed737e6c3ca0b4b5840c58011f356bfb
 
 export function profileReducer(state = initialState, action) {
   switch (action.type) {

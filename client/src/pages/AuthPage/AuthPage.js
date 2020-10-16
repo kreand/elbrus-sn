@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import ButtonComponent from '../../components/Button/ButtonComponent'
@@ -7,6 +7,7 @@ import { getDefaultUserAC, registrationDefaultUserAC } from '../../redux/actionC
 import style from './AuthPage.module.css'
 
 const AuthPage = () => {
+  const [registration, setRegistration] = useState(false)
   const dispatch = useDispatch()
 
   const authHandler = (e) => {
@@ -30,6 +31,25 @@ const AuthPage = () => {
     dispatch(registrationDefaultUserAC(user))
   }
 
+  const changeRegistrationHandler = () => {
+    setRegistration(!registration)
+  }
+
+  if (registration) {
+    return (
+      <>
+        <h1 className={style.title}>Регистрация</h1>
+        <form onSubmit={registrationHandler}>
+          <InputComponent name='name' type='text' placeholder='Ваше имя' span={12} size='large'/>
+          <InputComponent name='email' type='email' placeholder='Ваш email' span={12} size='large'/>
+          <InputComponent name='password' type='password' placeholder='Ваш пароль' span={12} size='large'/>
+          <ButtonComponent title='Зарегистрироваться' size='large'/>
+        </form>
+        <ButtonComponent onClick={changeRegistrationHandler} title='Авторизация' size='large'/>
+      </>
+    )
+  }
+
   return (
     <>
       <form onSubmit={authHandler}>
@@ -38,13 +58,7 @@ const AuthPage = () => {
         <InputComponent name='password' type='password' placeholder='Ваш пароль' span={12} size='large'/>
         <ButtonComponent name='password' title='Авторизоваться' size='large'/>
       </form>
-      <h1 className={style.title}>Регистрация</h1>
-      <form onSubmit={registrationHandler}>
-        <InputComponent name='name' type='text' placeholder='Ваше имя' span={12} size='large'/>
-        <InputComponent name='email' type='email' placeholder='Ваш email' span={12} size='large'/>
-        <InputComponent name='password' type='password' placeholder='Ваш пароль' span={12} size='large'/>
-        <ButtonComponent title='Зарегистрироваться' size='large'/>
-      </form>
+      <ButtonComponent onClick={changeRegistrationHandler} title='Регистрация' size='large'/>
     </>
   )
 }

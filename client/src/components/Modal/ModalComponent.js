@@ -1,26 +1,27 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ButtonComponent from '../Button/ButtonComponent'
+import InputComponent from '../Input/InputComponent'
 import { Modal } from 'antd'
+import style from './ModalComponent.module.css'
 
-const ModalComponent = ({title}) => {
-
-  const [ state, setState ] = useState({ visible: false });
+const ModalComponent = ({ btnOpenModalTitle = 'модальное окно', modalTitle = 'модальное окно' }) => {
+  const [state, setState] = useState({ visible: false })
 
   const showModal = () => {
     setState({
       visible: true,
     });
   };
-  
-  const handleOk = e => {
-    console.log(e);
+
+  const handleOk = (e) => {
+    console.log(e)
     setState({
       visible: false,
     });
   };
 
-  const handleCancel = e => {
-    console.log(e);
+  const handleCancel = (e) => {
+    console.log(e)
     setState({
       visible: false,
     });
@@ -28,16 +29,23 @@ const ModalComponent = ({title}) => {
 
   return (
     <>
-        <ButtonComponent title={title} ooooo={showModal}/>
+      <ButtonComponent title={btnOpenModalTitle} onClick={showModal} />
         <Modal
-          title="Basic Modal"
           visible={state.visible}
+          title={modalTitle}
           onOk={handleOk}
           onCancel={handleCancel}
+          footer={[
+            <div className={style.modalFooter}>
+              <ButtonComponent title={'назад'} key="back" onClick={handleCancel}/>
+              <ButtonComponent title={'изменить'} key="submit" type="primary" onClick={handleOk}/>
+            </div>
+          ]}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <label>логин</label>
+          <InputComponent />
+          <label>email</label>
+          <InputComponent />
         </Modal>
       </>
   )
