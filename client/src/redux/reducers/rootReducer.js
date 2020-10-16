@@ -8,7 +8,7 @@ import {employerReducer} from './employerReducer';
 export const rootReducer = combineReducers({
   profile: profileReducer,
   auth: authReducer,
-  rating: ratingReducer
+  rating: ratingReducer,
   employer: employerReducer,
   app: appReducer
 })
