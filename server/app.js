@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv').config({ path: '../.env' })
 
 const loginRouter = require('./routers/authorization')
+const studentsRouter = require('./routers/students')
 
 const app = express()
 
@@ -27,5 +28,6 @@ const start = () => {
 }
 
 app.use('/', loginRouter)
+app.use('/students',studentsRouter)
 
 start()

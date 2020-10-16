@@ -15,3 +15,7 @@ export const HIDE_LOADER = 'HIDE_LOADER'
 // Errors
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const HIDE_ERROR = 'HIDE_ERROR'
+
+//Rating types
+export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const ADD_ALL_USERS = 'ADD_ALL_USERS'
