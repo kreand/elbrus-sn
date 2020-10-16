@@ -2,11 +2,11 @@ import { Alert, Col, Row } from 'antd'
 import React from 'react'
 import style from './AlertComponent.module.css'
 
-const AlertComponent = ({ text, type, justify, span }) => {
+const AlertComponent = ({ title, text, type, justify, span, onClose }) => {
   return (
     <Row justify={justify || 'center'} className={style.alert}>
       <Col span={span || 12}>
-        <Alert message={text} type={type}/>
+        <Alert message={title} description={text} type={type} closable/>
       </Col>
     </Row>
   )
