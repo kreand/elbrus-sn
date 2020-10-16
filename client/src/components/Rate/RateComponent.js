@@ -2,7 +2,8 @@ import {Col, Rate, Row} from 'antd';
 
 import React from 'react';
 
-const RateComponent = ({justify, title}) => {
+const RateComponent = ({justify, title, name, changeRating}) => {
+
   return (
     <Row justify={justify || 'center'}>
       <Col>
@@ -10,8 +11,11 @@ const RateComponent = ({justify, title}) => {
       </Col>
       <Col>
         <Rate
+          name={name}
           allowHalf
-          defaultValue={0} />
+          defaultValue={0}
+          onChange={value => changeRating(value)}
+        />
       </Col>
     </Row>
   );

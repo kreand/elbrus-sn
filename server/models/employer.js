@@ -1,10 +1,10 @@
 const {Schema, model, Types} = require('mongoose');
 
 const employerSchema = new Schema({
-  name: {type: String, required: true},
+  name: {type: String, required: true, unique: true},
   allReviews: [{
     user: {type: Types.ObjectId, ref: 'User'},
-    rank: {type: Number},
+    rating: {type: Number},
     review: {type: String},
   }]
 })
