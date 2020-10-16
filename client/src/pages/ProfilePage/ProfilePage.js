@@ -1,14 +1,18 @@
 import React from 'react'
-import { user } from './newUser'
 import style from './ProfilePage.module.css'
+import { useSelector } from 'react-redux'
+import ModalComponent from '../../components/Modal/ModalComponent'
+import ButtonComponent from '../../components/Button/ButtonComponent'
 
 const ProfilePage = () => {
+  const user = useSelector(state => state.profile)
   return (
     <div className={style.profileBody}>
       <div className={style.header}>
         <h1>ProfilePage</h1>
         <button className={style.roundBtn}>edit</button>
         <button className={style.roundBtn}>Log Out</button>
+        <ModalComponent title={'изменить профиль'}/>
       </div>
       <div className={style.profileTop}>
         <div className={style.containerForUserPhoto}>
