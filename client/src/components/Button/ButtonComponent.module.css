@@ -1,9 +1,17 @@
-.green {
+.button {
     border: none;
-    background-color: green;
+    border-radius: 5px;
+
+    background-color: var(--orange_color);
+    color: var(--purple_color);
 }
 
-.red {
-    border: none;
-    background-color: red;
+.button:hover {
+    background-color: var(--purple_color);
+    color: var(--orange_color);
+}
+
+.button:focus {
+    background-color: var(--purple_color);
+    color: var(--orange_color);
 }
