@@ -7,8 +7,9 @@ import {
 } from 'react-router-dom';
 import EmployerNav from '../../components/EmployerNav/EmployerNav';
 import AllEmployers from '../../components/AllEmployers/AllEmployers';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getEmployers} from '../../redux/actionCreators/employerAC';
+import EmployerProfile from '../../components/EmployerProfile/EmployerProfile';
 
 const EmployersPage = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ const EmployersPage = () => {
           </Route>
           <Route exact path={'/employers'}>
             <AllEmployers/>
+          </Route>
+          <Route exact path={'/employer/:id'}>
+            <EmployerProfile/>
           </Route>
         </Switch>
       </BrowserRouter>
