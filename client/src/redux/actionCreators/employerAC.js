@@ -1,4 +1,10 @@
-import {ADD_EMPLOYER, ADD_EMPLOYERS, CREATE_EMPLOYER, GET_EMPLOYERS} from '../actionTypes/types';
+import {
+  ADD_EMPLOYER,
+  ADD_EMPLOYERS,
+  CHANGE_ACTIVE_EMP_BTN,
+  CREATE_EMPLOYER,
+  GET_EMPLOYERS,
+} from '../actionTypes/types';
 
 export const getEmployers = () => {
   return {
@@ -23,6 +29,13 @@ export const addEmployers = (payload) => {
 export const addEmployer = (payload) => {
   return {
     type: ADD_EMPLOYER,
+    payload
+  }
+}
+
+export const changeActiveEmpBtn = (payload) => {
+  return {
+    type: CHANGE_ACTIVE_EMP_BTN,
     payload
   }
 }
