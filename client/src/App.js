@@ -6,9 +6,6 @@ import Main from './pages/Main/Main';
 import { auth } from './redux/actionCreators/authAC';
 import { authUserAC } from './redux/actionCreators/profileAC';
 import { useRoutes } from './routes';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
-import RatingsPage from './pages/RatingsPage/RatingsPage';
-import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent';
 
 function App() {
   const dispatch = useDispatch();
