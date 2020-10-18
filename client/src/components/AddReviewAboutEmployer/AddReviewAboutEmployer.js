@@ -7,6 +7,7 @@ import RateComponent from '../Rate/RateComponent';
 import TextareaComponent from '../Textarea/TextareaComponent';
 import ButtonComponent from '../Button/ButtonComponent';
 import {addReviewAC, changeState} from '../../redux/actionCreators/employerAC';
+import style from './AddReviewAboutEmployer.module.css'
 
 const AddReviewAboutEmployer = () => {
   const {id} = useParams();
@@ -37,12 +38,13 @@ const AddReviewAboutEmployer = () => {
     <>
       <Row justify='center'>
         <Col span={20} offset={0}>
-          <Link to={`/employer/${id}`}>
+          <Link className={style.text}
+                to={`/employer/${id}`}>
             <div><ArrowLeftOutlined />{' Вернуться к профилю'}</div>
           </Link>
           <form onSubmit={addNewReview}>
             <br/>
-            <h3>{`Написать отзыв об организации "${employer.name}"`}</h3>
+            <h3 className={style.text}>{`Написать отзыв об организации "${employer.name}"`}</h3>
             <RateComponent title='Оценка работодателя: ' changeRating={changeRating}/>
             <TextareaComponent span={24} name='review' placeholder='Твоё мнение о данной организации' minRows={2}/>
             <ButtonComponent span={24} title='Добавить'/>
