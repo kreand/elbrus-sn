@@ -1,6 +1,6 @@
 import {
   ADD_EMPLOYER,
-  ADD_EMPLOYERS, ADD_LOCAL_EMPLOYERS,
+  ADD_EMPLOYERS, ADD_LOCAL_EMPLOYERS, ADD_REVIEW,
   CHANGE_ACTIVE_EMP_BTN, CHANGE_FILTER_RATING, CLEAR_EMPLOYERS,
   CREATE_EMPLOYER,
   GET_EMPLOYERS,
@@ -57,5 +57,12 @@ export const changeFilterOnRating = (payload) => {
 export const clearEmployersAC = () => {
   return {
     type: CLEAR_EMPLOYERS
+  };
+};
+
+export const addReview = (payload) => {
+  return {
+    type: ADD_REVIEW,
+    payload
   };
 };

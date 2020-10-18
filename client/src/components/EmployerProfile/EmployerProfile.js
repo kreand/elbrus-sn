@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, useParams, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {Row, Col} from 'antd';
+import {ArrowLeftOutlined} from '@ant-design/icons';
 import ButtonComponent from '../Button/ButtonComponent';
 import RateComponent from '../Rate/RateComponent';
 import EmployerReviewsList from '../EmployerReviewsList/EmployerReviewsList';
@@ -19,7 +20,7 @@ const EmployerProfile = () => {
     <Row justify='center'>
       <Col span={12} offset={0}>
         <Link to='/employers'>
-          <ButtonComponent justify='left' title='Показать всех работодателей'/>
+          <div><ArrowLeftOutlined />{' Показать всех работодателей'}</div>
         </Link>
         <br/>
         <h2>{employer.name}</h2>
