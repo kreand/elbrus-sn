@@ -13,6 +13,7 @@ const AddReviewAboutEmployer = () => {
   const [rating, changeRating] = useState(0);
   const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id);
   const {user} = useSelector(state => state.profile);
+  const {change} = useSelector(state => state.employers);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -23,8 +24,13 @@ const AddReviewAboutEmployer = () => {
     const userId = user._id;
     const employerId = id;
     dispatch(addReviewAC({employerId, review, userName, userId, rating}));
-    history.push(`/employer/${id}`);
   };
+
+  useEffect(() => {
+    if (change === 'change') {
+      history.push(`/employer/${id}`);
+    }
+  }, [history, change, id]);
 
   return (
     <>

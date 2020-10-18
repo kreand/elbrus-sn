@@ -2,6 +2,7 @@
     background-color: var(--grey_color);
 }
 .header {
+    text-align: center;
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -9,17 +10,17 @@
 }
 
 .header h1 {
-    padding-left: 200px;
     color: var(--cyan_color);
     font-size: 30px;
 }
 
 .container {
-    width: 1400px;
+    width: 1190px;
     margin: 0 auto;
 }
 
 .sidebar {
+    position: sticky;
     margin-top: 64px;
     background-color: var(--white_color);
 }
@@ -45,8 +46,8 @@
     padding: 10px;
     margin-top: 64px;
     background-color: var(--white_color);
-    border-left: 1px solid var(--purple_color);
-    height: 100vh;
+    border-left: 1px solid rgba(69, 32, 171, .5);
+    height: 85vh;
 }
 
 .footer {
@@ -63,3 +64,6 @@
     color: var(--cyan_color);
 }
 
+.iconColor{
+    color: var(--purple_color);
+}

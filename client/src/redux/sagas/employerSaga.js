@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {ADD_REVIEW, CREATE_EMPLOYER, GET_EMPLOYERS} from '../actionTypes/types';
-import {addEmployer, addEmployers, getEmployers} from '../actionCreators/employerAC';
+import {addEmployer, addEmployers, changeState} from '../actionCreators/employerAC';
 
 function* getEmployersSagaWorker() {
   const employers = yield call(async () => {
@@ -21,15 +21,15 @@ function* createEmployerSagaWorker({payload}) {
 }
 
 function* addReviewSagaWorker({payload}) {
-  yield call(async () => {
+  const response = yield call(async () => {
     return await (await fetch('/employers/add-review', {
       method: 'POST',
       headers: {'Content-type': 'Application/json'},
       body: JSON.stringify({payload}),
     })).json();
   });
-
-  yield put(getEmployers());
+  yield put(addEmployers(response.allEmployers));
+  yield put(changeState('change'));
 }
 
 export function* getEmployersSagaWatcher() {

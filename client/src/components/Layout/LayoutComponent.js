@@ -2,6 +2,12 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import {
+  DollarCircleOutlined,
+  LogoutOutlined, NotificationOutlined,
+  OrderedListOutlined,
+  UserOutlined
+} from '@ant-design/icons';
 
 import EmployersPage from '../../pages/EmployersPage/EmployersPage';
 import EventsPage from '../../pages/EventsPage/EventsPage';
@@ -31,23 +37,21 @@ const LayoutComponent = () => {
       <div className={style.container}>
         <Layout>
           <Sider className={style.sidebar}>
-            <Menu>
-              <Menu.Item key="1">
+            <Menu defaultSelectedKeys={['1']}>
+              <Menu.Item key="1" icon={<UserOutlined className={style.iconColor}/>}>
                 <Link to='/profile'>Профиль</Link>
               </Menu.Item>
-              <Menu.Item key="2">
+              <Menu.Item key="2" icon={<DollarCircleOutlined className={style.iconColor}/>}>
                 <Link to='/employers'>Работодатели</Link>
               </Menu.Item>
-              <Menu.Item key="3">
+              <Menu.Item key="3" icon={<OrderedListOutlined className={style.iconColor}/>}>
                 <Link to='/ratings'>Рейтинг студентов</Link>
               </Menu.Item>
-              <Menu.Item key="4">
+              <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
                 <Link to='/events'>Эвенты</Link>
               </Menu.Item>
-              <Menu.Item key="5">
-                <Link to='/auth'>Авторизация</Link>
-              </Menu.Item>
-              <Menu.Item key="6">
+              <Menu.Divider style={{backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px'}}/>
+              <Menu.Item key="5" icon={<LogoutOutlined className={style.iconColor}/>}>
                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
               </Menu.Item>
             </Menu>

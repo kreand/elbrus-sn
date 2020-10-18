@@ -43,10 +43,9 @@ router.post('/add-review', async (req, res) => {
     / employer.allReviews.length;
   midRating = Math.round(midRating * 2) / 2;
   employer.rating = midRating;
-
   await employer.save();
-
-  res.status(200).json({ employer, message: 'Отзыв добавлен' });
+  const allEmployers = await Employer.find({});
+  res.status(200).json({ allEmployers, message: 'Отзыв добавлен' });
 });
 
 module.exports = router;
