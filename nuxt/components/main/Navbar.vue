@@ -1,15 +1,20 @@
 <template>
-  <a-row class="navbar" type="flex" jusify="space-between">
-    <a-col :xs="24" :sm="5">
-      <Logo />
-    </a-col>
-    <a-col :xs="24" :sm="14">
-      <MainMenu />
-    </a-col>
-    <a-col :xs="24" :sm="5" :md="{align: 'center'}">
-      <Button title="Личный кабинет" type="danger" />
-    </a-col>
-  </a-row>
+  <div class="wrapper">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-md-2">
+          <Logo />
+        </div>
+        <div class="col-md-8">
+          <MainMenu />
+        </div>
+        <div class="col-md-2">
+          <Button title="Личный кабинет" type="danger" />
+        </div>
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -23,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar {
+.wrapper {
   width: 100%;
   height: 80px;
   background-color: #4520ab;
