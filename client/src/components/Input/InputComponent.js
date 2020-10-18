@@ -1,7 +1,7 @@
-import React from 'react'
-import { Col, Input, Row } from 'antd'
+import React from 'react';
+import { Col, Input, Row } from 'antd';
 
-import style from './InputComponent.module.css'
+import style from './InputComponent.module.css';
 
 const InputComponent = ({ name, type, placeholder, size, justify, offset, span, onChange }) => {
   return (
@@ -21,7 +21,7 @@ const InputComponent = ({ name, type, placeholder, size, justify, offset, span, 
         }
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default InputComponent
+export default InputComponent;

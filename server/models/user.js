@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
   name: { type: String, required: true },
@@ -14,10 +14,8 @@ const userSchema = new Schema({
   history: [{
     count: Number,
     comment: String, // дописать имя  того админа, который изменил
-    date: Date
-  }]
-})
+    date: Date,
+  }],
+});
 
-module.exports = model('User', userSchema)
-
-
+module.exports = model('User', userSchema);

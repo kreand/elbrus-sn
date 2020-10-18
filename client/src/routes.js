@@ -1,13 +1,13 @@
-import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import AuthPage from './pages/AuthPage/AuthPage'
-import EmployersPage from './pages/EmployersPage/EmployersPage'
-import EventsPage from './pages/EventsPage/EventsPage'
-import Main from './pages/Main/Main'
-import ProfilePage from './pages/ProfilePage/ProfilePage'
-import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent'
-import RatingsPage from './pages/RatingsPage/RatingsPage'
+import AuthPage from './pages/AuthPage/AuthPage';
+import EmployersPage from './pages/EmployersPage/EmployersPage';
+import EventsPage from './pages/EventsPage/EventsPage';
+import Main from './pages/Main/Main';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent';
+import RatingsPage from './pages/RatingsPage/RatingsPage';
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
@@ -33,7 +33,7 @@ export const useRoutes = isAuthenticated => {
           <Main />
         </Route>
       </Switch>
-    )
+    );
   }
   return (
     <Switch>
@@ -42,5 +42,5 @@ export const useRoutes = isAuthenticated => {
       </Route>
       <Redirect to="/auth" />
     </Switch>
-  )
-}
+  );
+};

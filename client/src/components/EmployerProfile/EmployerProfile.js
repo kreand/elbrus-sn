@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import EmployerCard from '../EmployerCard/EmployerCard';
 import {Row, Col} from 'antd';
 import ButtonComponent from '../Button/ButtonComponent';
 
 const EmployerProfile = () => {
-  const {id} = useParams()
-  const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id)
+  const {id} = useParams();
+  const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id);
 
   return (
     <Row justify='center'>

@@ -1,14 +1,14 @@
-import { AUTH, LOGOUT } from '../actionTypes/types'
+import { AUTH, LOGOUT } from '../actionTypes/types';
 
-const initState = false
+const initState = false;
 
 export function authReducer (state = initState, action) {
   switch (action.type) {
     case AUTH:
-      return true
+      return true;
     case LOGOUT:
-      return false
+      return false;
     default:
-      return state
+      return state;
   }
 }
