@@ -1,18 +1,29 @@
 <template>
 <div class="container ">
   <h1>Календарь мероприятий</h1>
+
   <a-calendar :locale="locale">
     <ul slot="dateCellRender" slot-scope="value" class="events">
-      <li v-for="item in getListData(value)" :key="item.id">
-        <a-badge
-          :status="item.type"
-          :text="item.content"
-          @click="selectEvent(value)"
-        />
-      </li>
+      <Event
+        v-for="event in getListData(value)"
+        :key="event.id"
+        :event="event"
+        @showEvent="showModal"
+      />
     </ul>
-<!--    <Day :events="events"/>-->
   </a-calendar>
+
+  <a-modal
+    title="Title"
+    :visible="visible"
+    :confirm-loading="confirmLoading"
+    @ok="handleOk"
+    @cancel="handleCancel"
+  >
+    <p>{{ ModalText }}</p>
+  </a-modal>
+
+
 </div>
 </template>
 
@@ -20,6 +31,7 @@
 
 import Event from '~/components/main/Calendar/Event'
 import Day from '@/components/main/Calendar/Day'
+
 export default {
   name: 'events',
   components: {Day, Event},
@@ -88,17 +100,12 @@ export default {
         type: 'warning',
         content: 'Третье событие.'
       },
-    ]
+    ],
+    ModalText: 'Content of the modal',
+    visible: false,
+    confirmLoading: false,
   }),
   methods: {
-    renderEvent(value, data) {
-      const keys = Object.keys(data)
-      keys.forEach(key => {
-        if (this.getDay() === data[key].day && this.getMonth() === data[key].month && this.getYear === data[key].year) {
-          return data[key]
-        }
-      })
-    },
     getListData(value) {
       let listData;
       switch (value.date()) {
@@ -134,19 +141,21 @@ export default {
       }
       return listData || [];
     },
-    selectEvent (value) {
-      console.log(this.getListData(value))
+    showModal() {
+      this.visible = true
     },
-    getDay(value) {
-      return value.date()
+    handleOk(e) {
+      this.confirmLoading = true
+      setTimeout(() => {
+        this.visible = false
+        this.confirmLoading = false
+      }, 2000)
     },
-    getMonth (value) {
-      return value.month()
+    handleCancel(e) {
+      console.log('Clicked cancel button')
+      this.visible = false
     },
-    getYear (value) {
-      return value.year()
-    }
-  }
+  },
 }
 </script>
 
@@ -169,9 +178,5 @@ export default {
 }
 .notes-month section {
   font-size: 28px;
-}
-// ant-radio-group-outline ant-radio-group-default
-.ant-fullcalendar-header:last-child {
-  display: none;
 }
 </style>

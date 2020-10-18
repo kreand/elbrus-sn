@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <li :key="props.id">
-      <a-badge
-        :status="props.type"
-        :text="props.content"
-        @click="clickEvent"
-      />
-    </li>
-  </div>
+  <li>
+    <a-badge
+      :status="event.type"
+      :text="event.content"
+      @click="clickEvent"
+    />
+  </li>
 
 </template>
 
@@ -15,11 +13,11 @@
 export default {
   name: 'Event',
   props: {
-    event: Array
+    event: Object
   },
   methods: {
     clickEvent() {
-      this.$emit('showEvent', props.id)
+      this.$emit('showEvent', this.event)
     },
     getDay(value) {
       return value.date()
@@ -27,7 +25,7 @@ export default {
     getMonth (value) {
       return value.month()
     },
-  }
+  },
 }
 </script>
 
