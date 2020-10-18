@@ -32,13 +32,12 @@ const AllEmployers = () => {
 
   return (
     <>
-      <FilterRatingEmployers/>
-      <br/>
-      <InputComponent placeholder='Найти работодателя' onChange={searchEmployer}/>
       <Row justify='center'>
-        <Col span={12} offset={0}>
+        <Col span={20} offset={0}>
+          <FilterRatingEmployers/>
+          <InputComponent placeholder='Найти работодателя' onChange={searchEmployer}/>
           {findEmployers.length ? findEmployers.map((employer) => <EmployerCard key={employer._id}
-                                                                                  employer={employer}/>) : null}
+                                                                                employer={employer}/>) : null}
         </Col>
       </Row>
     </>

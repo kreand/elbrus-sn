@@ -10,12 +10,11 @@ function* getEmployersSagaWorker() {
 }
 
 function* createEmployerSagaWorker({payload}) {
-  const {name, review, rating} = payload;
   const response = yield call(async () => {
     return await (await fetch('/employers/create-employer', {
       method: 'POST',
       headers: {'Content-type': 'Application/json'},
-      body: JSON.stringify({name, review, rating}),
+      body: JSON.stringify({payload}),
     })).json();
   });
   yield put(addEmployer(response.employer));

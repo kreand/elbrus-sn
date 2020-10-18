@@ -10,6 +10,7 @@ import AllEmployers from '../../components/AllEmployers/AllEmployers';
 import {useDispatch} from 'react-redux';
 import {getEmployers} from '../../redux/actionCreators/employerAC';
 import EmployerProfile from '../../components/EmployerProfile/EmployerProfile';
+import AddReviewAboutEmployer from '../../components/AddReviewAboutEmployer/AddReviewAboutEmployer';
 
 const EmployersPage = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ const EmployersPage = () => {
           <Route exact path={'/employers'}>
             <EmployerNav/>
             <AllEmployers/>
+          </Route>
+          <Route exact path={'/employer/add-review-about-employer/:id'}>
+            <AddReviewAboutEmployer/>
           </Route>
           <Route exact path={'/employer/:id'}>
             <EmployerProfile/>
