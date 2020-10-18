@@ -1,2 +1,6 @@
-$purple: #4520ab;
-$orange-color: #ffbc5b;
+@import "bootstrap-reboot.min";
+@import "bootstrap-grid.min";
+
+html {
+  font-family: RF Rostin, Arial, sans-serif;
+}

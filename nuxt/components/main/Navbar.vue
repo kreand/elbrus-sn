@@ -1,5 +1,5 @@
 <template>
-  <a-row class="navbar" type="flex" align="center" jusify="space-between">
+  <a-row class="navbar" type="flex" jusify="space-between">
     <a-col :xs="24" :sm="5">
       <Logo />
     </a-col>

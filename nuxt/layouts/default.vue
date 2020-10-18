@@ -1,6 +1,6 @@
 <template>
   <a-row>
-    <a-col :md="{ span: 16, offset: 4 }" :sm="{ span: 24 }">
+    <a-col>
       <header class="header" >
         <Navbar />
       </header>
@@ -8,9 +8,7 @@
       <main class="main">
         <Nuxt />
       </main>
-
       <Footer />
-
     </a-col>
   </a-row>
 </template>
