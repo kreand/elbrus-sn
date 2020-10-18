@@ -3,6 +3,7 @@ export const GET_USER = 'GET_USER'
 export const GET_DEFAULT_USER = 'GET_DEFAULT_USER'
 export const REGISTRATION_USER = 'REGISTRATION_USER'
 export const REGISTRATION_DEFAULT_USER = 'REGISTRATION_DEFAULT_USER'
+export const CLEAR_USER = 'CLEAR_USER'
 
 // Authorization/Registration
 export const AUTH = 'AUTH'
