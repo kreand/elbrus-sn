@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-
-import Main from './pages/Main/Main';
 import { auth } from './redux/actionCreators/authAC';
 import { authUserAC } from './redux/actionCreators/profileAC';
 import { useRoutes } from './routes';
@@ -21,7 +19,6 @@ function App() {
   },[dispatch]);
   return (
     <BrowserRouter>
-      <Main/>
       {router}
     </BrowserRouter>
   );
