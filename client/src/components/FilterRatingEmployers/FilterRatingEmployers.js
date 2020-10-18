@@ -1,6 +1,6 @@
 import React from 'react';
 import {Menu, Dropdown, Button, Row, Col} from 'antd';
-import {DownOutlined, UserOutlined} from '@ant-design/icons';
+import {DownOutlined} from '@ant-design/icons';
 import RateComponent from '../Rate/RateComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import {changeFilterOnRating} from '../../redux/actionCreators/employerAC';

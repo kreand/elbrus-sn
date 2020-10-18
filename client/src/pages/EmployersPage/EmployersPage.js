@@ -16,7 +16,7 @@ const EmployersPage = () => {
 
   useEffect(() => {
     dispatch(getEmployers())
-  }, [])
+  }, [dispatch])
 
   return (
     <>

@@ -1,7 +1,6 @@
 import {call, put, takeEvery} from 'redux-saga/effects'
 import {CREATE_EMPLOYER, GET_EMPLOYERS} from '../actionTypes/types';
 import {addEmployer, addEmployers} from '../actionCreators/employerAC';
-import {showErrorAC} from '../actionCreators/appAC';
 
 function* getEmployersSagaWorker() {
   const employers = yield call(async () => {
