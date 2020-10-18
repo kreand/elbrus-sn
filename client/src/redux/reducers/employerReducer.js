@@ -3,14 +3,15 @@ import {
   ADD_EMPLOYERS,
   ADD_LOCAL_EMPLOYERS,
   CHANGE_ACTIVE_EMP_BTN,
-  CHANGE_FILTER_RATING, CLEAR_EMPLOYERS,
+  CHANGE_FILTER_RATING, CHANGE_STATE, CLEAR_EMPLOYERS,
 } from '../actionTypes/types';
 
 const initialEmployersState = {
   allEmployers: [],
   filterEmployers: [],
   findEmployers: [],
-  activeTab: 'all-employers'
+  activeTab: 'all-employers',
+  change: false,
 };
 
 export const employerReducer = (state = initialEmployersState, action) => {
@@ -27,6 +28,8 @@ export const employerReducer = (state = initialEmployersState, action) => {
       return {...state, findEmployers: [...action.payload]};
     case CHANGE_ACTIVE_EMP_BTN:
       return {...state, activeTab: action.payload};
+    case CHANGE_STATE:
+      return {...state, change: action.payload};
     default:
       return state;
   }

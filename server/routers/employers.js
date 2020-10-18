@@ -31,4 +31,21 @@ router.post('/create-employer', async (req, res) => {
   return res.status(201).json({ employer, message: 'Работодатель создан' });
 });
 
+router.post('/add-review', async (req, res) => {
+  const {
+    employerId, review, userName, userId, rating,
+  } = req.body.payload;
+  const employer = await Employer.findById(employerId);
+  employer.allReviews.push({
+    userName, userId, review, rating,
+  });
+  let midRating = employer.allReviews.reduce(((sum, el) => sum + el.rating), 0)
+    / employer.allReviews.length;
+  midRating = Math.round(midRating * 2) / 2;
+  employer.rating = midRating;
+  await employer.save();
+  const allEmployers = await Employer.find({});
+  res.status(200).json({ allEmployers, message: 'Отзыв добавлен' });
+});
+
 module.exports = router;

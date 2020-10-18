@@ -12,9 +12,8 @@ const EmployerCard = ({employer}) => {
         className={style.card}
         type="inner"
         title={employer.name}
-        extra={<Link to={`/employer/${employer._id}`}>Подробнее</Link>}>
+        extra={<Link className={style.link} to={`/employer/${employer._id}`}>Подробнее</Link>}>
         <RateComponent
-          span={0}
           rate={rating}
           disabled={true}
           title='Рейтинг работодателя:'

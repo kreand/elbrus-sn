@@ -1,0 +1,8 @@
+.rate {
+    color: var(--orange_color);
+}
+
+.text,
+.text:hover {
+    color: var(--purple_color);
+}
