@@ -4,11 +4,12 @@ import {DownOutlined} from '@ant-design/icons';
 import RateComponent from '../Rate/RateComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import {changeFilterOnRating} from '../../redux/actionCreators/employerAC';
+import style from './FilterRatingEmployers.module.css';
 
 const FilterRatingEmployers = () => {
   const dispatch = useDispatch();
   const ratings = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5, 0];
-  const { allEmployers } = useSelector(state => state.employers);
+  const {allEmployers} = useSelector(state => state.employers);
 
   const filterOnRating = (e) => {
     if (e.key !== 'all') {
@@ -30,24 +31,20 @@ const FilterRatingEmployers = () => {
       {ratings.map((rating) =>
         <Menu.Item key={rating} onClick={filterOnRating}>
           <RateComponent
-            span={0} rate={rating}
+            rate={rating}
             disabled={true}
           />
-        </Menu.Item>
+        </Menu.Item>,
       )}
     </Menu>
   );
 
   return (
-    <Row justify='center'>
-      <Col span={12} offset={0}>
-        <Dropdown overlay={menu}>
-          <Button>
-            Фильтровать по рейтингу<DownOutlined/>
-          </Button>
-        </Dropdown>
-      </Col>
-    </Row>
+    <Dropdown overlay={menu} className={style.filter}>
+      <Button>
+        Фильтровать по рейтингу<DownOutlined/>
+      </Button>
+    </Dropdown>
   );
 };
 

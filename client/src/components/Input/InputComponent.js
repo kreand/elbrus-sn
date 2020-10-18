@@ -6,7 +6,7 @@ import style from './InputComponent.module.css';
 const InputComponent = ({ name, type, placeholder, size, justify, offset, span, onChange }) => {
   return (
     <Row justify={justify || 'center'}>
-      <Col span={span || 12} offset={offset || 0}>
+      <Col span={span || 24} offset={offset || 0}>
         {
           type === 'password'
             ? <Input.Password name={name} className={style.input} placeholder={placeholder} size={size || 'middle'}/>

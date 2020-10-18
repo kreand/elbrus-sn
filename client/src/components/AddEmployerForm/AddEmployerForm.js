@@ -6,6 +6,7 @@ import TextareaComponent from '../Textarea/TextareaComponent';
 import {changeActiveEmpBtn, createEmployer} from '../../redux/actionCreators/employerAC';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import {Row, Col} from 'antd';
 
 const AddEmployerForm = () => {
   const [rating, changeRating] = useState(0);
@@ -24,12 +25,16 @@ const AddEmployerForm = () => {
   };
 
   return (
-    <form onSubmit={addNewEmployer}>
-      <InputComponent name='name' placeholder='Наименование организации'/>
-      <RateComponent title='Оценка работодателя: ' changeRating={changeRating}/>
-      <TextareaComponent name='review' placeholder='Твоё мнение о данной организации' minRows={2}/>
-      <ButtonComponent title='Добавить'/>
-    </form>
+    <Row justify='center'>
+      <Col span={20}>
+        <form onSubmit={addNewEmployer}>
+          <InputComponent name='name' placeholder='Наименование организации'/>
+          <RateComponent title='Оценка работодателя: ' changeRating={changeRating}/>
+          <TextareaComponent name='review' placeholder='Твоё мнение о данной организации' minRows={2}/>
+          <ButtonComponent title='Добавить'/>
+        </form>
+      </Col>
+    </Row>
   );
 };
 

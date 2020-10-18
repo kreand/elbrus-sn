@@ -26,7 +26,7 @@ const AddReviewAboutEmployer = () => {
   return (
     <>
       <Row justify='center'>
-        <Col span={12} offset={0}>
+        <Col span={20} offset={0}>
           <Link to={`/employer/${id}`}>
             <div><ArrowLeftOutlined />{' Вернуться к профилю'}</div>
           </Link>

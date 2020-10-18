@@ -18,7 +18,7 @@ const EmployerProfile = () => {
 
   return (
     <Row justify='center'>
-      <Col span={12} offset={0}>
+      <Col span={20} offset={0}>
         <Link to='/employers'>
           <div><ArrowLeftOutlined />{' Показать всех работодателей'}</div>
         </Link>
