@@ -14,7 +14,7 @@
   </a-calendar>
 
   <a-modal
-    :title="event.content"
+    :title="event.title"
     :visible="visible"
     :confirm-loading="confirmLoading"
     :ok-button-props="{ style: {display: 'none'} }"
@@ -22,7 +22,13 @@
     @ok="handleOk"
     @cancel="handleCancel"
   >
-    <p>{{ event.content }}</p>
+    <div class="h5">Формат: <span class="text-violet h5">{{ event.format }}</span></div>
+    <div class="h5">Город: <span class="text-violet h5">{{ event.city }}</span></div>
+    <div class="h5">Описание</div>
+    <p>{{ event.body }}</p>
+    <div class="h5">Дата и время: {{event.day}}.{{event.month + 1}}.{{event.year}} в {{event.time}}</div>
+
+
   </a-modal>
   <CreateEvent
     @createEvent="showDate"
@@ -52,8 +58,8 @@ export default {
         "clear": "Clear",
         "month": "Месяц",
         "year": "Год",
-        "timeSelect": "Select time",
-        "dateSelect": "Select date",
+        "timeSelect": "Выбрать время",
+        "dateSelect": "Выбрать дату",
         "monthSelect": "Choose a month",
         "yearSelect": "Choose a year",
         "decadeSelect": "Choose a decade",
@@ -73,40 +79,14 @@ export default {
         "nextCentury": "Next century"
       },
       "timePickerLocale": {
-        "placeholder": "Select time"
+        "placeholder": "Выбрать время"
       },
       "dateFormat": "YYYY-MM-DD",
       "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
       "weekFormat": "YYYY-wo",
       "monthFormat": "YYYY-MM"
     },
-    events: [
-      {
-        id: '3',
-        year: 2020,
-        month: 9,
-        day: 15,
-        type: 'warning',
-        content: 'Первое событие'
-      },
-      {
-        id: '4',
-        year: 2020,
-        month: 9,
-        day: 10,
-        type: 'warning',
-        content: 'Второе событие.'
-      },
-      {
-        id: '5',
-        year: 2020,
-        month: 9,
-        day: 13,
-        type: 'warning',
-        content: 'Третье событие.'
-      },
-    ],
-    ModalText: 'Content of the modal',
+    events: [],
     visible: false,
     confirmLoading: false,
     event: {}
@@ -115,39 +95,15 @@ export default {
     showDate(data) {
       console.log(data)
     },
+
     getListData(value) {
-      let listData;
-      switch (value.date()) {
-        case 8:
-          listData = [
-            {
-              id: '1',
-              type: 'warning',
-              content: 'Туса енотов.',
-              location: 'Санкт-Петербург'
-            },
-            { id: '2', type: 'success', content: 'Туса волков.' },
-          ];
-          break;
-        case 10:
-          listData = [
-            { id: '3', type: 'warning', content: 'This is warning event.' },
-            { id: '4', type: 'success', content: 'This is usual event.' },
-            { id: '5', type: 'error', content: 'This is error event.' },
-          ];
-          break;
-        case 15:
-          listData = [
-            { id: '6', type: 'warning', content: 'This is warning event' },
-            { id: '7', type: 'success', content: 'This is very long usual event。。....' },
-            { id: '8', type: 'error', content: 'This is error event 1.' },
-            { id: '9', type: 'error', content: 'This is error event 2.' },
-            { id: '10', type: 'error', content: 'This is error event 3.' },
-            { id: '11', type: 'error', content: 'This is error event 4.' },
-          ];
-          break;
-        default:
-      }
+
+      const listData = this.events.filter(event => (
+        event.day === value.date() &&
+        event.month === value.month()
+        && event.year === value.year()
+      ))
+
       return listData || [];
     },
     showModal(data) {
@@ -165,10 +121,13 @@ export default {
       this.visible = false
     },
   },
+  mounted() {
+    this.events = this.$store.getters['events/allEvents']
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .events {
   list-style: none;
   margin: 0;
@@ -188,4 +147,9 @@ export default {
 .notes-month section {
   font-size: 28px;
 }
+
+.ant-radio-group {
+  display: none;
+}
+
 </style>
