@@ -21,64 +21,75 @@
       <a-form :form="form">
         <a-form-item label="Название">
           <a-input
-            v-model="event.title"
-            v-decorator="['title', { rules: [{ required: true, message: 'Укажите название' }], trigger: 'input', initialValue: '' }]"
+            v-decorator="['title', { rules: [{ required: true, message: 'Укажите название' }] }]"
           />
         </a-form-item>
-        <a-form-item label="Формат">
+        <a-form-item label="Цвет маркера">
+          <a-select
+            v-decorator="[
+          'color',
+          { rules: [{ required: true, message: 'Выберите цвет маркера' }] },
+        ]"
+            placeholder="Выбрать цвет"
+          >
+            <a-select-option value="error">
+              Красный
+            </a-select-option>
+            <a-select-option value="warning">
+              Желтый
+            </a-select-option>
+            <a-select-option value="success">
+              Зеленый
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+        <a-form-item
+          label="Формат"
+        >
           <a-radio-group
-            v-decorator="['format', { rules: [{ required: true, message: 'Выберите формат события' }], trigger: 'change', initialValue: ''}]"
+            v-decorator="['format', { rules: [{ required: true, message: 'Выберите формат' }] }]"
           >
             <a-radio
-              v-model="event.format"
               value="Онлайн"
-              checked
             >
               Онлайн
             </a-radio>
             <a-radio
-              v-model="event.format"
               value="Офлайн"
             >
-              Оффлайн
+              Офлайн
             </a-radio>
           </a-radio-group>
         </a-form-item>
-<!--        <a-form-item-->
-<!--          v-if="event.format === 'Офлайн'"-->
-<!--          label="Город"-->
-<!--        >-->
-<!--          <a-radio-group-->
-<!--            v-model="event.format"-->
-<!--            v-decorator="['city', { rules: [{ required: true, message: 'Выберите город' }] }]">-->
-<!--            <a-radio-->
-<!--              v-model="event.city"-->
-<!--              value="Москва"-->
-<!--            >-->
-<!--              Москва-->
-<!--            </a-radio>-->
-<!--            <a-radio-->
-<!--              v-model="event.city"-->
-<!--              value="Санкт-Петербург">-->
-<!--              Санкт-Петербург-->
-<!--            </a-radio>-->
-<!--          </a-radio-group>-->
-<!--        </a-form-item>-->
-<!--        <a-form-item label="Дата и время">-->
-<!--          <a-date-picker-->
-<!--            v-model="event.date"-->
-<!--            v-decorator="['date-time-picker', config]"-->
-<!--            show-time-->
-<!--            format="YYYY-MM-DD HH:mm"-->
-<!--          />-->
-<!--        </a-form-item>-->
-<!--        <a-form-item label="Описание">-->
-<!--          <a-textarea-->
-<!--            v-model="event.body"-->
-<!--            placeholder="Описание мероприятия"-->
-<!--            :auto-size="{ minRows: 3, maxRows: 15 }"-->
-<!--          />-->
-<!--        </a-form-item>-->
+        <a-form-item
+          label="Город"
+        >
+          <a-radio-group>
+            <a-radio
+              value="Москва"
+            >
+              Москва
+            </a-radio>
+            <a-radio
+              value="Санкт-Петербург">
+              Санкт-Петербург
+            </a-radio>
+          </a-radio-group>
+        </a-form-item>
+        <a-form-item label="Дата и время">
+          <a-date-picker
+            v-decorator="['date', { rules: [{ required: true, message: 'Укажите дату и время' }] }]"
+            show-time
+            format="YYYY-MM-DD HH:mm"
+          />
+        </a-form-item>
+        <a-form-item label="Описание">
+          <a-textarea
+            placeholder="Описание мероприятия"
+            :auto-size="{ minRows: 3, maxRows: 15 }"
+            v-decorator="['description', { rules: [{ required: true, message: 'Добавьте описание события' }] }]"
+          />
+        </a-form-item>
       </a-form>
     </a-modal>
 
@@ -86,44 +97,44 @@
 </template>
 
 <script>
+
 export default {
-  name: "CreateEvent",
+  name: 'CreateEvent',
   data() {
     return {
-      form: this.$form.createForm(this, { name: 'events' }),
+      form: this.$form.createForm(this, {name: 'events'}),
       visible: false,
       confirmLoading: false,
-      config: {
-        rules: [{ type: 'object', required: true, message: 'Please select time!' }],
-      },
-      event: {
-        title: '',
-        format: '',
-        city: '',
-        date: '',
-        body: ''
-      }
     }
   },
   methods: {
     showModal() {
-      this.visible = true;
+      this.visible = true
     },
     handleOk(e) {
       this.form.validateFields((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values)
+        try {
+          if (!err) {
+            const data = {
+              title: values.title,
+              format: values.format,
+              city: values.city || '',
+              year: values.date.year(),
+              month: values.date.month(),
+              day: values.date.date(),
+              time: `${values.date.hour()} : ${values.date.minutes()}`,
+              body: values.description,
+            }
+          }
+        } catch (err) {
+          throw err
         }
       })
     },
     handleCancel(e) {
-      console.log('Clicked cancel button');
-      this.visible = false;
+      this.visible = false
     },
-    onSubmit() {
-      console.log(this.event)
-    }
-  }
+  },
 }
 </script>
 
@@ -134,6 +145,5 @@ export default {
     right: 50px;
     bottom: 200px;
   }
-
 }
 </style>
