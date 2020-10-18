@@ -3,6 +3,7 @@ export const GET_USER = 'GET_USER'
 export const GET_DEFAULT_USER = 'GET_DEFAULT_USER'
 export const REGISTRATION_USER = 'REGISTRATION_USER'
 export const REGISTRATION_DEFAULT_USER = 'REGISTRATION_DEFAULT_USER'
+export const CLEAR_USER = 'CLEAR_USER'
 
 // Authorization/Registration
 export const AUTH = 'AUTH'
@@ -16,6 +17,7 @@ export const ADD_EMPLOYER = 'ADD_EMPLOYER'
 export const CHANGE_ACTIVE_EMP_BTN = 'CHANGE_ACTIVE_EMP_BTN'
 export const ADD_LOCAL_EMPLOYERS = 'ADD_LOCAL_EMPLOYERS'
 export const CHANGE_FILTER_RATING = 'CHANGE_FILTER_RATING'
+export const CLEAR_EMPLOYERS = 'CLEAR_EMPLOYERS'
 
 // Loader
 export const SHOW_LOADER = 'SHOW_LOADER'

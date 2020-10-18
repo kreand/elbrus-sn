@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Main from './pages/Main/Main';
 import { auth } from './redux/actionCreators/authAC'
+import { authUserAC } from './redux/actionCreators/profileAC'
 import { useRoutes } from './routes'
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import RatingsPage from './pages/RatingsPage/RatingsPage';
@@ -18,6 +19,7 @@ function App() {
     if (!!localStorage.length) {
       const user = JSON.parse(localStorage.userData).user
       dispatch(auth())
+      dispatch(authUserAC(user))
     }
   },[dispatch])
   return (

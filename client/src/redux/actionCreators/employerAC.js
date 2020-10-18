@@ -1,7 +1,7 @@
 import {
   ADD_EMPLOYER,
   ADD_EMPLOYERS, ADD_LOCAL_EMPLOYERS,
-  CHANGE_ACTIVE_EMP_BTN, CHANGE_FILTER_RATING,
+  CHANGE_ACTIVE_EMP_BTN, CHANGE_FILTER_RATING, CLEAR_EMPLOYERS,
   CREATE_EMPLOYER,
   GET_EMPLOYERS,
 } from '../actionTypes/types';
@@ -51,5 +51,11 @@ export const changeFilterOnRating = (payload) => {
   return {
     type: CHANGE_FILTER_RATING,
     payload
+  }
+}
+
+export const clearEmployersAC = () => {
+  return {
+    type: CLEAR_EMPLOYERS
   }
 }

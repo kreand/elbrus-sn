@@ -3,7 +3,7 @@ import {
   ADD_EMPLOYERS,
   ADD_LOCAL_EMPLOYERS,
   CHANGE_ACTIVE_EMP_BTN,
-  CHANGE_FILTER_RATING,
+  CHANGE_FILTER_RATING, CLEAR_EMPLOYERS,
 } from '../actionTypes/types';
 
 const initialEmployersState = {
@@ -15,6 +15,8 @@ const initialEmployersState = {
 
 export const employerReducer = (state = initialEmployersState, action) => {
   switch (action.type) {
+    case CLEAR_EMPLOYERS:
+      return initialEmployersState
     case ADD_EMPLOYER:
       return {...state, allEmployers: [...state.allEmployers, action.payload]}
     case ADD_EMPLOYERS:
