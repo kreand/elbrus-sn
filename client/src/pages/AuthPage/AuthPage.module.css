@@ -1,8 +1,15 @@
 .title {
     text-align: center;
     color: var(--purple_color);
+    font-size: 30px;
 }
 
 button {
     margin-top: 20px;
+}
+
+.container {
+    padding-top: 200px;
+    height: 100vh;
+    background-color: var(--white_color);
 }
