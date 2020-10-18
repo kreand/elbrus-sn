@@ -1,6 +1,5 @@
 import {
-    ADD_ALL_USERS,
-    GET_ALL_USERS,
+    ADD_ALL_USERS, FILTER_USERS,GET_ALL_USERS,
 } from '../actionTypes/types';
 
 export const getAllUsersAC = () => {
@@ -16,3 +15,9 @@ export const addAllUsersAC = (users) => {
     });
 };
 
+export const filterUsersAC = (filtered) => {
+    return({
+        type: FILTER_USERS,
+        payload: filtered
+    });
+};
