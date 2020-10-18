@@ -2,7 +2,7 @@
   <li>
     <a-badge
       :status="event.type"
-      :text="event.content"
+      :text="event.title"
       @click="clickEvent"
     />
   </li>
