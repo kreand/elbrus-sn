@@ -21,12 +21,13 @@ const EmployersPage = () => {
   return (
     <>
       <BrowserRouter>
-        <EmployerNav/>
         <Switch>
           <Route exact path={'/add-employer'}>
+            <EmployerNav/>
             <AddEmployerForm/>
           </Route>
           <Route exact path={'/employers'}>
+            <EmployerNav/>
             <AllEmployers/>
           </Route>
           <Route exact path={'/employer/:id'}>
