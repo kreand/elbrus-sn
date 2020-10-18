@@ -5,9 +5,12 @@
         <Navbar />
       </header>
 
-      <main class="main">
-        <Nuxt />
-      </main>
+      <div class="container">
+        <main class="main">
+          <Nuxt />
+        </main>
+      </div>
+
 <!--      <Footer />-->
     </a-col>
   </a-row>
