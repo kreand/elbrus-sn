@@ -57,12 +57,12 @@ const AuthPage = () => {
 
   if (registration) {
     return (
-      <>
+      <div className={style.container}>
         <h1 className={style.title}>Регистрация</h1>
         <form onSubmit={registrationHandler}>
-          <InputComponent name='name' type='text' placeholder='Ваше имя' span={8} size='large'/>
-          <InputComponent name='email' type='email' placeholder='Ваш email' span={8} size='large'/>
-          <InputComponent name='password' type='password' placeholder='Ваш пароль' span={8} size='large'/>
+          <InputComponent name='name' type='text' placeholder='Ваше имя' span={6} size='large'/>
+          <InputComponent name='email' type='email' placeholder='Ваш email' span={6} size='large'/>
+          <InputComponent name='password' type='password' placeholder='Ваш пароль' span={6} size='large'/>
           {
             loading
               ? <ButtonComponent title='Зарегистрироваться' size='large' loading={true}/>
@@ -70,15 +70,15 @@ const AuthPage = () => {
           }
         </form>
         <ButtonComponent onClick={changeRegistrationHandler} title='Авторизация' size='large'/>
-      </>
+      </div>
     );
   }
   return (
-    <>
+    <div className={style.container}>
       <form onSubmit={authHandler}>
         <h1 className={style.title}>Авторизация</h1>
-        <InputComponent name='email' type='email' placeholder='Ваш email' span={8} size='large'/>
-        <InputComponent name='password' type='password' placeholder='Ваш пароль' span={8} size='large'/>
+        <InputComponent name='email' type='email' placeholder='Ваш email' span={6} size='large'/>
+        <InputComponent name='password' type='password' placeholder='Ваш пароль' span={6} size='large'/>
         {
           loading
             ? <ButtonComponent name='password' title='Авторизоваться' size='large' loading={true}/>
@@ -86,7 +86,8 @@ const AuthPage = () => {
         }
       </form>
       <ButtonComponent onClick={changeRegistrationHandler} title='Регистрация' size='large'/>
-    </>
+    </div>
+
   );
 };
 

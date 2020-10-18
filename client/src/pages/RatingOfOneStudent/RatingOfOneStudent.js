@@ -21,7 +21,7 @@ const RatingOfOneStudent = () => {
         <div>
             <h2 style={{marginLeft: 10}}>{user.name}</h2>
             <h3>{user.rating}</h3>
-            <InputComponent placeholder="Изменить на" justify="left" span="2"/>
+            <InputComponent placeholder="Изменить" justify="left" span="2"/>
             <TextareaComponent justify="left" span="3" placeholder="Комментарий"> </TextareaComponent>
             <ButtonComponent justify="left" title="Сохранить" size="large"/>
             <ButtonComponent onClick={() => hist.push('/ratings')} title="назад" size="small" justify="left"/>
