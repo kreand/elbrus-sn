@@ -11,8 +11,8 @@ const RateComponent = ({justify, title, changeRating, rate, disabled}) => {
       <Col>
         <Rate
           allowHalf
-          disabled={disabled}
-          defaultValue={rate || 0}
+          disabled={disabled || false}
+          defaultValue={rate ? parseFloat(rate) : 0}
           onChange={changeRating && (value => changeRating(value))}
         />
       </Col>
