@@ -1,18 +1,33 @@
 <template>
 <div class="container ">
   <h1>Календарь мероприятий</h1>
+
   <a-calendar :locale="locale">
     <ul slot="dateCellRender" slot-scope="value" class="events">
-      <li v-for="item in getListData(value)" :key="item.id">
-        <a-badge
-          :status="item.type"
-          :text="item.content"
-          @click="selectEvent(value)"
-        />
-      </li>
+      <Event
+        v-for="event in getListData(value)"
+        :key="event.id"
+        :event="event"
+        @showEvent="showModal"
+      />
     </ul>
-<!--    <Day :events="events"/>-->
   </a-calendar>
+
+  <a-modal
+    :title="event.content"
+    :visible="visible"
+    :confirm-loading="confirmLoading"
+    :ok-button-props="{ style: {display: 'none'} }"
+    cancel-text="Закрыть"
+    @ok="handleOk"
+    @cancel="handleCancel"
+  >
+    <p>{{ event.content }}</p>
+  </a-modal>
+  <CreateEvent
+    @createEvent="showDate"
+  />
+
 </div>
 </template>
 
@@ -20,9 +35,11 @@
 
 import Event from '~/components/main/Calendar/Event'
 import Day from '@/components/main/Calendar/Day'
+import CreateEvent from '@/components/main/Calendar/CreateEvent'
+
 export default {
   name: 'events',
-  components: {Day, Event},
+  components: {CreateEvent, Day, Event},
   data: () => ({
     locale: {
       "lang": {
@@ -88,16 +105,15 @@ export default {
         type: 'warning',
         content: 'Третье событие.'
       },
-    ]
+    ],
+    ModalText: 'Content of the modal',
+    visible: false,
+    confirmLoading: false,
+    event: {}
   }),
   methods: {
-    renderEvent(value, data) {
-      const keys = Object.keys(data)
-      keys.forEach(key => {
-        if (this.getDay() === data[key].day && this.getMonth() === data[key].month && this.getYear === data[key].year) {
-          return data[key]
-        }
-      })
+    showDate(data) {
+      console.log(data)
     },
     getListData(value) {
       let listData;
@@ -134,19 +150,21 @@ export default {
       }
       return listData || [];
     },
-    selectEvent (value) {
-      console.log(this.getListData(value))
+    showModal(data) {
+      this.event = data
+      this.visible = true
     },
-    getDay(value) {
-      return value.date()
+    handleOk(e) {
+      this.confirmLoading = true
+      setTimeout(() => {
+        this.visible = false
+        this.confirmLoading = false
+      }, 2000)
     },
-    getMonth (value) {
-      return value.month()
+    handleCancel(e) {
+      this.visible = false
     },
-    getYear (value) {
-      return value.year()
-    }
-  }
+  },
 }
 </script>
 
@@ -169,9 +187,5 @@ export default {
 }
 .notes-month section {
   font-size: 28px;
-}
-// ant-radio-group-outline ant-radio-group-default
-.ant-fullcalendar-header:last-child {
-  display: none;
 }
 </style>
