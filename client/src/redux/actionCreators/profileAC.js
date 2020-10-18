@@ -1,4 +1,10 @@
-import { GET_DEFAULT_USER, GET_USER, REGISTRATION_DEFAULT_USER, REGISTRATION_USER } from '../actionTypes/types'
+import {
+  CLEAR_USER,
+  GET_DEFAULT_USER,
+  GET_USER,
+  REGISTRATION_DEFAULT_USER,
+  REGISTRATION_USER
+} from '../actionTypes/types'
 
 export function authUserAC(payload) {
   return {
@@ -25,5 +31,11 @@ export function registrationDefaultUserAC(payload) {
   return {
     type: REGISTRATION_DEFAULT_USER,
     user: payload
+  }
+}
+
+export function clearUserAC() {
+  return {
+    type: CLEAR_USER,
   }
 }
