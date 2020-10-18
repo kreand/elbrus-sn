@@ -1,26 +1,35 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {Row, Col} from 'antd';
 import ButtonComponent from '../Button/ButtonComponent';
 import RateComponent from '../Rate/RateComponent';
+import EmployerReviewsList from '../EmployerReviewsList/EmployerReviewsList';
 
 const EmployerProfile = () => {
   const {id} = useParams();
   const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id);
+  const history = useHistory();
+
+  const addReview = () => {
+    history.push(`add-review-about-employer/${id}`);
+  };
 
   return (
     <Row justify='center'>
       <Col span={12} offset={0}>
         <Link to='/employers'>
-          <ButtonComponent title='Показать всех работодателей'/>
+          <ButtonComponent justify='left' title='Показать всех работодателей'/>
         </Link>
-        <h3>{employer.name}</h3>
+        <br/>
+        <h2>{employer.name}</h2>
         <RateComponent
           rate={employer.rating}
           justify='left'
+          disabled={true}
         />
-        <p>{employer.allReviews[0].review}</p>
+        <ButtonComponent title='Написать отзыв' justify='left' onClick={addReview}/>
+        <EmployerReviewsList allReviews={employer.allReviews}/>
       </Col>
     </Row>
   );

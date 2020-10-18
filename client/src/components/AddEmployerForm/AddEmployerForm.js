@@ -26,7 +26,7 @@ const AddEmployerForm = () => {
   return (
     <form onSubmit={addNewEmployer}>
       <InputComponent name='name' placeholder='Наименование организации'/>
-      <RateComponent name='rating' title='Оценка работодателя: ' changeRating={changeRating}/>
+      <RateComponent title='Оценка работодателя: ' changeRating={changeRating}/>
       <TextareaComponent name='review' placeholder='Твоё мнение о данной организации' minRows={2}/>
       <ButtonComponent title='Добавить'/>
     </form>
