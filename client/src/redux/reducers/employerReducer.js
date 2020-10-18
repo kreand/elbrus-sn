@@ -11,7 +11,7 @@ const initialEmployersState = {
   filterEmployers: [],
   findEmployers: [],
   activeTab: 'all-employers',
-  change: '',
+  change: false,
 };
 
 export const employerReducer = (state = initialEmployersState, action) => {

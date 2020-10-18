@@ -6,7 +6,7 @@ import {ArrowLeftOutlined} from '@ant-design/icons';
 import RateComponent from '../Rate/RateComponent';
 import TextareaComponent from '../Textarea/TextareaComponent';
 import ButtonComponent from '../Button/ButtonComponent';
-import {addReviewAC} from '../../redux/actionCreators/employerAC';
+import {addReviewAC, changeState} from '../../redux/actionCreators/employerAC';
 
 const AddReviewAboutEmployer = () => {
   const {id} = useParams();
@@ -27,10 +27,11 @@ const AddReviewAboutEmployer = () => {
   };
 
   useEffect(() => {
-    if (change === 'change') {
+    if (change) {
       history.push(`/employer/${id}`);
+      dispatch(changeState(false));
     }
-  }, [history, change, id]);
+  }, [dispatch, history, change, id]);
 
   return (
     <>
