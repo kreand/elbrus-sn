@@ -18,7 +18,6 @@ const RatingsPage = () => {
             return student.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1;
         })));
     }
-
     useEffect(() => {
         dispatch(filterUsersAC(students));
     }, [dispatch, students]);

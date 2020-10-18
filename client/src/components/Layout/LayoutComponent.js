@@ -50,7 +50,9 @@ const LayoutComponent = () => {
               <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
                 <Link to='/events'>Эвенты</Link>
               </Menu.Item>
-              <Divider className={style.divider}/>
+              <Menu.Item>
+                <Divider className={style.divider}/>
+              </Menu.Item>
               <Menu.Item key="6" icon={<LogoutOutlined className={style.iconColor}/>}>
                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
               </Menu.Item>
