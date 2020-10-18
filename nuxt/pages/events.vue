@@ -147,8 +147,4 @@ export default {
   font-size: 28px;
 }
 
-.ant-radio-group {
-  display: none;
-}
-
 </style>
