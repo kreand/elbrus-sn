@@ -60,7 +60,7 @@ export const clearEmployersAC = () => {
   };
 };
 
-export const addReview = (payload) => {
+export const addReviewAC = (payload) => {
   return {
     type: ADD_REVIEW,
     payload
