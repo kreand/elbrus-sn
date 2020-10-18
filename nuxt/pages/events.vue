@@ -14,15 +14,19 @@
   </a-calendar>
 
   <a-modal
-    title="Title"
+    :title="event.content"
     :visible="visible"
     :confirm-loading="confirmLoading"
+    :ok-button-props="{ style: {display: 'none'} }"
+    cancel-text="Закрыть"
     @ok="handleOk"
     @cancel="handleCancel"
   >
-    <p>{{ ModalText }}</p>
+    <p>{{ event.content }}</p>
   </a-modal>
-
+  <CreateEvent
+    @createEvent="showDate"
+  />
 
 </div>
 </template>
@@ -31,10 +35,11 @@
 
 import Event from '~/components/main/Calendar/Event'
 import Day from '@/components/main/Calendar/Day'
+import CreateEvent from '@/components/main/Calendar/CreateEvent'
 
 export default {
   name: 'events',
-  components: {Day, Event},
+  components: {CreateEvent, Day, Event},
   data: () => ({
     locale: {
       "lang": {
@@ -104,8 +109,12 @@ export default {
     ModalText: 'Content of the modal',
     visible: false,
     confirmLoading: false,
+    event: {}
   }),
   methods: {
+    showDate(data) {
+      console.log(data)
+    },
     getListData(value) {
       let listData;
       switch (value.date()) {
@@ -141,7 +150,8 @@ export default {
       }
       return listData || [];
     },
-    showModal() {
+    showModal(data) {
+      this.event = data
       this.visible = true
     },
     handleOk(e) {
@@ -152,7 +162,6 @@ export default {
       }, 2000)
     },
     handleCancel(e) {
-      console.log('Clicked cancel button')
       this.visible = false
     },
   },
