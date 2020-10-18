@@ -34,7 +34,7 @@
 
 .userGeneralInfo {
   text-align: center;
-  margin: 0 1em 1em 1em;
+  margin: 0 1em 1em 5em;
 }
 
 .userStatus {
@@ -62,6 +62,16 @@
   font-size: 1.2em;
   margin: 0 1em 1em 0;
   border-color: orange;
+}
+
+.input:hover {
+  border-color: var(--purple_color);
+  box-shadow: 0 0 0 2px var(--purple_color);
+}
+
+.input:focus {
+  border-color: var(--purple_color);
+  box-shadow: 0 0 0 2px var(--purple_color);
 }
 
 .tag {

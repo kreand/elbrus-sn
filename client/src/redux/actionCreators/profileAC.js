@@ -3,7 +3,8 @@ import {
   GET_DEFAULT_USER,
   GET_USER,
   REGISTRATION_DEFAULT_USER,
-  REGISTRATION_USER
+  REGISTRATION_USER,
+  EDIT_USER_PROFILE
 } from '../actionTypes/types'
 
 export function authUserAC(payload) {
@@ -37,5 +38,12 @@ export function registrationDefaultUserAC(payload) {
 export function clearUserAC() {
   return {
     type: CLEAR_USER,
+  }
+}
+
+export function editUserProfileAC(payload) {
+  return {
+    type: EDIT_USER_PROFILE,
+    payload
   }
 }

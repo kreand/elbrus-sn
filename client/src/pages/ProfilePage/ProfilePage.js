@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import style from './ProfilePage.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { Tooltip, Tag, Input } from 'antd';
-import { tooltipTitle, tooltipDefaultOption } from './elements/tooltips'
+import { tooltipTitle, tooltipDefaultOption } from '../../components/Tooltip/TooltipComponent'
 import ButtonComponent from '../../components/Button/ButtonComponent'
+import { editUserProfileAC } from '../../redux/actionCreators/profileAC'
 
 const ProfilePage = () => {
-  const user = useSelector((state) => state.profile)
+  const user = useSelector((state) => state.profile.user)
   const dispatch = useDispatch()
   const [editStatus, setEditStatus] = useState(false)
 
@@ -14,19 +15,33 @@ const ProfilePage = () => {
     setEditStatus(!editStatus);
   };
 
+  const profileHandler = (e) => {
+    e.preventDefault()
+    const { name, email, password, skills } = e.target
+    const updateUserInfo = {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+      skills: [skills.value]
+    }
+    dispatch(editUserProfileAC(updateUserInfo))
+    changeEditStatus()
+  }
+
   if (editStatus) {
     return (
       <div className={style.profileBody}><br/><br/>
         <div className={style.profileTop}>
           <div className={style.containerForUserPhoto}>
-            <img className={style.userPhoto} alt={user.name} src={user.photo || 
+            <img className={style.userPhoto} alt={user.name || 'default_user_photo'} src={user.photo || 
             'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'}/>
           </div>
-          <form onSubmit={() => {}} className={style.userGeneralInfo}>
+          <form onSubmit={profileHandler} className={style.userGeneralInfo}>
             <label className={style.label}>login</label>
             <Input name='name' className={style.input} size='middle' defaultValue={user.name}/>
             <label className={style.label}>skills</label>
-            <Input name='skills' className={style.input} size='middle' defaultValue={[...user.skills]}/>
+            <Input name='skills' className={style.input} size='middle' defaultValue={user.skills.length > 0 ? 
+              [...user.skills] : 'скилы не указаны'}/>
             <label className={style.label}>email</label>
             <Input name='email' className={style.input} size='middle' defaultValue={user.email}/>
             <label className={style.label}>password</label>
@@ -61,13 +76,15 @@ const ProfilePage = () => {
             </Tooltip>
             <h3 style={{color:'orange'}}>SKILLS</h3>
             <h3 className={style.skills}>
-              {user.skills.map((skill) => (
+              {user.skills.length > 0 ? user.skills.map((skill) => (
                 <Tag color='purple' className={style.tag}>{skill}</Tag>
-                )) || 'Скилы не указаны'}
+                )) : 'Скилы не указаны'}
             </h3>
           </div>
           <div className={style.userGeneralInfo}>
-            <h1 className={style.userName}>{user.name}</h1>
+            <h1 className={style.userName}>
+              {user.name}
+            </h1>
             <Tooltip
               {...tooltipDefaultOption}
               title={tooltipTitle.status}
