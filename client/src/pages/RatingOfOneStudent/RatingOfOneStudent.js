@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import InputComponent from '../../components/Input/InputComponent';
 import {useHistory, useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {getStudentForChangeRatingAC} from '../../redux/actionCreators/ratingAC';
+import { useSelector} from 'react-redux';
 import TextareaComponent from '../../components/Textarea/TextareaComponent';
 
 //Нарисовать как инпут то насколько и тексэриа то за что и
@@ -15,7 +14,7 @@ const RatingOfOneStudent = () => {
     const {id} = useParams();
     useEffect(() => {
         setUser(allUsers.find((user) => user._id === id));
-    }, [setUser]);
+    }, [allUsers,id]);
     const hist = useHistory();
     return (
         <div>
