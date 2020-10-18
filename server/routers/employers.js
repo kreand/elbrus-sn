@@ -7,7 +7,9 @@ router.get('/get-all-employers', async (req, res) => {
 });
 
 router.post('/create-employer', async (req, res) => {
-  const { name, review, rating } = req.body;
+  const {
+    name, review, rating, userName, userId,
+  } = req.body.payload;
 
   let employer = await Employer.findOne({ name });
   if (employer) {
@@ -18,6 +20,8 @@ router.post('/create-employer', async (req, res) => {
     name,
     rating,
     allReviews: [{
+      userName,
+      userId,
       review,
       rating,
     }],

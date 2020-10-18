@@ -1,0 +1,6 @@
+.listItem {
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid var(--purple_color);
+    border-radius: 5px;
+}

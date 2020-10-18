@@ -1,10 +1,11 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const employerSchema = new Schema({
   name: { type: String, required: true, unique: true },
   rating: { type: String },
   allReviews: [{
-    user: { type: Types.ObjectId, ref: 'User' },
+    userName: { type: String },
+    userId: { type: String },
     rating: { type: Number },
     review: { type: String },
   }],
