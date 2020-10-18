@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {Menu, Col, Row} from 'antd';
 import {useDispatch, useSelector} from 'react-redux';
 import {changeActiveEmpBtn} from '../../redux/actionCreators/employerAC';
 
 const EmployerNav = () => {
-  const activeTab = useSelector(state => state.employersTab.active);
+  const {activeTab} = useSelector(state => state.employers);
   const dispatch = useDispatch();
-
   const handleClick = e => {
     dispatch(changeActiveEmpBtn(e.key))
   };

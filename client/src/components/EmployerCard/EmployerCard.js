@@ -5,8 +5,7 @@ import style from './EmployerCard.module.css'
 import {Link} from 'react-router-dom';
 
 const EmployerCard = ({employer}) => {
-  const rating = employer.allReviews.reduce(((sum, el) => sum + el.rating), 0) / employer.allReviews.length
-
+  const rating = parseInt(employer.rating)
   return (
     <>
       <Card
@@ -15,7 +14,8 @@ const EmployerCard = ({employer}) => {
         title={employer.name}
         extra={<Link to={`/employer/${employer._id}`}>Подробнее</Link>}>
         <RateComponent
-          span={0} rate={rating}
+          span={0}
+          rate={rating}
           disabled={true}
           title='Рейтинг работодателя:'
           justify='left'/>

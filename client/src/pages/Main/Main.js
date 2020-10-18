@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../redux/actionCreators/authAC'
 import { clearUserAC } from '../../redux/actionCreators/profileAC'
+import {clearEmployersAC} from '../../redux/actionCreators/employerAC';
 
 const Main = () => {
   const dispatch = useDispatch()
@@ -11,6 +12,7 @@ const Main = () => {
   const logoutHandler = () => {
     dispatch(logout())
     dispatch(clearUserAC())
+    dispatch(clearEmployersAC())
     localStorage.clear()
   }
   return (

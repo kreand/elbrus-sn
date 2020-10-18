@@ -4,10 +4,8 @@ import ButtonComponent from '../Button/ButtonComponent';
 import RateComponent from '../Rate/RateComponent';
 import TextareaComponent from '../Textarea/TextareaComponent';
 import {changeActiveEmpBtn, createEmployer} from '../../redux/actionCreators/employerAC';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {hideErrorAC} from '../../redux/actionCreators/appAC';
-import {message} from 'antd';
 
 const AddEmployerForm = () => {
   const [rating, changeRating] = useState(0);
