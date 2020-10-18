@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import {
@@ -50,10 +50,8 @@ const LayoutComponent = () => {
               <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
                 <Link to='/events'>Эвенты</Link>
               </Menu.Item>
-              <Menu.Item>
-                <Divider className={style.divider}/>
-              </Menu.Item>
-              <Menu.Item key="6" icon={<LogoutOutlined className={style.iconColor}/>}>
+              <Menu.Divider style={{backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px'}}/>
+              <Menu.Item key="5" icon={<LogoutOutlined className={style.iconColor}/>}>
                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
               </Menu.Item>
             </Menu>
