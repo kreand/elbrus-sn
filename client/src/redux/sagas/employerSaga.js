@@ -1,12 +1,12 @@
-import {call, put, takeEvery} from 'redux-saga/effects'
+import {call, put, takeEvery} from 'redux-saga/effects';
 import {CREATE_EMPLOYER, GET_EMPLOYERS} from '../actionTypes/types';
 import {addEmployer, addEmployers} from '../actionCreators/employerAC';
 
 function* getEmployersSagaWorker() {
   const employers = yield call(async () => {
-    return await (await fetch('/employers/get-all-employers')).json()
-  })
-  yield put(addEmployers(employers))
+    return await (await fetch('/employers/get-all-employers')).json();
+  });
+  yield put(addEmployers(employers));
 }
 
 function* createEmployerSagaWorker({payload}) {
@@ -17,15 +17,15 @@ function* createEmployerSagaWorker({payload}) {
       headers: {'Content-type': 'Application/json'},
       body: JSON.stringify({name, review, rating}),
     })).json();
-  })
-  yield put(addEmployer(response.employer))
+  });
+  yield put(addEmployer(response.employer));
 }
 
 export function* getEmployersSagaWatcher() {
-  yield takeEvery(GET_EMPLOYERS, getEmployersSagaWorker)
+  yield takeEvery(GET_EMPLOYERS, getEmployersSagaWorker);
 }
 
 export function* createEmployerSagaWatcher() {
-  yield takeEvery(CREATE_EMPLOYER, createEmployerSagaWorker)
+  yield takeEvery(CREATE_EMPLOYER, createEmployerSagaWorker);
 }
 

@@ -1,27 +1,24 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import Main from './pages/Main/Main';
-import { auth } from './redux/actionCreators/authAC'
-import { authUserAC } from './redux/actionCreators/profileAC'
-import { useRoutes } from './routes'
-import ProfilePage from './pages/ProfilePage/ProfilePage';
-import RatingsPage from './pages/RatingsPage/RatingsPage';
-import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent';
+import { auth } from './redux/actionCreators/authAC';
+import { authUserAC } from './redux/actionCreators/profileAC';
+import { useRoutes } from './routes';
 
 function App() {
-  const dispatch = useDispatch()
-  const isAuth = useSelector(state => state.auth)
-  const router = useRoutes(isAuth)
+  const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.auth);
+  const router = useRoutes(isAuth);
 
   useEffect(() => {
     if (!!localStorage.length) {
-      const user = JSON.parse(localStorage.userData).user
-      dispatch(auth())
-      dispatch(authUserAC(user))
+      const user = JSON.parse(localStorage.userData).user;
+      dispatch(auth());
+      dispatch(authUserAC(user));
     }
-  },[dispatch])
+  },[dispatch]);
   return (
     <BrowserRouter>
       <Main/>

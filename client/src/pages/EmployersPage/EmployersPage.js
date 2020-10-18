@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
 import AddEmployerForm from '../../components/AddEmployerForm/AddEmployerForm';
 import {
   BrowserRouter,
@@ -15,8 +15,8 @@ const EmployersPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getEmployers())
-  }, [dispatch])
+    dispatch(getEmployers());
+  }, [dispatch]);
 
   return (
     <>
@@ -36,7 +36,7 @@ const EmployersPage = () => {
         </Switch>
       </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default EmployersPage
+export default EmployersPage;

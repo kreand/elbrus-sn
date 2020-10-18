@@ -1,59 +1,59 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { message } from 'antd'
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { message } from 'antd';
 
-import ButtonComponent from '../../components/Button/ButtonComponent'
-import InputComponent from '../../components/Input/InputComponent'
-import { hideErrorAC } from '../../redux/actionCreators/appAC'
-import { getDefaultUserAC, registrationDefaultUserAC } from '../../redux/actionCreators/profileAC'
-import style from './AuthPage.module.css'
+import ButtonComponent from '../../components/Button/ButtonComponent';
+import InputComponent from '../../components/Input/InputComponent';
+import { hideErrorAC } from '../../redux/actionCreators/appAC';
+import { getDefaultUserAC, registrationDefaultUserAC } from '../../redux/actionCreators/profileAC';
+import style from './AuthPage.module.css';
 
 const AuthPage = () => {
-  const [registration, setRegistration] = useState(false)
-  const dispatch = useDispatch()
-  const errors = useSelector(state => state.app.errors)
-  const loading = useSelector(state => state.app.isLoading)
+  const [registration, setRegistration] = useState(false);
+  const dispatch = useDispatch();
+  const errors = useSelector(state => state.app.errors);
+  const loading = useSelector(state => state.app.isLoading);
 
   const authHandler = (e) => {
-    e.preventDefault()
-    const { email, password } = e.target
+    e.preventDefault();
+    const { email, password } = e.target;
     const user = {
       email: email.value,
       password: password.value
-    }
-    dispatch(getDefaultUserAC(user))
+    };
+    dispatch(getDefaultUserAC(user));
 
-  }
+  };
 
   const registrationHandler = (e) => {
-    e.preventDefault()
-    const { name, email, password } = e.target
+    e.preventDefault();
+    const { name, email, password } = e.target;
     const user = {
       name: name.value,
       email: email.value,
       password: password.value
-    }
-    dispatch(registrationDefaultUserAC(user))
-  }
+    };
+    dispatch(registrationDefaultUserAC(user));
+  };
 
   const changeRegistrationHandler = () => {
-    setRegistration(!registration)
-  }
+    setRegistration(!registration);
+  };
 
   if (errors.isError) {
     setTimeout(() => {
-      dispatch(hideErrorAC())
-    }, 1500)
+      dispatch(hideErrorAC());
+    }, 1500);
   }
 
   const info = useCallback(() => {
-    message.error(errors.errorMessage, 1.5)
-  }, [errors.errorMessage])
+    message.error(errors.errorMessage, 1.5);
+  }, [errors.errorMessage]);
 
   useEffect(() => {
     if (errors.errorMessage)
-      info()
-  }, [errors, info])
+      info();
+  }, [errors, info]);
 
   if (registration) {
     return (
@@ -71,7 +71,7 @@ const AuthPage = () => {
         </form>
         <ButtonComponent onClick={changeRegistrationHandler} title='Авторизация' size='large'/>
       </>
-    )
+    );
   }
   return (
     <>
@@ -87,7 +87,7 @@ const AuthPage = () => {
       </form>
       <ButtonComponent onClick={changeRegistrationHandler} title='Регистрация' size='large'/>
     </>
-  )
-}
+  );
+};
 
-export default AuthPage
+export default AuthPage;

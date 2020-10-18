@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Employer = require('../models/employer')
+const Employer = require('../models/employer');
 
 router.get('/get-all-employers', async (req, res) => {
   const employers = await Employer.find({});
@@ -7,11 +7,11 @@ router.get('/get-all-employers', async (req, res) => {
 });
 
 router.post('/create-employer', async (req, res) => {
-  const {name, review, rating} = req.body
+  const { name, review, rating } = req.body;
 
-  let employer = await Employer.findOne({name});
+  let employer = await Employer.findOne({ name });
   if (employer) {
-    return res.status(400).json({error: true, message: 'Данный работодатель уже есть в списке'})
+    return res.status(400).json({ error: true, message: 'Данный работодатель уже есть в списке' });
   }
 
   employer = new Employer({
@@ -20,11 +20,11 @@ router.post('/create-employer', async (req, res) => {
     allReviews: [{
       review,
       rating,
-    }]
-  })
+    }],
+  });
   await employer.save();
 
-  return res.status(201).json({employer, message: 'Работодатель создан'})
-})
+  return res.status(201).json({ employer, message: 'Работодатель создан' });
+});
 
 module.exports = router;

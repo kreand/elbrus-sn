@@ -1,20 +1,20 @@
-import { Col, Row } from 'antd'
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logout } from '../../redux/actionCreators/authAC'
-import { clearUserAC } from '../../redux/actionCreators/profileAC'
+import { Col, Row } from 'antd';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logout } from '../../redux/actionCreators/authAC';
+import { clearUserAC } from '../../redux/actionCreators/profileAC';
 import {clearEmployersAC} from '../../redux/actionCreators/employerAC';
 
 const Main = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    dispatch(logout())
-    dispatch(clearUserAC())
-    dispatch(clearEmployersAC())
-    localStorage.clear()
-  }
+    dispatch(logout());
+    dispatch(clearUserAC());
+    dispatch(clearEmployersAC());
+    localStorage.clear();
+  };
   return (
     <Row justify='center'>
       <Col style={{ marginRight: '10px' }}>
@@ -36,7 +36,7 @@ const Main = () => {
         <Link onClick={logoutHandler} to='/auth'>Logout</Link><br/>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

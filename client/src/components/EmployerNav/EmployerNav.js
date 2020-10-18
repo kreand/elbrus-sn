@@ -8,7 +8,7 @@ const EmployerNav = () => {
   const {activeTab} = useSelector(state => state.employers);
   const dispatch = useDispatch();
   const handleClick = e => {
-    dispatch(changeActiveEmpBtn(e.key))
+    dispatch(changeActiveEmpBtn(e.key));
   };
 
   return (

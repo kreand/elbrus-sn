@@ -15,10 +15,10 @@ const AddEmployerForm = () => {
   const addNewEmployer = (e) => {
     e.preventDefault();
     const {review: {value: review}, name: {value: name}} = e.target;
-    dispatch(createEmployer({name, review, rating}))
-    dispatch(changeActiveEmpBtn('all-employers'))
+    dispatch(createEmployer({name, review, rating}));
+    dispatch(changeActiveEmpBtn('all-employers'));
     history.push('/employers');
-  }
+  };
 
   return (
     <form onSubmit={addNewEmployer}>

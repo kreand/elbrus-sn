@@ -1,11 +1,11 @@
 import React from 'react';
 import {Card} from 'antd';
 import RateComponent from '../Rate/RateComponent';
-import style from './EmployerCard.module.css'
+import style from './EmployerCard.module.css';
 import {Link} from 'react-router-dom';
 
 const EmployerCard = ({employer}) => {
-  const rating = parseFloat(employer.rating)
+  const rating = parseInt(employer.rating);
   return (
     <>
       <Card

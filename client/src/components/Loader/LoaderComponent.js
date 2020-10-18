@@ -1,7 +1,7 @@
-import React from 'react'
-import { Spin, Col, Row } from 'antd'
+import React from 'react';
+import { Spin, Col, Row } from 'antd';
 
-import style from './LoaderComponent.module.css'
+import style from './LoaderComponent.module.css';
 
 const LoaderComponent = ({ justify, size }) => {
   return (
@@ -10,7 +10,7 @@ const LoaderComponent = ({ justify, size }) => {
         <Spin className={style.spinner} size={size || 'default'}/>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default LoaderComponent
+export default LoaderComponent;
