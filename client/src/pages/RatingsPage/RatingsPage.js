@@ -15,7 +15,7 @@ const RatingsPage = () => {
         <div>
             <Row justify="center">
                 <Col offset="0" span="12">
-                    <InputComponent size="large" placeholder="Search of student" justify="left" span="12" offset="0"/>
+                    <InputComponent size="large" placeholder="Search of student" span="24" justify="left"  offset="0"/>
                     <List
                         itemLayout="horizontal"
                         dataSource={students}
