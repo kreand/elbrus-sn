@@ -8,7 +8,7 @@
       <main class="main">
         <Nuxt />
       </main>
-      <Footer />
+<!--      <Footer />-->
     </a-col>
   </a-row>
 </template>

@@ -40,12 +40,11 @@
 <script>
 
 import Event from '~/components/main/Calendar/Event'
-import Day from '@/components/main/Calendar/Day'
 import CreateEvent from '@/components/main/Calendar/CreateEvent'
 
 export default {
   name: 'events',
-  components: {CreateEvent, Day, Event},
+  components: {CreateEvent, Event},
   data: () => ({
     locale: {
       "lang": {

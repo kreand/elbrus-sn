@@ -2,10 +2,10 @@
   <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-5 d-flex justify-content-center flex-column">
-          <Socials class="mt-2" />
-          <Messengers class="mt-3" />
-        </div>
+<!--        <div class="col-md-5 d-flex justify-content-center flex-column">-->
+<!--          <Socials class="mt-2" />-->
+<!--          <Messengers class="mt-3" />-->
+<!--        </div>-->
       </div>
     </div>
   </footer>
@@ -22,6 +22,9 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   height: 200px;
   background-color: #4520ab;
 }
