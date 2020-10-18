@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     if (!!localStorage.length) {
       const user = JSON.parse(localStorage.userData).user
-      return dispatch(auth())
+      dispatch(auth())
     }
   },[dispatch])
   return (

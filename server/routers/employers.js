@@ -16,6 +16,7 @@ router.post('/create-employer', async (req, res) => {
 
   employer = new Employer({
     name,
+    rating,
     allReviews: [{
       review,
       rating,
