@@ -1,35 +1,31 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import AuthPage from './pages/AuthPage/AuthPage';
-import EmployersPage from './pages/EmployersPage/EmployersPage';
-import EventsPage from './pages/EventsPage/EventsPage';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom';
+
 import Main from './pages/Main/Main';
+import { auth } from './redux/actionCreators/authAC'
+import { authUserAC } from './redux/actionCreators/profileAC'
+import { useRoutes } from './routes'
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import RatingsPage from './pages/RatingsPage/RatingsPage';
+import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent';
 
 function App() {
+  const dispatch = useDispatch()
+  const isAuth = useSelector(state => state.auth)
+  const router = useRoutes(isAuth)
+
+  useEffect(() => {
+    if (!!localStorage.length) {
+      const user = JSON.parse(localStorage.userData).user
+      dispatch(auth())
+      dispatch(authUserAC(user))
+    }
+  },[dispatch])
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/employers">
-          <EmployersPage />
-        </Route>
-        <Route path="/auth">
-          <AuthPage />
-        </Route>
-        <Route path="/events">
-          <EventsPage />
-        </Route>
-        <Route path="/ratings">
-          <RatingsPage />
-        </Route>
-        <Route path="/profile">
-          <ProfilePage />
-        </Route>
-        <Route path="/">
-          <Main />
-        </Route>
-      </Switch>
+      <Main/>
+      {router}
     </BrowserRouter>
   );
 }

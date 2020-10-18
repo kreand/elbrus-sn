@@ -10,7 +10,12 @@ const userSchema = new Schema({
   coins: { type: Number, default: 0 },
   // rating: All coins for all time
   rating: { type: Number, default: 0 },
-  skills: [String]
+  skills: [String],
+  history: [{
+    count: Number,
+    comment: String, // дописать имя  того админа, который изменил
+    date: Date
+  }]
 })
 
 module.exports = model('User', userSchema)

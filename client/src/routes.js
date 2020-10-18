@@ -6,25 +6,29 @@ import EmployersPage from './pages/EmployersPage/EmployersPage'
 import EventsPage from './pages/EventsPage/EventsPage'
 import Main from './pages/Main/Main'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import RatingOfOneStudent from './pages/RatingOfOneStudent/RatingOfOneStudent'
 import RatingsPage from './pages/RatingsPage/RatingsPage'
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/employers">
+        <Route path="/employers" exact>
           <EmployersPage />
         </Route>
-        <Route path="/events">
+        <Route path="/events" exact>
           <EventsPage />
         </Route>
-        <Route path="/ratings">
+        <Route path="/ratings" exact>
           <RatingsPage />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile" exact>
           <ProfilePage />
         </Route>
-        <Redirect to="/profile" />
+        <Route path="/student" exact>
+          <RatingOfOneStudent />
+        </Route>
+        <Redirect to="/profile" exact/>
         <Route path="/">
           <Main />
         </Route>
@@ -33,7 +37,7 @@ export const useRoutes = isAuthenticated => {
   }
   return (
     <Switch>
-      <Route path="/auth">
+      <Route path="/auth" exact>
         <AuthPage />
       </Route>
       <Redirect to="/auth" />

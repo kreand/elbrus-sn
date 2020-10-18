@@ -1,20 +1,19 @@
+import React from 'react';
 import {Col, Rate, Row} from 'antd';
 
-import React from 'react';
-
-const RateComponent = ({justify, title, name, changeRating}) => {
+const RateComponent = ({justify, title, changeRating, rate, disabled}) => {
 
   return (
     <Row justify={justify || 'center'}>
       <Col>
-        <p style={{marginTop: 8}}>{title}</p>
+        {title && <p style={{marginTop: 8, marginRight: 10}}>{title}</p>}
       </Col>
       <Col>
         <Rate
-          name={name}
           allowHalf
-          defaultValue={0}
-          onChange={value => changeRating(value)}
+          disabled={disabled}
+          defaultValue={rate || 0}
+          onChange={changeRating && (value => changeRating(value))}
         />
       </Col>
     </Row>

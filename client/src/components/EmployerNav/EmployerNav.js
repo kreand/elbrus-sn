@@ -1,18 +1,21 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Menu, Col, Row} from 'antd';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeActiveEmpBtn} from '../../redux/actionCreators/employerAC';
 
 const EmployerNav = () => {
-  const [active, setActive] = useState({current: 'all-employers'})
+  const activeTab = useSelector(state => state.employersTab.active);
+  const dispatch = useDispatch();
 
   const handleClick = e => {
-    setActive({ current: e.key });
+    dispatch(changeActiveEmpBtn(e.key))
   };
 
   return (
     <Row justify='center' style={{marginBottom: '20px'}}>
       <Col>
-        <Menu onClick={handleClick} selectedKeys={[active.current]} mode="horizontal">
+        <Menu onClick={handleClick} selectedKeys={[activeTab]} mode="horizontal">
           <Menu.Item key="all-employers">
             <Link to={'/employers'}>
               Все работодатели
