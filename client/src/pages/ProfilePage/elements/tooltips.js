@@ -1,0 +1,14 @@
+export const tooltipTitle = {
+  status: 'Ваш статус и права доступа на сайте.',
+  coins:
+    'ElbrusCoins начисляют преподаватели за особые успехи и заслуги студентов. Вы можете обменять их на крутой мерч.',
+  raiting:
+    'Рейтинг зависит от ваших успехов и неудач в кампусе.  Проактивность, взаимопомощь и дисциплина повышают рейтинг.',
+}
+
+export const tooltipDefaultOption = {
+  placement: "top",
+  mouseEnterDelay: '0.2',
+  mouseLeaveDelay: '0.6',
+  color: 'purple',
+}
