@@ -7,25 +7,25 @@ import InputComponent from '../Input/InputComponent';
 import FilterRatingEmployers from '../FilterRatingEmployers/FilterRatingEmployers';
 
 const AllEmployers = () => {
-  const employers = useSelector(state => state.employers);
-  const localEmployers = useSelector(state => state.searchEmployers);
-  const filterOnRating = useSelector(state => state.employersFilter)
+  const {allEmployers} = useSelector(state => state.employers)
+  const {filterEmployers} = useSelector(state => state.employers)
+  const {findEmployers} = useSelector(state => state.employers);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(changeActiveEmpBtn('all-employers'))
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
-    dispatch(changeFilterOnRating(employers))
-  }, [employers])
+    dispatch(changeFilterOnRating(allEmployers))
+  }, [dispatch, allEmployers])
 
   useEffect(() => {
-    dispatch(addLocalEmployers(filterOnRating))
-  }, [filterOnRating])
+    dispatch(addLocalEmployers(filterEmployers))
+  }, [dispatch, filterEmployers])
 
   const searchEmployer = (e) => {
-    dispatch(addLocalEmployers(filterOnRating.filter(emp => {
+    dispatch(addLocalEmployers(filterEmployers.filter(emp => {
       return emp.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1;
     })))
   }
@@ -37,7 +37,7 @@ const AllEmployers = () => {
       <InputComponent placeholder='Найти работодателя' onChange={searchEmployer}/>
       <Row justify='center'>
         <Col span={12} offset={0}>
-          {localEmployers.length ? localEmployers.map((employer) => <EmployerCard key={employer._id}
+          {findEmployers.length ? findEmployers.map((employer) => <EmployerCard key={employer._id}
                                                                                   employer={employer}/>) : null}
         </Col>
       </Row>

@@ -7,7 +7,7 @@ import ButtonComponent from '../Button/ButtonComponent';
 
 const EmployerProfile = () => {
   const {id} = useParams()
-  const employer = useSelector(state => state.employers).find(emp => emp._id === id)
+  const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id)
 
   return (
     <Row justify='center'>
