@@ -25,7 +25,7 @@ export const useRoutes = isAuthenticated => {
         <Route path="/profile" exact>
           <ProfilePage />
         </Route>
-        <Route path="/student" exact>
+        <Route path="/student/:id" exact>
           <RatingOfOneStudent />
         </Route>
         <Redirect to="/profile" exact/>

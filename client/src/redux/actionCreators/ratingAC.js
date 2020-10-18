@@ -1,4 +1,7 @@
-import {ADD_ALL_USERS, GET_ALL_USERS} from '../actionTypes/types';
+import {
+    ADD_ALL_USERS,
+    GET_ALL_USERS,
+} from '../actionTypes/types';
 
 export const getAllUsersAC = () => {
     return({
@@ -12,3 +15,4 @@ export const addAllUsersAC = (users) => {
         payload:users
     });
 };
+
