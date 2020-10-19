@@ -58,7 +58,11 @@ export const mutations = {
 }
 
 export const actions = {
-
+  async getEvents({commit}) {
+    const events = await this.$axios.get('http://localhost:7000/events').then(res => res.data)
+    // return events
+    commit('updateEvents', events)
+  }
 }
 
 export const getters = {

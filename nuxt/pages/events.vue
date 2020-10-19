@@ -121,8 +121,7 @@ export default {
     },
   },
   async mounted() {
-    const events = await this.$axios.$get('http://localhost:7000/events')
-    this.$store.commit('events/updateEvents', events)
+    await this.$store.dispatch('events/getEvents')
     this.events = this.$store.getters['events/events']
   }
 }
