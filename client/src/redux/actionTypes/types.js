@@ -37,3 +37,4 @@ export const HIDE_ERROR = 'HIDE_ERROR';
 //Rating types
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const ADD_ALL_USERS = 'ADD_ALL_USERS';
+export const FILTER_USERS = 'FILTER_USERS';
