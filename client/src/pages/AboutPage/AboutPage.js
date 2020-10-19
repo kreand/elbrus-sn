@@ -1,11 +1,11 @@
 import React from 'react';
 // eslint-disable-next-line
 import {Link} from 'react-router-dom';
-
-const AboutPage = () => {
+import ReactReveal from '../../components/RevealForAboutComponent/RevealForAboutComponent';
+const AboutPage = ({setAbout}) => {
     return (
         <div>
-            About Us
+            <ReactReveal/>
         </div>
     );
 };

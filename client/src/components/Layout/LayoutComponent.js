@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Layout, Menu} from 'antd';
 import {useDispatch} from 'react-redux';
 import {Link, Redirect, Route, Switch} from 'react-router-dom';
@@ -21,6 +21,7 @@ import AboutPage from '../../pages/AboutPage/AboutPage';
 import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage';
 
 const LayoutComponent = () => {
+    const [about, setAbout] = useState(false)
     const {Header, Footer, Sider, Content} = Layout;
     const dispatch = useDispatch();
 
@@ -30,6 +31,10 @@ const LayoutComponent = () => {
         dispatch(clearEmployersAC());
         localStorage.clear();
     };
+
+    if(about){
+       return <AboutPage setAbout={setAbout}/>;
+    }
     return (
         <Layout className={style.body}>
             <Header className={style.header}>
@@ -72,9 +77,6 @@ const LayoutComponent = () => {
                             <Route path="/profile" exact>
                                 <ProfilePage/>
                             </Route>
-                            <Route path="/about" exact>
-                                <AboutPage/>
-                            </Route>
                             <Route path="/student/:id" exact>
                                 <StudentProfilePage/>
                             </Route>
@@ -84,9 +86,9 @@ const LayoutComponent = () => {
                 </Layout>
             </div>
             <Footer className={style.footer}>
-                <div style={{display:'flex', justifyContent:'space-around', margin:'0 40%'}}>
+                <div style={{display: 'flex', justifyContent: 'space-around', margin: '0 40%'}}>
                     <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
-                    <Link to="/about">About us</Link>
+                    <Link onClick={() => setAbout(true)} to="/about">About us</Link>
                 </div>
             </Footer>
         </Layout>
