@@ -45,7 +45,7 @@ const LayoutComponent = () => {
                 <Link to='/employers'>Работодатели</Link>
               </Menu.Item>
               <Menu.Item key="3" icon={<OrderedListOutlined className={style.iconColor}/>}>
-                <Link to='/ratings'>Рейтинг студентов</Link>
+                <Link to='/students'>Рейтинг студентов</Link>
               </Menu.Item>
               <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
                 <Link to='/events'>Эвенты</Link>
@@ -64,10 +64,10 @@ const LayoutComponent = () => {
               <Route path="/events" exact>
                 <EventsPage/>
               </Route>
-              <Route path="/ratings" exact>
+              <Route path="/students" exact>
                 <RatingsPage/>
               </Route>
-              <Route path="/profile" exact>
+              <Route path="/profile"exact >
                 <ProfilePage/>
               </Route>
               <Route path="/student/:id" exact>

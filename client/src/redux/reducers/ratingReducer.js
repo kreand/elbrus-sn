@@ -1,5 +1,5 @@
 import {
-    ADD_ALL_USERS, FILTER_USERS,
+    ADD_ALL_USERS, CHANGE_RATING, FILTER_USERS,
     GET_ALL_USERS,
 } from '../actionTypes/types';
 
@@ -16,6 +16,8 @@ export function ratingReducer(state= initialState, action) {
             return {...state, allUsers: action.payload};
         case (FILTER_USERS):
             return {...state,filteredUsers: action.payload};
+        case(CHANGE_RATING):
+            return{...state, allUsers: action.payload};
         default:
             return state;
     }
