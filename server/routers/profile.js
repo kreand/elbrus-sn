@@ -4,7 +4,6 @@ const User = require('../models/user')
 router.post('/edit', async (req, res) => {
   const { name, userId, skills } = req.body
   let user = await User.findById(userId)
-  console.log(user);
   if (user) {
     user.skills = skills,
     user.name = name,

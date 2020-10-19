@@ -7,7 +7,6 @@ export const CLEAR_USER = 'CLEAR_USER';
 export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const DEFAULT_CHECK_TOKEN = 'DEFAULT_CHECK_TOKEN';
 
-
 // Authorization/Registration
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
@@ -34,10 +33,13 @@ export const CHECK_TOKEN_HIDE_LOADER = 'CHECK_TOKEN_HIDE_LOADER';
 export const SHOW_ERROR = 'SHOW_ERROR';
 export const HIDE_ERROR = 'HIDE_ERROR';
 
-//Rating types
-export const GET_ALL_USERS = 'GET_ALL_USERS'
-export const ADD_ALL_USERS = 'ADD_ALL_USERS'
-
 // User Profile
 export const EDIT_USER_PROFILE = 'EDIT_USER_PROFILE'
 export const EDIT_USER_BY_SAGA = 'EDIT_USER_BY_SAGA'
+
+// Rating Types
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const ADD_ALL_USERS = 'ADD_ALL_USERS';
+export const FILTER_USERS = 'FILTER_USERS';
+export const CHANGE_RATING = 'CHANGE_RATING';
+export const DEFAULT_CHANGE_RATING = 'DEFAULT_CHANGE_RATING';
