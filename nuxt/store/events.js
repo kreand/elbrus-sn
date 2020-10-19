@@ -52,7 +52,9 @@ export const state = () => ({
 })
 
 export const mutations = {
-
+  updateEvents(state, events) {
+    state.events = events
+  }
 }
 
 export const actions = {
@@ -60,5 +62,5 @@ export const actions = {
 }
 
 export const getters = {
-  allEvents: state => state.events
+  events: state => state.events
 }

@@ -120,8 +120,10 @@ export default {
       this.visible = false
     },
   },
-  mounted() {
-    this.events = this.$store.getters['events/allEvents']
+  async mounted() {
+    const events = await this.$axios.$get('http://localhost:7000/events')
+    this.$store.commit('events/updateEvents', events)
+    this.events = this.$store.getters['events/events']
   }
 }
 </script>
