@@ -15,12 +15,13 @@ import { logout } from '../../redux/actionCreators/authAC';
 import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
 import { clearUserAC } from '../../redux/actionCreators/profileAC';
 import style from './LayoutComponent.module.css';
-import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage'
+import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage';
 import EmployerNav from '../EmployerNav/EmployerNav';
 import AddEmployerForm from '../AddEmployerForm/AddEmployerForm';
 import AllEmployers from '../AllEmployers/AllEmployers';
 import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmployer';
 import EmployerProfile from '../EmployerProfile/EmployerProfile';
+
 
 const LayoutComponent = () => {
   const { Header, Footer, Sider, Content } = Layout;

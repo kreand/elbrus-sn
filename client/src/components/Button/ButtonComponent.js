@@ -3,12 +3,11 @@ import { Button, Col, Row } from 'antd';
 import style from './ButtonComponent.module.css';
 
 
-const ButtonComponent = ({ onClick, title, color, justify, loading, size, type, name }) => {
+const ButtonComponent = ({ onClick, title, color, justify, loading, size, type}) => {
   return (
     <Row justify={justify || 'center'}>
       <Col>
-        <Button onClick={onClick ? (e) => onClick(e) : null}
-                name={name || null}
+        <Button onClick={onClick ? () => onClick() : null}
                 htmlType={type || 'submit'}
                 size={size || 'middle'}
                 loading={loading}

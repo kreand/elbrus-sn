@@ -53,4 +53,17 @@ router.post('/add-review', async (req, res) => {
   res.status(200).json({ allEmployers, message: 'Отзыв добавлен' });
 });
 
+router.delete('/delete-review', async (req, res) => {
+  const { reviewId, employerId } = req.body.payload;
+  const employer = await Employer.findById(employerId);
+  employer.allReviews = employer.allReviews.filter((rev) => rev.id !== reviewId);
+  let midRating = employer.allReviews.reduce(((sum, el) => sum + el.rating), 0)
+    / employer.allReviews.length;
+  midRating = Math.round(midRating * 2) / 2;
+  employer.rating = midRating;
+  await employer.save();
+  const allEmployers = await Employer.find({});
+  res.status(200).json({ allEmployers, message: 'Отзыв удалён' });
+});
+
 module.exports = router;

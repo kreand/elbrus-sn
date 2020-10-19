@@ -1,5 +1,5 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {ADD_REVIEW, CREATE_EMPLOYER, GET_EMPLOYERS} from '../actionTypes/types';
+import {ADD_REVIEW, CREATE_EMPLOYER, DELETE_REVIEW, GET_EMPLOYERS} from '../actionTypes/types';
 import {addEmployer, addEmployers, changeState} from '../actionCreators/employerAC';
 import {showErrorAC} from '../actionCreators/appAC';
 
@@ -44,7 +44,6 @@ function* addReviewSagaWorker({payload}) {
 }
 
 function* deleteReviewSagaWorker({payload}) {
-  const {id} = payload;
   const response = yield call(async () => {
     return await (await fetch('/employers/delete-review', {
       method: 'DELETE',
@@ -52,13 +51,9 @@ function* deleteReviewSagaWorker({payload}) {
       body: JSON.stringify({payload}),
     })).json();
   });
-
-  if (response.error) {
-    yield put(showErrorAC(response.message));
-  } else {
     yield put(addEmployers(response.allEmployers));
-    yield put(changeState(true));
-  }
+
+    // yield put(changeState(true));
 }
 
 export function* getEmployersSagaWatcher() {
@@ -74,5 +69,5 @@ export function* addReviewSagaWatcher() {
 }
 
 export function* deleteReviewSagaWatcher() {
-  yield takeEvery(ADD_REVIEW, deleteReviewSagaWorker);
+  yield takeEvery(DELETE_REVIEW, deleteReviewSagaWorker);
 }

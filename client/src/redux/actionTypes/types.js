@@ -4,8 +4,9 @@ export const GET_DEFAULT_USER = 'GET_DEFAULT_USER';
 export const REGISTRATION_USER = 'REGISTRATION_USER';
 export const REGISTRATION_DEFAULT_USER = 'REGISTRATION_DEFAULT_USER';
 export const CLEAR_USER = 'CLEAR_USER';
-export const CHECK_TOKEN = 'CHECK_TOKEN';
 export const DEFAULT_CHECK_TOKEN = 'DEFAULT_CHECK_TOKEN';
+export const EDIT_USER_PROFILE = 'EDIT_USER_PROFILE';
+export const EDIT_USER_BY_SAGA = 'EDIT_USER_BY_SAGA';
 
 // Authorization/Registration
 export const AUTH = 'AUTH';
@@ -33,10 +34,6 @@ export const CHECK_TOKEN_HIDE_LOADER = 'CHECK_TOKEN_HIDE_LOADER';
 // Errors
 export const SHOW_ERROR = 'SHOW_ERROR';
 export const HIDE_ERROR = 'HIDE_ERROR';
-
-// User Profile
-export const EDIT_USER_PROFILE = 'EDIT_USER_PROFILE'
-export const EDIT_USER_BY_SAGA = 'EDIT_USER_BY_SAGA'
 
 // Rating Types
 export const GET_ALL_USERS = 'GET_ALL_USERS';
