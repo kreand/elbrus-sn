@@ -34,8 +34,13 @@ function* addReviewSagaWorker({payload}) {
       body: JSON.stringify({payload}),
     })).json();
   });
-  yield put(addEmployers(response.allEmployers));
-  yield put(changeState(true));
+
+  if (response.error) {
+    yield put(showErrorAC(response.message));
+  } else {
+    yield put(addEmployers(response.allEmployers));
+    yield put(changeState(true));
+  }
 }
 
 export function* getEmployersSagaWatcher() {

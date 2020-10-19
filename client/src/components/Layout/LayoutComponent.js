@@ -8,7 +8,6 @@ import {
   OrderedListOutlined,
   UserOutlined
 } from '@ant-design/icons';
-
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import RatingsPage from '../../pages/RatingsPage/RatingsPage';

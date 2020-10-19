@@ -36,6 +36,11 @@ router.post('/add-review', async (req, res) => {
     employerId, review, userName, userId, rating,
   } = req.body.payload;
   const employer = await Employer.findById(employerId);
+
+  const currentReview = employer.allReviews.find((rev) => rev.userId === userId);
+  if (currentReview) {
+    return res.status(400).json({ error: true, message: 'Ты уже писал отзыв для данного работодателя' });
+  }
   employer.allReviews.push({
     userName, userId, review, rating,
   });
