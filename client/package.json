@@ -24,16 +24,11 @@
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends": "react-app",
     "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
+      "semi": [
+        "error",
+        "always"
       ]
     }
   },

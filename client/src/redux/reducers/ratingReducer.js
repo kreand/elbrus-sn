@@ -1,12 +1,15 @@
-import {ADD_ALL_USERS, GET_ALL_USERS} from '../actionTypes/types';
+import {
+    ADD_ALL_USERS,
+    GET_ALL_USERS,
+} from '../actionTypes/types';
 
-export function ratingReducer(state ={allUsers: []}, action) {
+export function ratingReducer(state ={allUsers: [],oneStudent: {}}, action) {
     switch (action.type) {
         case(GET_ALL_USERS):
-            return {...state}
+            return {...state};
         case(ADD_ALL_USERS):
-            return {...state, allUsers: action.payload}
+            return {...state, allUsers: action.payload};
         default:
-           return state
+            return state;
     }
 }

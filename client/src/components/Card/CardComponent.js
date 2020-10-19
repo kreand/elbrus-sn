@@ -1,7 +1,7 @@
-import { Col, Row, Card, Avatar } from 'antd'
-import { PlusCircleOutlined } from '@ant-design/icons'
-import Meta from 'antd/es/card/Meta'
-import React from 'react'
+import { Col, Row, Card, Avatar } from 'antd';
+import { PlusCircleOutlined } from '@ant-design/icons';
+import Meta from 'antd/es/card/Meta';
+import React from 'react';
 
 const CardComponent = ({ title, description, justify, width, margin, avatar, cover }) => {
   return (
@@ -21,7 +21,7 @@ const CardComponent = ({ title, description, justify, width, margin, avatar, cov
         </Card>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default CardComponent
+export default CardComponent;

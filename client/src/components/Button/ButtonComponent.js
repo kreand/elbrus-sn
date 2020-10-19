@@ -1,6 +1,6 @@
-import React from 'react'
-import { Button, Col, Row } from 'antd'
-import style from './ButtonComponent.module.css'
+import React from 'react';
+import { Button, Col, Row } from 'antd';
+import style from './ButtonComponent.module.css';
 
 
 const ButtonComponent = ({ onClick, title, color, justify, loading, size, type }) => {
@@ -16,7 +16,7 @@ const ButtonComponent = ({ onClick, title, color, justify, loading, size, type }
         </Button>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default ButtonComponent
+export default ButtonComponent;

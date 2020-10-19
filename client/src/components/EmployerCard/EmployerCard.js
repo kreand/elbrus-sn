@@ -1,21 +1,20 @@
 import React from 'react';
 import {Card} from 'antd';
 import RateComponent from '../Rate/RateComponent';
-import style from './EmployerCard.module.css'
+import style from './EmployerCard.module.css';
 import {Link} from 'react-router-dom';
 
 const EmployerCard = ({employer}) => {
-  const rating = employer.allReviews.reduce(((sum, el) => sum + el.rating), 0) / employer.allReviews.length
-
+  const {rating} = employer;
   return (
     <>
       <Card
         className={style.card}
         type="inner"
         title={employer.name}
-        extra={<Link to={`/employer/${employer._id}`}>Подробнее</Link>}>
+        extra={<Link className={style.link} to={`/employer/${employer._id}`}>Подробнее</Link>}>
         <RateComponent
-          span={0} rate={rating}
+          rate={rating}
           disabled={true}
           title='Рейтинг работодателя:'
           justify='left'/>
