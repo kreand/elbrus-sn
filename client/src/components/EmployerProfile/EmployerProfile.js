@@ -6,6 +6,7 @@ import {ArrowLeftOutlined} from '@ant-design/icons';
 import ButtonComponent from '../Button/ButtonComponent';
 import RateComponent from '../Rate/RateComponent';
 import EmployerReviewsList from '../EmployerReviewsList/EmployerReviewsList';
+import style from './EmployerProfile.module.css';
 
 const EmployerProfile = () => {
   const {id} = useParams();
@@ -19,11 +20,11 @@ const EmployerProfile = () => {
   return (
     <Row justify='center'>
       <Col span={20} offset={0}>
-        <Link to='/employers'>
+        <Link className={style.text} to='/employers'>
           <div><ArrowLeftOutlined />{' Показать всех работодателей'}</div>
         </Link>
         <br/>
-        <h2>{employer.name}</h2>
+        <h2 className={style.text}>{employer.name}</h2>
         <RateComponent
           rate={employer.rating}
           justify='left'

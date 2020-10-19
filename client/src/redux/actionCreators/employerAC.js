@@ -1,7 +1,7 @@
 import {
   ADD_EMPLOYER,
   ADD_EMPLOYERS, ADD_LOCAL_EMPLOYERS, ADD_REVIEW,
-  CHANGE_ACTIVE_EMP_BTN, CHANGE_FILTER_RATING, CLEAR_EMPLOYERS,
+  CHANGE_ACTIVE_EMP_BTN, CHANGE_FILTER_RATING, CHANGE_STATE, CLEAR_EMPLOYERS,
   CREATE_EMPLOYER,
   GET_EMPLOYERS,
 } from '../actionTypes/types';
@@ -60,9 +60,16 @@ export const clearEmployersAC = () => {
   };
 };
 
-export const addReview = (payload) => {
+export const addReviewAC = (payload) => {
   return {
     type: ADD_REVIEW,
+    payload
+  };
+};
+
+export const changeState = (payload) => {
+  return {
+    type: CHANGE_STATE,
     payload
   };
 };

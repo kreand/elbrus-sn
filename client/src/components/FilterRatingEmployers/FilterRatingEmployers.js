@@ -13,7 +13,7 @@ const FilterRatingEmployers = () => {
 
   const filterOnRating = (e) => {
     if (e.key !== 'all') {
-      dispatch(changeFilterOnRating(allEmployers.filter((emp => emp.rating === e.key))));
+      dispatch(changeFilterOnRating(allEmployers.filter((emp => emp.rating === Number(e.key)))));
     } else {
       dispatch(changeFilterOnRating(allEmployers));
     }
@@ -21,7 +21,7 @@ const FilterRatingEmployers = () => {
 
   const menu = (
     <Menu>
-      <Menu.Item key='all' onClick={filterOnRating}>
+      <Menu.Item key='all' onClick={filterOnRating} className={style.stars}>
         <Row justify='center'>
           <Col>
             {'Любой рейтинг'}
@@ -29,7 +29,7 @@ const FilterRatingEmployers = () => {
         </Row>
       </Menu.Item>
       {ratings.map((rating) =>
-        <Menu.Item key={rating} onClick={filterOnRating}>
+        <Menu.Item key={rating} onClick={filterOnRating} className={style.stars}>
           <RateComponent
             rate={rating}
             disabled={true}
@@ -41,7 +41,7 @@ const FilterRatingEmployers = () => {
 
   return (
     <Dropdown overlay={menu} className={style.filter}>
-      <Button>
+      <Button className={style.text}>
         Фильтровать по рейтингу<DownOutlined/>
       </Button>
     </Dropdown>
