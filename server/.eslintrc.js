@@ -13,5 +13,6 @@ module.exports = {
   },
   rules: {
     'consistent-return': 0,
+    'no-underscore-dangle': 0,
   },
 };

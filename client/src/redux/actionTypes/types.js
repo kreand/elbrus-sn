@@ -4,6 +4,9 @@ export const GET_DEFAULT_USER = 'GET_DEFAULT_USER';
 export const REGISTRATION_USER = 'REGISTRATION_USER';
 export const REGISTRATION_DEFAULT_USER = 'REGISTRATION_DEFAULT_USER';
 export const CLEAR_USER = 'CLEAR_USER';
+export const CHECK_TOKEN = 'CHECK_TOKEN';
+export const DEFAULT_CHECK_TOKEN = 'DEFAULT_CHECK_TOKEN';
+
 
 // Authorization/Registration
 export const AUTH = 'AUTH';
@@ -24,6 +27,8 @@ export const CHANGE_STATE = 'CHANGE_STATE';
 // Loader
 export const SHOW_LOADER = 'SHOW_LOADER';
 export const HIDE_LOADER = 'HIDE_LOADER';
+export const CHECK_TOKEN_SHOW_LOADER = 'CHECK_TOKEN_SHOW_LOADER';
+export const CHECK_TOKEN_HIDE_LOADER = 'CHECK_TOKEN_HIDE_LOADER';
 
 // Errors
 export const SHOW_ERROR = 'SHOW_ERROR';

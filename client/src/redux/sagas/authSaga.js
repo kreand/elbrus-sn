@@ -1,8 +1,39 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { hideLoaderAC, showErrorAC, showLoaderAC } from '../actionCreators/appAC';
+import {
+  checkTokenHideLoaderAC,
+  checkTokenShowLoaderAC,
+  hideLoaderAC,
+  showErrorAC,
+  showLoaderAC
+} from '../actionCreators/appAC';
 import { auth } from '../actionCreators/authAC';
 import { authUserAC, registrationUserAC } from '../actionCreators/profileAC';
-import { GET_DEFAULT_USER, REGISTRATION_DEFAULT_USER } from '../actionTypes/types';
+import { DEFAULT_CHECK_TOKEN, GET_DEFAULT_USER, REGISTRATION_DEFAULT_USER } from '../actionTypes/types';
+
+function * checkTokenWorker ({ token } ) {
+  yield put(checkTokenShowLoaderAC());
+  const response = yield call(async () => {
+    const response = await fetch('/check', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ token })
+    });
+    return await response.json();
+  });
+  if(response.errors){
+    yield put(hideLoaderAC());
+    return yield put(showErrorAC(response.message));
+  }
+  yield put(authUserAC(response.user));
+  yield put(auth());
+  yield put(checkTokenHideLoaderAC());
+}
+
+export function * checkTokenWatcher () {
+  yield takeEvery(DEFAULT_CHECK_TOKEN, checkTokenWorker);
+}
 
 function * authSagaWorker ({ user }) {
   yield put(showLoaderAC());
@@ -26,8 +57,7 @@ function * authSagaWorker ({ user }) {
   yield put(authUserAC(response.user));
   yield put(auth());
   yield localStorage.setItem('userData', JSON.stringify({
-    token: response.token,
-    user: response.user
+    token: response.token
   }));
   yield put(hideLoaderAC());
 }
@@ -59,8 +89,7 @@ function * registrationSagaWorker ({ user }) {
   yield put(registrationUserAC(response.user));
   yield put(auth());
   yield localStorage.setItem('userData', JSON.stringify({
-    token: response.token,
-    user: response.user
+    token: response.token
   }));
   yield put(hideLoaderAC());
 }
