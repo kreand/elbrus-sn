@@ -28,7 +28,6 @@
     <p>{{ event.body }}</p>
     <div class="h5">Дата и время: {{event.day}}.{{event.month + 1}}.{{event.year}} в {{event.time}}</div>
 
-
   </a-modal>
   <CreateEvent
     @createEvent="showDate"
@@ -121,7 +120,7 @@ export default {
     },
     handleCancel(e) {
       this.visible = false
-    },
+    }
   },
   async mounted() {
     await this.$store.dispatch('events/getEvents')

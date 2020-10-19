@@ -117,6 +117,7 @@ export default {
       this.form.validateFields((err, values) => {
         try {
           if (!err) {
+
             const data = {
               title: values.title,
               type: values.color,
@@ -127,10 +128,10 @@ export default {
               day: values.date.date(),
               time: `${values.date.hour()} : ${values.date.minutes()}`,
               body: values.description,
-            }
 
+            }
             this.$store.dispatch('events/setEvent', data)
-            this.form.resetFields()
+            this.$store.commit('events/addEvent', data)
             this.handleCancel()
           }
         } catch (err) {
@@ -139,6 +140,7 @@ export default {
       })
     },
     handleCancel(e) {
+      this.form.resetFields()
       this.visible = false
     },
   },
