@@ -21,7 +21,7 @@ router.post('/change', async (req, res) => {
   }
   await user.save();
   users = await User.find({});
-  res.status(200).json({ message: 'Рейтинг изменен', users });
+  res.status(200).json({ message: 'Рейтинг изменен', users, user });
 });
 
 module.exports = router;

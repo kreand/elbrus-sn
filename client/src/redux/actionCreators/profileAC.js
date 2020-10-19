@@ -6,7 +6,7 @@ import {
   REGISTRATION_USER,
   EDIT_USER_PROFILE,
   EDIT_USER_BY_SAGA
-} from '../actionTypes/types'
+} from '../actionTypes/types';
 
 export function authUserAC (payload) {
   return {
@@ -53,12 +53,12 @@ export function editUserProfileAC (payload) {
   return {
     type: EDIT_USER_PROFILE,
     payload
-  }
+  };
 }
 
 export function editUserBySagaAC (payload) {
   return {
     type: EDIT_USER_BY_SAGA,
     payload
-  }
+  };
 }
