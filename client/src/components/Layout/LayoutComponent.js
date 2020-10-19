@@ -11,7 +11,6 @@ import {
 
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
-import RatingOfOneStudent from '../../pages/RatingOfOneStudent/RatingOfOneStudent';
 import RatingsPage from '../../pages/RatingsPage/RatingsPage';
 import { logout } from '../../redux/actionCreators/authAC';
 import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
@@ -83,11 +82,10 @@ const LayoutComponent = () => {
               <Route path="/students" exact>
                 <RatingsPage/>
               </Route>
-              <Route path="/profile"exact >
+              <Route path="/profile" exact >
                 <ProfilePage/>
               </Route>
               <Route path="/student/:id" exact>
-                {/* <RatingOfOneStudent/> */}
                 <StudentProfilePage/>
               </Route>
 

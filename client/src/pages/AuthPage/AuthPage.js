@@ -73,6 +73,7 @@ const AuthPage = () => {
         <span style={{ fontSize: '16px' ,color: 'var(--purple_color)', cursor: 'pointer' }}
               onClick={changeRegistrationHandler}>Авторизация</span>
         </div>
+        <ButtonComponent onClick={changeRegistrationHandler} title='Авторизация' size='large'/>
       </div>
     );
   }
@@ -90,7 +91,7 @@ const AuthPage = () => {
       </form>
       <div style={{ marginTop: '25px', textAlign: 'center' }}>
         <span style={{ fontSize: '16px' ,color: 'var(--purple_color)', cursor: 'pointer' }}
-              onClick={changeRegistrationHandler}>Регстрация</span>
+              onClick={changeRegistrationHandler}>Регистрация</span>
       </div>
     </div>
 
