@@ -3,8 +3,10 @@ import {
   GET_DEFAULT_USER,
   GET_USER,
   REGISTRATION_DEFAULT_USER,
-  REGISTRATION_USER
-} from '../actionTypes/types';
+  REGISTRATION_USER,
+  EDIT_USER_PROFILE,
+  EDIT_USER_BY_SAGA
+} from '../actionTypes/types'
 
 export function authUserAC (payload) {
   return {
@@ -45,4 +47,18 @@ export default function defaultCheckTokenAC (token) {
     type: DEFAULT_CHECK_TOKEN,
     token
   };
+}
+
+export function editUserProfileAC (payload) {
+  return {
+    type: EDIT_USER_PROFILE,
+    payload
+  }
+}
+
+export function editUserBySagaAC (payload) {
+  return {
+    type: EDIT_USER_BY_SAGA,
+    payload
+  }
 }
