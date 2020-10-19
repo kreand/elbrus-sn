@@ -17,7 +17,7 @@ import { logout } from '../../redux/actionCreators/authAC';
 import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
 import { clearUserAC } from '../../redux/actionCreators/profileAC';
 import style from './LayoutComponent.module.css';
-import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage'
+import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage';
 
 const LayoutComponent = () => {
   const { Header, Footer, Sider, Content } = Layout;

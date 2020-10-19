@@ -8,10 +8,15 @@ router.get('/allUsers', async (req, res) => {
 });
 
 router.post('/change', async (req, res) => {
-  let { _id, rating } = req.body;
+  const { _id } = req.body;
+  let { rating } = req.body;
   let users = await User.find({});
-  const user = users.find((el) => el._id == _id);
+  const user = users.find((el) => el.id === _id);
   rating = +rating;
+  if (rating > 0) {
+    user.rating += rating;
+    user.coins += rating;
+  }
   user.rating += rating;
   await user.save();
   users = await User.find({});
