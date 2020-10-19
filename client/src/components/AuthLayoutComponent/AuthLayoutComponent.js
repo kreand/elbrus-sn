@@ -18,7 +18,7 @@ const AuthLayoutComponent = () => {
           </Route>
           <Redirect to="/auth"/>
         </Switch>
-        <Footer className={style.footer}>Footer</Footer>
+        <Footer className={style.footer}><a href="https://github.com/NickBGor/elbrus-sn">GitHub</a></Footer>
       </Layout>
     </>
   );

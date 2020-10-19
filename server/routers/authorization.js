@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const jwtDecode = require('jwt-decode');
 const { check, validationResult } = require('express-validator');
 const dotenv = require('dotenv');
 const User = require('../models/user');
@@ -28,16 +29,23 @@ router.route('/registration')
       await user.save();
       const token = jwt.sign(
         {
-          userName: user.name,
-          userRating: user.rating,
-          userStatus: user.status,
-          userCoins: user.coins,
-          userSkills: user.skills,
+          userId: user._id,
         },
         process.env.SECRET_KEY_FOR_JWT_TOKEN,
         { expiresIn: '1h' },
       );
-      res.status(201).json({ message: 'Пользователь создан успешно', token, user });
+      res.status(201).json({
+        message: 'Пользователь создан успешно',
+        token,
+        user: {
+          name: user.name,
+          status: user.status,
+          coins: user.coins,
+          rating: user.rating,
+          skills: user.skills,
+          _id: user._id,
+        },
+      });
     } catch (e) {
       res.status(500).json({ message: 'Что то пошло не так на сервере' });
     }
@@ -65,16 +73,50 @@ router.route('/login')
       }
       const token = jwt.sign(
         {
-          userName: user.name,
-          userRating: user.rating,
-          userStatus: user.status,
-          userCoins: user.coins,
-          userSkills: user.skills,
+          userId: user._id,
         },
         process.env.SECRET_KEY_FOR_JWT_TOKEN,
         { expiresIn: '1h' },
       );
-      res.json({ message: 'Пользователь авторизирован успешно', token, user });
+      res.json({
+        message: 'Пользователь авторизирован успешно',
+        token,
+        user: {
+          name: user.name,
+          status: user.status,
+          coins: user.coins,
+          rating: user.rating,
+          skills: user.skills,
+          _id: user._id,
+        },
+      });
+    } catch (e) {
+      res.status(500).json({ message: 'Что то пошло не так на сервере' });
+    }
+  });
+
+// Check token
+router.route('/check')
+  .post(async (req, res) => {
+    try {
+      const { token } = req.body;
+      const userToken = await jwtDecode(token);
+      const { userId } = userToken;
+      const user = await User.findOne({ _id: userId });
+      if (!user) {
+        return res.status(400).json({ message: 'Необходимо авторизоваться' });
+      }
+      res.json({
+        message: 'Пользователь авторизирован успешно',
+        user: {
+          name: user.name,
+          status: user.status,
+          coins: user.coins,
+          rating: user.rating,
+          skills: user.skills,
+          _id: user._id,
+        },
+      });
     } catch (e) {
       res.status(500).json({ message: 'Что то пошло не так на сервере' });
     }

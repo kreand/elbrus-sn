@@ -5,7 +5,7 @@ import style from './LoaderComponent.module.css';
 
 const LoaderComponent = ({ justify, size }) => {
   return (
-    <Row justify={justify || 'center'}>
+    <Row className={style.container} justify={justify || 'center'}>
       <Col>
         <Spin className={style.spinner} size={size || 'default'}/>
       </Col>
