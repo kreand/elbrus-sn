@@ -9,7 +9,6 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 
-import EmployersPage from '../../pages/EmployersPage/EmployersPage';
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import RatingOfOneStudent from '../../pages/RatingOfOneStudent/RatingOfOneStudent';
@@ -19,6 +18,11 @@ import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
 import { clearUserAC } from '../../redux/actionCreators/profileAC';
 import style from './LayoutComponent.module.css';
 import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage'
+import EmployerNav from '../EmployerNav/EmployerNav';
+import AddEmployerForm from '../AddEmployerForm/AddEmployerForm';
+import AllEmployers from '../AllEmployers/AllEmployers';
+import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmployer';
+import EmployerProfile from '../EmployerProfile/EmployerProfile';
 
 const LayoutComponent = () => {
   const { Header, Footer, Sider, Content } = Layout;
@@ -59,8 +63,19 @@ const LayoutComponent = () => {
           </Sider>
           <Content className={style.content}>
             <Switch>
-              <Route path="/employers" exact>
-                <EmployersPage/>
+              <Route exact path={'/add-employer'}>
+                <EmployerNav/>
+                <AddEmployerForm/>
+              </Route>
+              <Route exact path={'/employers'}>
+                <EmployerNav/>
+                <AllEmployers/>
+              </Route>
+              <Route exact path={'/employer/add-review-about-employer/:id'}>
+                <AddReviewAboutEmployer/>
+              </Route>
+              <Route exact path={'/employer/:id'}>
+                <EmployerProfile/>
               </Route>
               <Route path="/events" exact>
                 <EventsPage/>
@@ -75,6 +90,7 @@ const LayoutComponent = () => {
                 {/* <RatingOfOneStudent/> */}
                 <StudentProfilePage/>
               </Route>
+
               <Redirect to="/profile" exact/>
             </Switch>
           </Content>
