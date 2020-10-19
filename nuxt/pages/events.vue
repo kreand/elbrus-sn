@@ -44,6 +44,9 @@ import CreateEvent from '@/components/main/Calendar/CreateEvent'
 
 export default {
   name: 'events',
+  head: {
+    title: 'Календарь мероприятий | Elbrus Bootcamp'
+  },
   components: {CreateEvent, Event},
   data: () => ({
     locale: {
@@ -120,8 +123,9 @@ export default {
       this.visible = false
     },
   },
-  mounted() {
-    this.events = this.$store.getters['events/allEvents']
+  async mounted() {
+    await this.$store.dispatch('events/getEvents')
+    this.events = this.$store.getters['events/events']
   }
 }
 </script>

@@ -64,7 +64,9 @@
         <a-form-item
           label="Город"
         >
-          <a-radio-group>
+          <a-radio-group
+            v-decorator="['city']"
+          >
             <a-radio
               value="Москва"
             >
@@ -111,12 +113,13 @@ export default {
     showModal() {
       this.visible = true
     },
-    handleOk(e) {
+    async handleOk(e) {
       this.form.validateFields((err, values) => {
         try {
           if (!err) {
             const data = {
               title: values.title,
+              type: values.color,
               format: values.format,
               city: values.city || '',
               year: values.date.year(),
@@ -125,6 +128,10 @@ export default {
               time: `${values.date.hour()} : ${values.date.minutes()}`,
               body: values.description,
             }
+
+            this.$store.dispatch('events/setEvent', data)
+            this.form.resetFields()
+            this.handleCancel()
           }
         } catch (err) {
           throw err
