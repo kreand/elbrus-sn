@@ -17,6 +17,7 @@
 .container {
     width: 1190px;
     margin: 0 auto;
+    height: 100vh;
 }
 
 .sidebar {
