@@ -67,9 +67,3 @@
 .iconColor{
     color: var(--purple_color);
 }
-
-.divider {
-    opacity: .5;
-    background-color: var(--purple_color);
-}
-
