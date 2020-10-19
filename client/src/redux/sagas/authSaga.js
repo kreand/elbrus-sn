@@ -10,7 +10,7 @@ import { auth } from '../actionCreators/authAC';
 import { authUserAC, registrationUserAC } from '../actionCreators/profileAC';
 import { DEFAULT_CHECK_TOKEN, GET_DEFAULT_USER, REGISTRATION_DEFAULT_USER } from '../actionTypes/types';
 
-function * checkTokenWorker ({ token } ) {
+function * checkTokenWorker ({ token }) {
   yield put(checkTokenShowLoaderAC());
   const response = yield call(async () => {
     const response = await fetch('/check', {
@@ -22,9 +22,8 @@ function * checkTokenWorker ({ token } ) {
     });
     return await response.json();
   });
-  if(response.errors){
+  if (response.errors) {
     yield put(hideLoaderAC());
-    return yield put(showErrorAC(response.message));
   }
   yield put(authUserAC(response.user));
   yield put(auth());
@@ -48,6 +47,10 @@ function * authSagaWorker ({ user }) {
         password: user.password
       })
     });
+    if (response.status === 400) {
+      const { message } = await response.json();
+      return { error: true, message };
+    }
     return await response.json();
   });
   if (response.error) {
@@ -80,11 +83,18 @@ function * registrationSagaWorker ({ user }) {
         password: user.password
       })
     });
+    if (response.status === 400) {
+      const { errors, message } = await response.json();
+      return { error: true, errors, message };
+    }
     return await response.json();
   });
-  if (response.errors) {
+  if (response.error) {
     yield put(hideLoaderAC());
-    return yield put(showErrorAC(response.message));
+    for (let i = 0; i < response.errors.length; i += 1){
+      yield put(showErrorAC(response.errors[i].msg));
+    }
+    return;
   }
   yield put(registrationUserAC(response.user));
   yield put(auth());
