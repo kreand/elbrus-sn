@@ -44,6 +44,9 @@ import CreateEvent from '@/components/main/Calendar/CreateEvent'
 
 export default {
   name: 'events',
+  head: {
+    title: 'Календарь мероприятий | Elbrus Bootcamp'
+  },
   components: {CreateEvent, Event},
   data: () => ({
     locale: {
