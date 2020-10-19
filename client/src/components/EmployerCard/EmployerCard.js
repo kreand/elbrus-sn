@@ -5,7 +5,7 @@ import style from './EmployerCard.module.css';
 import {Link} from 'react-router-dom';
 
 const EmployerCard = ({employer}) => {
-  const {rating} = employer;
+  const {rating, allReviews} = employer;
   return (
     <>
       <Card
@@ -17,7 +17,9 @@ const EmployerCard = ({employer}) => {
           rate={rating}
           disabled={true}
           title='Рейтинг работодателя:'
-          justify='left'/>
+          justify='left'
+        />
+        <span className={style.countReviews}>{`Количество отзывов: ${allReviews.length}`}</span>
       </Card>
     </>
   );

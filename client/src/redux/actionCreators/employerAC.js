@@ -2,7 +2,7 @@ import {
   ADD_EMPLOYER,
   ADD_EMPLOYERS, ADD_LOCAL_EMPLOYERS, ADD_REVIEW,
   CHANGE_ACTIVE_EMP_BTN, CHANGE_FILTER_RATING, CHANGE_STATE, CLEAR_EMPLOYERS,
-  CREATE_EMPLOYER,
+  CREATE_EMPLOYER, DELETE_REVIEW,
   GET_EMPLOYERS,
 } from '../actionTypes/types';
 
@@ -70,6 +70,13 @@ export const addReviewAC = (payload) => {
 export const changeState = (payload) => {
   return {
     type: CHANGE_STATE,
+    payload
+  };
+};
+
+export const deleteReview = (payload) => {
+  return {
+    type: DELETE_REVIEW,
     payload
   };
 };

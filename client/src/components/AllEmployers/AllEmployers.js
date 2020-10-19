@@ -2,7 +2,12 @@ import React, {useEffect} from 'react';
 import {Row, Col} from 'antd';
 import EmployerCard from '../EmployerCard/EmployerCard';
 import {useDispatch, useSelector} from 'react-redux';
-import {addLocalEmployers, changeActiveEmpBtn, changeFilterOnRating} from '../../redux/actionCreators/employerAC';
+import {
+  addLocalEmployers,
+  changeActiveEmpBtn,
+  changeFilterOnRating,
+  getEmployers,
+} from '../../redux/actionCreators/employerAC';
 import InputComponent from '../Input/InputComponent';
 import FilterRatingEmployers from '../FilterRatingEmployers/FilterRatingEmployers';
 
@@ -13,6 +18,7 @@ const AllEmployers = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getEmployers());
     dispatch(changeActiveEmpBtn('all-employers'));
   }, [dispatch]);
 

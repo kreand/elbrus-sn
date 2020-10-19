@@ -6,6 +6,7 @@ import { tooltipTitle, tooltipDefaultOption } from '../../components/Tooltip/Too
 import ButtonComponent from '../../components/Button/ButtonComponent';
 
 const ProfileComponent = ({ user, isMyProfile, onClick }) => {
+
   return (
     <div className={style.profileBody}>
       <div className={style.profileTop}>
