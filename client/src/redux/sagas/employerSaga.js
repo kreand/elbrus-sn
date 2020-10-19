@@ -43,6 +43,24 @@ function* addReviewSagaWorker({payload}) {
   }
 }
 
+function* deleteReviewSagaWorker({payload}) {
+  const {id} = payload;
+  const response = yield call(async () => {
+    return await (await fetch('/employers/delete-review', {
+      method: 'DELETE',
+      headers: {'Content-type': 'Application/json'},
+      body: JSON.stringify({payload}),
+    })).json();
+  });
+
+  if (response.error) {
+    yield put(showErrorAC(response.message));
+  } else {
+    yield put(addEmployers(response.allEmployers));
+    yield put(changeState(true));
+  }
+}
+
 export function* getEmployersSagaWatcher() {
   yield takeEvery(GET_EMPLOYERS, getEmployersSagaWorker);
 }
@@ -53,4 +71,8 @@ export function* createEmployerSagaWatcher() {
 
 export function* addReviewSagaWatcher() {
   yield takeEvery(ADD_REVIEW, addReviewSagaWorker);
+}
+
+export function* deleteReviewSagaWatcher() {
+  yield takeEvery(ADD_REVIEW, deleteReviewSagaWorker);
 }

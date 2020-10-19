@@ -22,6 +22,7 @@ export const CHANGE_FILTER_RATING = 'CHANGE_FILTER_RATING';
 export const CLEAR_EMPLOYERS = 'CLEAR_EMPLOYERS';
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const CHANGE_STATE = 'CHANGE_STATE';
+export const DELETE_REVIEW = 'DELETE_REVIEW';
 
 // Loader
 export const SHOW_LOADER = 'SHOW_LOADER';

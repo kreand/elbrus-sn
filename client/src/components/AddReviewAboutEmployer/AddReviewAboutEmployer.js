@@ -50,13 +50,6 @@ const AddReviewAboutEmployer = () => {
     }
   }, [id, errors, info, history, dispatch, change]);
 
-  // useEffect(() => {
-  //   if (change) {
-  //     history.push(`/employer/${id}`);
-  //     dispatch(changeState(false));
-  //   }
-  // }, [dispatch, history, change, id]);
-
   return (
     <>
       <Row justify='center'>
