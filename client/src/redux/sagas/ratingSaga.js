@@ -16,7 +16,6 @@ export function* getAllUsersWatcher() {
 }
 
 function* changeRatingWorker({id,rating}){
-    console.log(rating);
     const response = yield call( async()=>{
         const response = await fetch('/students/change',{
             method: 'POST',

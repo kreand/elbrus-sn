@@ -1,16 +1,11 @@
-.profileBody {
-  max-width: 80%;
-  margin: 0 15% 20% 15%;
-}
-
 .profileTop {
   display: flex;
-  margin-top: 1.5em;
+  justify-content: space-around;
 }
 
 .header {
   display: flex;
-  margin-left: 5%;
+  justify-content: center;
 }
 
 .containerForUserPhoto {
@@ -24,8 +19,6 @@
   border-radius: 50%;
   max-height: 20em;
   z-index: 1;
-  color: aqua;
-  background-color: darkgray;
 }
 
 .userName {
@@ -33,11 +26,17 @@
 }
 
 .userGeneralInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   text-align: center;
-  margin: 0 1em 1em 5em;
 }
 
 .userStatus {
+  margin: 0 auto;
+  width: 50%;
   border-top: solid 1px orange;
   border-bottom: solid 1px orange;
 }
@@ -49,29 +48,10 @@
   justify-content: center;
   border-top: solid 1px orange;
   border-bottom: solid 1px orange;
-  margin: 0 0 2em 0;
 }
 
 .label {
   color: orange;
-}
-
-.input {
-  display: flex;
-  text-align: center;
-  font-size: 1.2em;
-  margin: 0 1em 1em 0;
-  border-color: orange;
-}
-
-.input:hover {
-  border-color: var(--purple_color);
-  box-shadow: 0 0 0 2px var(--purple_color);
-}
-
-.input:focus {
-  border-color: var(--purple_color);
-  box-shadow: 0 0 0 2px var(--purple_color);
 }
 
 .tag {

@@ -3,7 +3,7 @@ import { Col, Input, Row } from 'antd';
 
 import style from './InputComponent.module.css';
 
-const InputComponent = ({ name, type, placeholder, size, justify, offset, span, onChange }) => {
+const InputComponent = ({ name, type, placeholder, size, justify, offset, span, onChange, defaultValue }) => {
   return (
     <Row justify={justify || 'center'}>
       <Col span={span || 24} offset={offset || 0}>
@@ -17,6 +17,7 @@ const InputComponent = ({ name, type, placeholder, size, justify, offset, span, 
               placeholder={placeholder}
               size={size || 'middle'}
               onChange={onChange || null}
+              defaultValue={defaultValue || null}
             />
         }
       </Col>
