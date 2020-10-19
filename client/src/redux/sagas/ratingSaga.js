@@ -1,6 +1,7 @@
 import {call,put,takeEvery} from 'redux-saga/effects';
-import {GET_ALL_USERS} from '../actionTypes/types';
-import {addAllUsersAC} from '../actionCreators/ratingAC';
+import {GET_ALL_USERS, DEFAULT_CHANGE_RATING} from '../actionTypes/types';
+import {addAllUsersAC, getAllUsersAC} from '../actionCreators/ratingAC';
+
 
 function* getAllUsersWorker(){
     const users = yield call(async () => {
@@ -12,4 +13,26 @@ function* getAllUsersWorker(){
 
 export function* getAllUsersWatcher() {
     yield takeEvery(GET_ALL_USERS, getAllUsersWorker);
+}
+
+function* changeRatingWorker({id,rating}){
+    console.log(rating);
+    const response = yield call( async()=>{
+        const response = await fetch('/students/change',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                _id: id,
+                rating:rating
+            })
+        });
+        return await response.json();
+    });
+    yield put(getAllUsersAC(response));
+}
+
+export function* changeRatingWatcher(){
+    yield takeEvery(DEFAULT_CHANGE_RATING, changeRatingWorker);
 }

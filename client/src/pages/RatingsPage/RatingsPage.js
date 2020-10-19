@@ -6,12 +6,12 @@ import {filterUsersAC, getAllUsersAC} from '../../redux/actionCreators/ratingAC'
 import {Link} from 'react-router-dom';
 
 const RatingsPage = () => {
+    const students = useSelector(state => state.rating.allUsers.sort((a,b)=> b.rating - a.rating));
+    const filteredStudents = useSelector(state => state.rating.filteredUsers);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllUsersAC());
     }, [dispatch]);
-    const students = useSelector(state => state.rating.allUsers);
-    const filteredStudents = useSelector(state => state.rating.filteredUsers);
 
     function searchOfStudent(e) {
         dispatch(filterUsersAC(students.filter((student) => {
