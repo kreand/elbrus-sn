@@ -69,7 +69,10 @@ const AuthPage = () => {
               : <ButtonComponent title='Зарегистрироваться' size='large'/>
           }
         </form>
-        <ButtonComponent onClick={changeRegistrationHandler} title='Авторизация' size='large'/>
+        <div style={{ marginTop: '25px', textAlign: 'center' }}>
+        <span style={{ fontSize: '16px' ,color: 'var(--purple_color)', cursor: 'pointer' }}
+              onClick={changeRegistrationHandler}>Авторизация</span>
+        </div>
       </div>
     );
   }
@@ -85,7 +88,10 @@ const AuthPage = () => {
             : <ButtonComponent name='password' title='Авторизоваться' size='large'/>
         }
       </form>
-      <ButtonComponent onClick={changeRegistrationHandler} title='Регистрация' size='large'/>
+      <div style={{ marginTop: '25px', textAlign: 'center' }}>
+        <span style={{ fontSize: '16px' ,color: 'var(--purple_color)', cursor: 'pointer' }}
+              onClick={changeRegistrationHandler}>Регстрация</span>
+      </div>
     </div>
 
   );
