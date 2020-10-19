@@ -16,7 +16,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
         </div>
         <div className={style.profileTop}>
           <div className={style.containerForUserPhoto}>
-            <img className={style.userPhoto} alt={user.name} src={user.photo || 
+            <img className={style.userPhoto} alt={user.name} src={user.photo ||
             'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'}/>
             <Tooltip
               {...tooltipDefaultOption}
@@ -27,8 +27,8 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
             </Tooltip>
             <h3 style={{color:'orange'}}>SKILLS</h3>
             <h3 className={style.skills}>
-              {user.skills.length > 0 ? user.skills.map((skill) => (
-                <Tag color='purple' className={style.tag}>{skill}</Tag>
+              {user.skills.length > 0 ? user.skills.map((skill, index) => (
+                <Tag key={index} color='purple' className={style.tag}>{skill}</Tag>
                 )) : 'Скилы не указаны'}
             </h3>
           </div>
@@ -50,6 +50,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
                 title={tooltipTitle.coins}
                 >
                 <img
+                  alt='coin'
                   style={{ width: '1.5em' }}
                   src="https://i.pinimg.com/originals/96/4c/f1/964cf112c8928c7c75312f7f15e6b1e0.png"
                 />
