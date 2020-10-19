@@ -16,8 +16,9 @@ router.post('/change', async (req, res) => {
   if (rating > 0) {
     user.rating += rating;
     user.coins += rating;
+  } else {
+    user.rating += rating;
   }
-  user.rating += rating;
   await user.save();
   users = await User.find({});
   res.status(200).json({ message: 'Рейтинг изменен', users });
