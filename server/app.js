@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 // eslint-disable-next-line no-unused-vars,import/no-extraneous-dependencies
 const dotenv = require('dotenv').config({ path: '../.env' });
 
-const loginRouter = require('./routers/authorization');
-const employersRouter = require('./routers/employers');
-const studentsRouter = require('./routers/students');
+const loginRouter = require('./routers/authorization')
+const employersRouter = require('./routers/employers')
+const studentsRouter = require('./routers/students')
+const profileRouter = require('./routers/profile')
 
 const app = express();
 
@@ -29,8 +30,9 @@ const start = () => {
   }
 };
 
-app.use('/', loginRouter);
-app.use('/employers', employersRouter);
-app.use('/students', studentsRouter);
+app.use('/', loginRouter)
+app.use('/employers', employersRouter)
+app.use('/students',studentsRouter)
+app.use('/profile', profileRouter)
 
 start();
