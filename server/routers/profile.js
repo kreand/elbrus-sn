@@ -3,11 +3,14 @@ const User = require('../models/user');
 
 router.post('/edit', async (req, res) => {
   try {
-    const { name, userId, skills } = req.body;
+    const {
+      name, userId, skills, imgUrl,
+    } = req.body;
     const user = await User.findById(userId);
     if (user) {
       user.skills = skills;
       user.name = name;
+      user.photo = imgUrl;
       await user.save();
       return res.status(201).json({ user, message: 'Данные пользователя изменены' });
     }

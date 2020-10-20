@@ -11,8 +11,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
     <div className={style.profileBody}>
       <div className={style.profileTop}>
         <div className={style.containerForUserPhoto}>
-          <img className={style.userPhoto} alt={user.name} src={user.photo ||
-          'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'}/>
+          <img className={style.userPhoto} alt={user.name} src={user.photo}/>
           <Tooltip
             {...tooltipDefaultOption}
             title={tooltipTitle.raiting}
