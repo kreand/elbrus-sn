@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Avatar} from 'antd';
+import {Col, Row, List, Avatar} from 'antd';
 import {Link} from 'react-router-dom';
 import RateComponent from '../Rate/RateComponent';
 import style from './EmployerReviewsList.module.css';
@@ -11,6 +11,15 @@ const EmployerReviewsList = ({allReviews, employerId}) => {
   const {user} = useSelector(state => state.profile);
   const dispatch = useDispatch();
 
+  const dateToString = (date) => {
+    function addZero(num) {
+      if (num < 10) {
+        return `0${num}`;
+      }
+      return num;
+    }
+    return `${addZero(date.getDate())}.${addZero(date.getMonth() + 1)}.${date.getFullYear()}  ${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
+  };
 
   return (
     <List
@@ -23,19 +32,24 @@ const EmployerReviewsList = ({allReviews, employerId}) => {
             avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
             title={<Link to={`/student/${review.userId}`}>{review.userName}</Link>}
             description={<>
-              <RateComponent rate={review.rating} justify='left' disabled={true}/>
-              <p className={style.review}>{review.review}</p>
               <div className={style.date}>
-                {`Дата отзыва: ${new Date(review.date).getDate()}-${new Date(review.date).getMonth()}-${new Date(review.date).getFullYear()}`}
+                {dateToString(review.date)}
               </div>
-              {user._id === review.userId ?
-                <Link
-                  to='#'
-                  onClick={() => {
-                    dispatch(deleteReview({reviewId: review._id, employerId}));
-                  }}>
-                  <DeleteOutlined/>{' Удалить отзыв'}</Link>
-                : null}
+              <RateComponent rate={review.rating} justify='left' disabled={true} key={review._id}/>
+              <p className={style.review}>{review.review}</p>
+              <Row>
+                <Col span={4} offset={20}>
+                  {user._id === review.userId ?
+                    <Link
+                      className={style.review}
+                      to='#'
+                      onClick={() => {
+                        dispatch(deleteReview({reviewId: review._id, employerId}));
+                      }}>
+                      <DeleteOutlined/>{' Удалить отзыв'}</Link>
+                    : null}
+                </Col>
+              </Row>
             </>}
           />
         </List.Item>

@@ -8,7 +8,7 @@ const employerSchema = new Schema({
     userId: { type: String },
     rating: { type: Number },
     review: { type: String },
-    date: { type: Date, default: Date.now() },
+    date: { type: Date, default: new Date() },
   }],
 });
 

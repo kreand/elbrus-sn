@@ -2,3 +2,8 @@
 .text:hover {
     color: var(--purple_color);
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
