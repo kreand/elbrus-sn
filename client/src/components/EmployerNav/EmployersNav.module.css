@@ -1,3 +1,21 @@
-.navElement{
-    color: var(--cyan_color);
+.navElement {
+    font-size: 15px;
+    color: var(--purple_color);
+    padding: 14px;
+}
+
+.navElement:hover {
+    color: var(--orange_color);
+    border-bottom: 2px solid var(--orange_color);
+}
+
+.active {
+    font-size: 15px;
+    color: var(--purple_color);
+    padding: 14px;
+    border-bottom: 2px solid var(--purple_color);
+}
+
+.active:hover {
+    color: var(--purple_color);
 }
