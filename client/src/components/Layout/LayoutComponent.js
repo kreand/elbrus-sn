@@ -101,7 +101,7 @@ const LayoutComponent = () => {
               <Route path="/student/:id" exact>
                 <StudentProfilePage/>
               </Route>
-              <Redirect to="/shop" exact/>
+              <Redirect to="/profile" exact/>
             </Switch>
           </Content>
         </Layout>
