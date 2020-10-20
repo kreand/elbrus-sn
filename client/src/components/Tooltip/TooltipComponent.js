@@ -10,5 +10,5 @@ export const tooltipDefaultOption = {
   placement: "top",
   mouseEnterDelay: '0.2',
   mouseLeaveDelay: '0.6',
-  color: 'purple',
+  color: 'var(--purple_color)',
 };

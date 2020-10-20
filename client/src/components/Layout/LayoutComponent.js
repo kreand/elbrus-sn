@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import {
   DollarCircleOutlined,
   LogoutOutlined, NotificationOutlined,
-  OrderedListOutlined,
+  OrderedListOutlined, ShopOutlined,
   UserOutlined
 } from '@ant-design/icons';
-
-import EmployersPage from '../../pages/EmployersPage/EmployersPage';
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import RatingsPage from '../../pages/RatingsPage/RatingsPage';
+import ShopPage from '../../pages/ShopPage/ShopPage';
 import { logout } from '../../redux/actionCreators/authAC';
 import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
 import { clearUserAC } from '../../redux/actionCreators/profileAC';
 import style from './LayoutComponent.module.css';
+import AboutPage from '../../pages/AboutPage/AboutPage';
 import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage';
+import EmployerNav from '../EmployerNav/EmployerNav';
+import AddEmployerForm from '../AddEmployerForm/AddEmployerForm';
+import AllEmployers from '../AllEmployers/AllEmployers';
+import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmployer';
+import EmployerProfile from '../EmployerProfile/EmployerProfile';
 
 const LayoutComponent = () => {
+  const [about, setAbout] = useState(false);
   const { Header, Footer, Sider, Content } = Layout;
   const dispatch = useDispatch();
 
@@ -29,6 +35,10 @@ const LayoutComponent = () => {
     dispatch(clearEmployersAC());
     localStorage.clear();
   };
+
+  if (about) {
+    return <AboutPage setAbout={setAbout}/>;
+  }
   return (
     <Layout className={style.body}>
       <Header className={style.header}>
@@ -50,16 +60,34 @@ const LayoutComponent = () => {
               <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
                 <Link to='/events'>Эвенты</Link>
               </Menu.Item>
-              <Menu.Divider style={{backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px'}}/>
-              <Menu.Item key="5" icon={<LogoutOutlined className={style.iconColor}/>}>
+              <Menu.Item key="5" icon={<ShopOutlined className={style.iconColor}/>}>
+                <Link to='/shop'>Магазин</Link>
+              </Menu.Item>
+              <Menu.Divider
+                style={{ backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px' }}/>
+              <Menu.Item key="6" icon={<LogoutOutlined className={style.iconColor}/>}>
                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
               </Menu.Item>
             </Menu>
           </Sider>
           <Content className={style.content}>
             <Switch>
-              <Route path="/employers" exact>
-                <EmployersPage/>
+              <Route exact path={'/add-employer'}>
+                <EmployerNav/>
+                <AddEmployerForm/>
+              </Route>
+              <Route exact path={'/employers'}>
+                <EmployerNav/>
+                <AllEmployers/>
+              </Route>
+              <Route exact path={'/employer/add-review-about-employer/:id'}>
+                <AddReviewAboutEmployer/>
+              </Route>
+              <Route exact path={'/employer/:id'}>
+                <EmployerProfile/>
+              </Route>
+              <Route path="/shop" exact>
+                <ShopPage/>
               </Route>
               <Route path="/events" exact>
                 <EventsPage/>
@@ -67,7 +95,7 @@ const LayoutComponent = () => {
               <Route path="/students" exact>
                 <RatingsPage/>
               </Route>
-              <Route path="/profile"exact >
+              <Route path="/profile" exact>
                 <ProfilePage/>
               </Route>
               <Route path="/student/:id" exact>
@@ -78,8 +106,14 @@ const LayoutComponent = () => {
           </Content>
         </Layout>
       </div>
-      <Footer className={style.footer}><a href="https://github.com/NickBGor/elbrus-sn">GitHub</a></Footer>
+      <Footer className={style.footer}>
+        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '0 40%' }}>
+          <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
+          <Link onClick={() => setAbout(true)} to="/about">About us</Link>
+        </div>
+      </Footer>
     </Layout>
+
   );
 };
 

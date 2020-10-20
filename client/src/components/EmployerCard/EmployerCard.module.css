@@ -14,3 +14,7 @@
 .link:hover {
     color: var(--orange_color);
 }
+
+.countReviews {
+    font-size: 11px;
+}

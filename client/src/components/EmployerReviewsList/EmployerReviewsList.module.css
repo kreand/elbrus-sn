@@ -4,3 +4,16 @@
     border: 1px solid var(--purple_color);
     border-radius: 5px;
 }
+
+.listItem:last-child {
+    margin-bottom: 50px;
+}
+
+.date {
+    font-size: 11px;
+}
+
+.review {
+    color: var(--purple_color);
+}
+

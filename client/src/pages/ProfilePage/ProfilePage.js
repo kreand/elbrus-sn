@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import InputComponent from '../../components/Input/InputComponent';
 import style from './ProfilePage.module.css';
-import { Button } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import { editUserBySagaAC } from '../../redux/actionCreators/profileAC';
@@ -10,9 +8,10 @@ import ProfileComponent from '../../components/ProfileComponent/ProfileComponent
 import Cloudinary from '../../cloudinary/Cloudinary';
 
 const ProfilePage = () => {
-  const user = useSelector((state) => state.profile.user);
-  const dispatch = useDispatch();
   const [editStatus, setEditStatus] = useState(false);
+  const user = useSelector((state) => state.profile.user);
+  const imgUrl = useSelector((state) => state.profile.imgUrl);
+  const dispatch = useDispatch();
 
   const changeEditStatus = () => {
     setEditStatus(!editStatus);
@@ -32,6 +31,7 @@ const ProfilePage = () => {
       name: name.value,
       skills: arraySkills,
       userId: user._id,
+      imgUrl,
     };
     dispatch(editUserBySagaAC(updateUserInfo));
     changeEditStatus();
@@ -51,7 +51,6 @@ const ProfilePage = () => {
               }
             />
           </div>
-          {/* <Button type="primary" shape="circle" onClick={() => {}} icon={<DownloadOutlined />} size="large" /> */}
           <form onSubmit={profileHandler} className={style.userGeneralInfo}>
             <label className={style.label}>login</label>
             <InputComponent
