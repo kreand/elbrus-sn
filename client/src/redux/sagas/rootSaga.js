@@ -8,6 +8,7 @@ import {
   deleteReviewSagaWatcher,
   getEmployersSagaWatcher,
 } from './employerSaga';
+import { shopSagaWatcher } from './shopSaga';
 
 export default function * rootSaga () {
   yield all([
@@ -20,6 +21,7 @@ export default function * rootSaga () {
     deleteReviewSagaWatcher(),
     editProfileSagaWatcher(),
     addReviewSagaWatcher(),
-    checkTokenWatcher()
+    checkTokenWatcher(),
+    shopSagaWatcher()
   ]);
 }
