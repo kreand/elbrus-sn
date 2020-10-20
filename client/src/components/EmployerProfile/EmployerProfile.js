@@ -8,6 +8,7 @@ import RateComponent from '../Rate/RateComponent';
 import EmployerReviewsList from '../EmployerReviewsList/EmployerReviewsList';
 import style from './EmployerProfile.module.css';
 
+
 const EmployerProfile = () => {
   const {id} = useParams();
   const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id);
@@ -31,7 +32,7 @@ const EmployerProfile = () => {
           disabled={true}
         />
         <ButtonComponent title='Написать отзыв' justify='left' onClick={addReview}/>
-        <EmployerReviewsList allReviews={employer.allReviews}/>
+        <EmployerReviewsList allReviews={employer.allReviews} employerId={employer._id}/>
       </Col>
     </Row>
   );

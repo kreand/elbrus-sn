@@ -3,7 +3,7 @@ import { Button, Col, Row } from 'antd';
 import style from './ButtonComponent.module.css';
 
 
-const ButtonComponent = ({ onClick, title, color, justify, loading, size, type }) => {
+const ButtonComponent = ({ onClick, title, color, justify, loading, size, type}) => {
   return (
     <Row justify={justify || 'center'}>
       <Col>

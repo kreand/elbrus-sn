@@ -23,7 +23,7 @@ const ReactReveal = () => {
                 <Fade top>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <h1 className={styles.title}>{'Стек технологий'}</h1>
-                        <img alt={'as'} src="https://i.postimg.cc/fyYHxfm5/together.png"/>
+                        <img alt={'as'} src="https://i.postimg.cc/wv1Wn5Nc/together.png"/>
                     </div>
                 </Fade>
             </div>

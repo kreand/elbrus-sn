@@ -1,4 +1,4 @@
-import { CLEAR_USER, EDIT_USER_PROFILE, GET_USER, REGISTRATION_USER } from '../actionTypes/types'
+import { CLEAR_USER, EDIT_USER_PROFILE, GET_USER, REGISTRATION_USER } from '../actionTypes/types';
 
 const initialState = {};
 
@@ -7,15 +7,15 @@ export function profileReducer (state = initialState, action) {
     case GET_USER:
       return { ...state, user: action.payload };
     case REGISTRATION_USER:
-      return { ...state, user: action.payload }
+      return { ...state, user: action.payload };
     case EDIT_USER_PROFILE:
-      return { 
+      return {
         user: {
-        ...state.user,
-        name: action.payload.name,
-        skills: [...action.payload.skills]
-      }
-    }
+          ...state.user,
+          name: action.payload.name,
+          skills: [...action.payload.skills]
+        }
+      };
     case CLEAR_USER:
       return {};
     default:
