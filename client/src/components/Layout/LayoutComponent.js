@@ -114,7 +114,7 @@ const LayoutComponent = () => {
               <Route path="/admin" exact>
                 <AdminPage/>
               </Route>
-              <Redirect to="/shop" exact/>
+              <Redirect to="/profile" exact/>
             </Switch>
           </Content>
         </Layout>
