@@ -8,7 +8,7 @@ router.get('/get-all-employers', async (req, res) => {
 
 router.post('/create-employer', async (req, res) => {
   const {
-    name, review, rating, userName, userId
+    name, review, rating, userName, userId,
   } = req.body.payload;
 
   let employer = await Employer.findOne({ name });
