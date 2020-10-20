@@ -45,10 +45,7 @@ const ProfilePage = () => {
             <img
               className={style.userPhoto}
               alt={user.name || 'default_user_photo'}
-              src={
-                user.photo ||
-                'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'
-              }
+              src={user.photo}
             />
           </div>
           <form onSubmit={profileHandler} className={style.userGeneralInfo}>
