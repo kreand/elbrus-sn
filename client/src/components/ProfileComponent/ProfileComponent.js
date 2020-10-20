@@ -1,5 +1,4 @@
 import React from 'react';
-import RatingOfOneStudent from '../../pages/RatingOfOneStudent/RatingOfOneStudent';
 import style from './ProfileComponent.module.css';
 import { Tooltip, Tag } from 'antd';
 import { tooltipTitle, tooltipDefaultOption } from '../../components/Tooltip/TooltipComponent';
@@ -56,7 +55,6 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
               x {user.coins}
             </Tooltip>
           </h2>
-          {isMyProfile ? null : <RatingOfOneStudent/>}
         </div>
       </div>
     </div>

@@ -40,8 +40,9 @@ const AdminPage = () => {
                             <List.Item>
                                 <List.Item.Meta
                                     avatar={<Avatar
-                                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
+                                        src={student.photo}/>}
                                     title={<Link to={`/student/${student._id}`}>{student.name}</Link>}
+                                    description={`Рейтинг: ${student.rating} Группа: ${student.group} Монеты: ${student.coins} Роль: ${student.status}`}
                                 />
                                 <div><Link to={`/admin/edit-student/${student._id}`}>Изменить</Link></div>
                             </List.Item>

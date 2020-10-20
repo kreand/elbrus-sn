@@ -48,9 +48,9 @@ const RatingsPage = () => {
               <List.Item>
                 <List.Item.Meta
                   avatar={<Avatar
-                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
+                    src={student.photo}/>}
                   title={<Link to={`/student/${student._id}`}>{student.name}</Link>}
-                  description={`Рейтинг:${student.rating}`}
+                  description={`Рейтинг: ${student.rating} Группа: ${student.group}`}
                 />
               </List.Item>
             )}
