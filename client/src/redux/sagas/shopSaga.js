@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from '@redux-saga/core/effects';
 import { hideLoaderAC, showErrorAC, showLoaderAC } from '../actionCreators/appAC';
-import { addShopItem } from '../actionCreators/shpoAC';
-import { ADD_DEFAULT_SHOP_ITEMS, GET_DEFAULT_SHOP_ALL_ITEMS } from '../actionTypes/types';
+import { addShopItem, getAllShopItemsAC } from '../actionCreators/shpoAC';
+import { ADD_DEFAULT_SHOP_ITEMS, DELETE_DEFAULT_ITEM_SHOP, GET_DEFAULT_SHOP_ALL_ITEMS } from '../actionTypes/types';
 
 function * shopSagaWorker ({ title, link, quantity, price }) {
   yield put(showLoaderAC());
@@ -39,17 +39,25 @@ function * getAllItemsShopWorker () {
   // yield put(showLoaderAC());
   const items = yield call(async () => {
     const response = await fetch('/shop/items');
-    if(response.status === 200) {
+    if (response.status === 200) {
       return await response.json();
     }
-    return response;
+    return await response.json();
   });
-  if(items.error) {
+  if (items.error) {
     yield put(showErrorAC(items.message));
-
   }
+  yield put(getAllShopItemsAC(items));
 }
 
 export function * getAllItemsShopWatcher () {
   yield takeEvery(GET_DEFAULT_SHOP_ALL_ITEMS, getAllItemsShopWorker);
+}
+
+function * deleteItemShopWorker ({ item }) {
+
+}
+
+export function * deleteItemShopWatcher () {
+  yield takeEvery(DELETE_DEFAULT_ITEM_SHOP, deleteItemShopWorker);
 }
