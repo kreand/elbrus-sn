@@ -5,10 +5,6 @@
     border-radius: 5px;
 }
 
-.listItem:last-child {
-    margin-bottom: 50px;
-}
-
 .date {
     font-size: 11px;
 }
