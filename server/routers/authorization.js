@@ -38,12 +38,14 @@ router.route('/registration')
         message: 'Пользователь создан успешно',
         token,
         user: {
+          photo: user.photo,
           name: user.name,
           status: user.status,
           coins: user.coins,
           rating: user.rating,
           skills: user.skills,
           _id: user._id,
+          group: user.group,
         },
       });
     } catch (e) {
@@ -82,12 +84,14 @@ router.route('/login')
         message: 'Пользователь авторизирован успешно',
         token,
         user: {
+          photo: user.photo,
           name: user.name,
           status: user.status,
           coins: user.coins,
           rating: user.rating,
           skills: user.skills,
           _id: user._id,
+          group: user.group,
         },
       });
     } catch (e) {
@@ -109,12 +113,14 @@ router.route('/check')
       res.json({
         message: 'Пользователь авторизирован успешно',
         user: {
+          photo: user.photo,
           name: user.name,
           status: user.status,
           coins: user.coins,
           rating: user.rating,
           skills: user.skills,
           _id: user._id,
+          group: user.group,
         },
       });
     } catch (e) {
