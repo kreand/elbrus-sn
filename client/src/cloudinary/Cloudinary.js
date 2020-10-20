@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPhotoUrl } from '../redux/actionCreators/profileAC';
-import ButtonComponent from '../components/Button/ButtonComponent';
 
 function Cloudinary({ folder, width }) {
   const dispatch = useDispatch();
