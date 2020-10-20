@@ -7,6 +7,7 @@ export const CLEAR_USER = 'CLEAR_USER';
 export const DEFAULT_CHECK_TOKEN = 'DEFAULT_CHECK_TOKEN';
 export const EDIT_USER_PROFILE = 'EDIT_USER_PROFILE';
 export const EDIT_USER_BY_SAGA = 'EDIT_USER_BY_SAGA';
+export const ADD_PHOTO_URL = 'ADD_PHOTO_URL';
 
 // Authorization/Registration
 export const AUTH = 'AUTH';
