@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { List, Avatar, Row, Col } from 'antd';
 import InputComponent from '../../components/Input/InputComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterUsersAC, getAllUsersAC } from '../../redux/actionCreators/ratingAC';
 import { Link } from 'react-router-dom';
+import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 const RatingsPage = () => {
   const students = useSelector(state => state.rating.allUsers.sort((a, b) => b.rating - a.rating));
   const filteredStudents = useSelector(state => state.rating.filteredUsers);
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllUsersAC());
   }, [dispatch]);
@@ -22,6 +25,11 @@ const RatingsPage = () => {
   useEffect(() => {
     dispatch(filterUsersAC(students));
   }, [dispatch, students]);
+
+  const changePagination = (page) => {
+    setPage(page);
+  };
+
   return (
     <div>
       <Row justify="center">
@@ -35,7 +43,7 @@ const RatingsPage = () => {
             offset="0"/>
           <List
             itemLayout="horizontal"
-            dataSource={filteredStudents}
+            dataSource={filteredStudents.slice((page - 1) * 10, (page * 10))}
             renderItem={student => (
               <List.Item>
                 <List.Item.Meta
@@ -47,6 +55,7 @@ const RatingsPage = () => {
               </List.Item>
             )}
           />
+          <PaginationComponent totalPages={filteredStudents.length} onChange={changePagination} />
         </Col>
       </Row>
     </div>

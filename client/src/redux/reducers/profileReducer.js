@@ -9,13 +9,7 @@ export function profileReducer (state = initialState, action) {
     case REGISTRATION_USER:
       return { ...state, user: action.payload };
     case EDIT_USER_PROFILE:
-      return {
-        user: {
-          ...state.user,
-          name: action.payload.name,
-          skills: [...action.payload.skills]
-        }
-      };
+      return { ...state.user, user: action.payload };
     case CLEAR_USER:
       return {};
     default:
