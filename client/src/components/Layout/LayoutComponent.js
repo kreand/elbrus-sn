@@ -3,7 +3,7 @@ import {Layout, Menu} from 'antd';
 import {useDispatch} from 'react-redux';
 import {Link, Redirect, Route, Switch} from 'react-router-dom';
 import {
-    DollarCircleOutlined,
+    DollarCircleOutlined, EyeOutlined,
     LogoutOutlined, NotificationOutlined,
     OrderedListOutlined,
     UserOutlined
@@ -22,6 +22,8 @@ import AddEmployerForm from '../AddEmployerForm/AddEmployerForm';
 import AllEmployers from '../AllEmployers/AllEmployers';
 import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmployer';
 import EmployerProfile from '../EmployerProfile/EmployerProfile';
+import AdminPage from '../../pages/AdminPage/AdminPage';
+import AdminEditStudentPage from '../../pages/AdminEditStudentPage/AdminEditStudentPage';
 
 
 const LayoutComponent = () => {
@@ -65,10 +67,25 @@ const LayoutComponent = () => {
                             <Menu.Item key="5" icon={<LogoutOutlined className={style.iconColor}/>}>
                                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
                             </Menu.Item>
+                            <Menu.Item key="6" icon={<EyeOutlined className={style.iconColor}/>}>
+                                <Link to='/admin'>Admin</Link>
+                            </Menu.Item>
                         </Menu>
                     </Sider>
                     <Content className={style.content}>
                         <Switch>
+                            <Route path="/admin/edit-student/:id" exact>
+                                <AdminEditStudentPage/>
+                            </Route>
+                            <Route exact path={'/employer/add-review-about-employer/:id'}>
+                                <AddReviewAboutEmployer/>
+                            </Route>
+                            <Route exact path={'/employer/:id'}>
+                                <EmployerProfile/>
+                            </Route>
+                            <Route path="/student/:id" exact>
+                                <StudentProfilePage/>
+                            </Route>
                             <Route exact path={'/add-employer'}>
                                 <EmployerNav/>
                                 <AddEmployerForm/>
@@ -76,12 +93,6 @@ const LayoutComponent = () => {
                             <Route exact path={'/employers'}>
                                 <EmployerNav/>
                                 <AllEmployers/>
-                            </Route>
-                            <Route exact path={'/employer/add-review-about-employer/:id'}>
-                                <AddReviewAboutEmployer/>
-                            </Route>
-                            <Route exact path={'/employer/:id'}>
-                                <EmployerProfile/>
                             </Route>
                             <Route path="/events" exact>
                                 <EventsPage/>
@@ -92,8 +103,8 @@ const LayoutComponent = () => {
                             <Route path="/profile" exact>
                                 <ProfilePage/>
                             </Route>
-                            <Route path="/student/:id" exact>
-                                <StudentProfilePage/>
+                            <Route path="/admin" exact>
+                                <AdminPage/>
                             </Route>
                             <Redirect to="/profile" exact/>
                         </Switch>
