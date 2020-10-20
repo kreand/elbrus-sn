@@ -5,14 +5,14 @@ import { addPhotoUrl } from '../redux/actionCreators/profileAC';
 
 function Cloudinary({ folder, width }) {
   const dispatch = useDispatch();
-  const userPhoto = useSelector((state) => state.profile.user.photo);
-  const url = useSelector((state) => state.profile.imgUrl);
+  const userPhoto = useSelector(state => state.profile.user.photo);
+  const url = useSelector(state => state.profile.imgUrl);
 
   useEffect(() => {
     dispatch(addPhotoUrl(userPhoto));
-  },[dispatch,userPhoto]);
+  }, [dispatch, userPhoto]);
 
-  const uploadImage = async (e) => {
+  const uploadImage = async e => {
     const files = e.target.files;
     const data = new FormData();
     data.append('file', files[0]);
@@ -22,7 +22,7 @@ function Cloudinary({ folder, width }) {
       {
         method: 'POST',
         body: data,
-      }
+      },
     );
     const file = await res.json();
     const imgUrl = file.secure_url;
@@ -37,10 +37,11 @@ function Cloudinary({ folder, width }) {
         placeholder="Выберите фото"
         onChange={uploadImage}
       />
-      {url ?
+      {url ? (
         <img src={url} alt={url} style={{ width: { width } }} />
-        : <img src={userPhoto} alt={userPhoto} style={{ width: { width } }} />
-      }
+      ) : (
+        <img src={userPhoto} alt={userPhoto} style={{ width: { width } }} />
+      )}
     </>
   );
 }

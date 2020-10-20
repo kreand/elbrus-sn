@@ -7,7 +7,7 @@ const LoaderComponent = ({ justify, size }) => {
   return (
     <Row className={style.container} justify={justify || 'center'}>
       <Col>
-        <Spin className={style.spinner} size={size || 'default'}/>
+        <Spin className={style.spinner} size={size || 'default'} />
       </Col>
     </Row>
   );

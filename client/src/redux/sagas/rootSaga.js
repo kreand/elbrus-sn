@@ -1,6 +1,10 @@
 import { all } from 'redux-saga/effects';
-import { authSagaWatcher, checkTokenWatcher, registrationSagaWatcher } from './authSaga';
-import {changeRatingWatcher, getAllUsersWatcher} from './ratingSaga';
+import {
+  authSagaWatcher,
+  checkTokenWatcher,
+  registrationSagaWatcher,
+} from './authSaga';
+import { changeRatingWatcher, getAllUsersWatcher } from './ratingSaga';
 import { editProfileSagaWatcher } from './profileSaga';
 import {
   addReviewSagaWatcher,
@@ -10,7 +14,7 @@ import {
 } from './employerSaga';
 import { getAllItemsShopWatcher, shopSagaWatcher } from './shopSaga';
 
-export default function * rootSaga () {
+export default function* rootSaga() {
   yield all([
     registrationSagaWatcher(),
     authSagaWatcher(),
@@ -23,6 +27,6 @@ export default function * rootSaga () {
     addReviewSagaWatcher(),
     checkTokenWatcher(),
     shopSagaWatcher(),
-    getAllItemsShopWatcher()
+    getAllItemsShopWatcher(),
   ]);
 }

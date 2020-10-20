@@ -4,21 +4,25 @@ import {
   checkTokenShowLoaderAC,
   hideLoaderAC,
   showErrorAC,
-  showLoaderAC
+  showLoaderAC,
 } from '../actionCreators/appAC';
 import { auth } from '../actionCreators/authAC';
 import { authUserAC, registrationUserAC } from '../actionCreators/profileAC';
-import { DEFAULT_CHECK_TOKEN, GET_DEFAULT_USER, REGISTRATION_DEFAULT_USER } from '../actionTypes/types';
+import {
+  DEFAULT_CHECK_TOKEN,
+  GET_DEFAULT_USER,
+  REGISTRATION_DEFAULT_USER,
+} from '../actionTypes/types';
 
-function * checkTokenWorker ({ token }) {
+function* checkTokenWorker({ token }) {
   yield put(checkTokenShowLoaderAC());
   const response = yield call(async () => {
     const response = await fetch('/check', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ token })
+      body: JSON.stringify({ token }),
     });
     return await response.json();
   });
@@ -30,22 +34,22 @@ function * checkTokenWorker ({ token }) {
   yield put(checkTokenHideLoaderAC());
 }
 
-export function * checkTokenWatcher () {
+export function* checkTokenWatcher() {
   yield takeEvery(DEFAULT_CHECK_TOKEN, checkTokenWorker);
 }
 
-function * authSagaWorker ({ user }) {
+function* authSagaWorker({ user }) {
   yield put(showLoaderAC());
   const response = yield call(async () => {
     const response = await fetch('/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         email: user.email,
-        password: user.password
-      })
+        password: user.password,
+      }),
     });
     if (response.status === 400) {
       const { message } = await response.json();
@@ -59,29 +63,32 @@ function * authSagaWorker ({ user }) {
   }
   yield put(authUserAC(response.user));
   yield put(auth());
-  yield localStorage.setItem('userData', JSON.stringify({
-    token: response.token
-  }));
+  yield localStorage.setItem(
+    'userData',
+    JSON.stringify({
+      token: response.token,
+    }),
+  );
   yield put(hideLoaderAC());
 }
 
-export function * authSagaWatcher () {
+export function* authSagaWatcher() {
   yield takeEvery(GET_DEFAULT_USER, authSagaWorker);
 }
 
-function * registrationSagaWorker ({ user }) {
+function* registrationSagaWorker({ user }) {
   yield put(showLoaderAC());
   const response = yield call(async () => {
     const response = await fetch('/registration', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: user.name,
         email: user.email,
-        password: user.password
-      })
+        password: user.password,
+      }),
     });
     if (response.status === 400) {
       const { errors, message } = await response.json();
@@ -91,21 +98,22 @@ function * registrationSagaWorker ({ user }) {
   });
   if (response.error) {
     yield put(hideLoaderAC());
-    for (let i = 0; i < response.errors.length; i += 1){
+    for (let i = 0; i < response.errors.length; i += 1) {
       yield put(showErrorAC(response.errors[i].msg));
     }
     return;
   }
   yield put(registrationUserAC(response.user));
   yield put(auth());
-  yield localStorage.setItem('userData', JSON.stringify({
-    token: response.token
-  }));
+  yield localStorage.setItem(
+    'userData',
+    JSON.stringify({
+      token: response.token,
+    }),
+  );
   yield put(hideLoaderAC());
 }
 
-export function * registrationSagaWatcher () {
+export function* registrationSagaWatcher() {
   yield takeEvery(REGISTRATION_DEFAULT_USER, registrationSagaWorker);
 }
-
-

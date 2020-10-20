@@ -1,13 +1,12 @@
 import React from 'react';
-import {Col, Rate, Row} from 'antd';
+import { Col, Rate, Row } from 'antd';
 import style from './RateComponent.module.css';
 
-const RateComponent = ({justify, title, changeRating, rate, disabled}) => {
-
+const RateComponent = ({ justify, title, changeRating, rate, disabled }) => {
   return (
     <Row justify={justify || 'center'}>
       <Col className={style.text}>
-        {title && <p style={{marginTop: 8, marginRight: 10}}>{title}</p>}
+        {title && <p style={{ marginTop: 8, marginRight: 10 }}>{title}</p>}
       </Col>
       <Col>
         <Rate

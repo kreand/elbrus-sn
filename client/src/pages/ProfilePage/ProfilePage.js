@@ -9,15 +9,15 @@ import Cloudinary from '../../cloudinary/Cloudinary';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
-  const user = useSelector((state) => state.profile.user);
-  const imgUrl = useSelector((state) => state.profile.imgUrl);
+  const user = useSelector(state => state.profile.user);
+  const imgUrl = useSelector(state => state.profile.imgUrl);
   const dispatch = useDispatch();
 
   const changeEditStatus = () => {
     setEditStatus(!editStatus);
   };
 
-  const profileHandler = (e) => {
+  const profileHandler = e => {
     e.preventDefault();
     let arraySkills = [];
     const {

@@ -19,14 +19,18 @@ app.use(express.urlencoded({ extended: true }));
 
 const start = () => {
   try {
-    mongoose.connect(process.env.DB_CONNECTION_FOR_DEV, {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }).then(() => console.log('DB connected'));
+    mongoose
+      .connect(process.env.DB_CONNECTION_FOR_DEV, {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+      })
+      .then(() => console.log('DB connected'));
 
-    app.listen(PORT, () => { console.log(`Server start... on port ${PORT}`); });
+    app.listen(PORT, () => {
+      console.log(`Server start... on port ${PORT}`);
+    });
   } catch (e) {
     console.log('Error on server...', e.message);
   }
