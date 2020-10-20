@@ -21,7 +21,7 @@ router.route('/create')
       await item.save();
       res.status(200).json(item);
     } catch (e) {
-      res.status(500).json({ message: 'Что то пошло не так на сервере' });
+      res.status(500).json({ error: e, message: 'Что то пошло не так на сервере' });
     }
   });
 

@@ -1,25 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import InputComponent from '../../components/Input/InputComponent';
+import { addDefaultShopItem } from '../../redux/actionCreators/shpoAC';
 
 const ShopPage = () => {
+  const dispatch = useDispatch();
   const addItemShopHandler = async (e) => {
     e.preventDefault();
     const { title, link, quantity, price } = e.target;
-    const response = await fetch('/shop/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: title.value,
-        link: link.value,
-        quantity: quantity.value,
-        price: price.value,
-      })
-    });
-    const res = await response.json();
-    console.log(res);
+    dispatch(addDefaultShopItem({
+      title: title.value,
+      link: link.value,
+      quantity: quantity.value,
+      price: price.value
+    }));
   };
 
   return (
