@@ -29,7 +29,7 @@ const EmployerReviewsList = ({allReviews, employerId}) => {
       renderItem={review => (
         <List.Item className={style.listItem}>
           <List.Item.Meta
-            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>}
+            avatar={<Avatar src={user.photo}/>}
             title={<Link to={`/student/${review.userId}`}>{review.userName}</Link>}
             description={<>
               <div className={style.date}>
