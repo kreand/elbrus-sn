@@ -7,7 +7,7 @@ import {
 
 export function getAllShopItemsAC () {
   return {
-    type: GET_ALL_SHOP_ITEMS
+    type: GET_ALL_SHOP_ITEMS,
   };
 }
 
@@ -17,9 +17,10 @@ export function getDefaultAllShopItemsAC () {
   };
 }
 
-export function addShopItem () {
+export function addShopItem (payload) {
   return {
-    type: ADD_SHOP_ITEMS
+    type: ADD_SHOP_ITEMS,
+    payload
   };
 }
 
