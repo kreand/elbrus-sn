@@ -42,7 +42,12 @@ const AdminPage = () => {
                                     avatar={<Avatar
                                         src={student.photo}/>}
                                     title={<Link to={`/student/${student._id}`}>{student.name}</Link>}
-                                    description={`Рейтинг: ${student.rating} Группа: ${student.group} Монеты: ${student.coins} Роль: ${student.status}`}
+                                    description={<div>
+                                    Рейтинг: {student.rating} <br/>
+                                     Группа: {student.group} <br/>
+                                     Монеты: {student.coins} <br/>
+                                     Роль: {student.status}
+                                     </div>}
                                 />
                                 <div><Link to={`/admin/edit-student/${student._id}`}>Изменить</Link></div>
                             </List.Item>
