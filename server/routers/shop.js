@@ -8,7 +8,7 @@ router.route('/create')
         title,
         link,
         quantity,
-        price
+        price,
       } = req.body;
       if (typeof quantity !== 'number') {
         return res.status(200).json({ error: true, message: 'Количество товара должно быть числом' });
@@ -18,9 +18,9 @@ router.route('/create')
       }
       const item = await new Item({
         title,
-        link,
+        link: `${link}`,
         quantity,
-        price
+        price,
       });
       await item.save();
       res.status(201).json({ item });

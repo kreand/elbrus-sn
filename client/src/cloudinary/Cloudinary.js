@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addPhotoUrl } from '../redux/actionCreators/profileAC';
 
 function Cloudinary({ folder, width }) {
@@ -9,7 +10,7 @@ function Cloudinary({ folder, width }) {
 
   useEffect(() => {
     dispatch(addPhotoUrl(userPhoto));
-  },[dispatch]);
+  },[dispatch,userPhoto]);
 
   const uploadImage = async (e) => {
     const files = e.target.files;
