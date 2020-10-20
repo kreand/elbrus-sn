@@ -5,12 +5,13 @@ import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import {
   DollarCircleOutlined,
   LogoutOutlined, NotificationOutlined,
-  OrderedListOutlined,
+  OrderedListOutlined, ShopOutlined,
   UserOutlined
 } from '@ant-design/icons';
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import RatingsPage from '../../pages/RatingsPage/RatingsPage';
+import ShopPage from '../../pages/ShopPage/ShopPage';
 import { logout } from '../../redux/actionCreators/authAC';
 import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
 import { clearUserAC } from '../../redux/actionCreators/profileAC';
@@ -21,7 +22,6 @@ import AddEmployerForm from '../AddEmployerForm/AddEmployerForm';
 import AllEmployers from '../AllEmployers/AllEmployers';
 import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmployer';
 import EmployerProfile from '../EmployerProfile/EmployerProfile';
-
 
 const LayoutComponent = () => {
   const { Header, Footer, Sider, Content } = Layout;
@@ -54,8 +54,11 @@ const LayoutComponent = () => {
               <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
                 <Link to='/events'>Эвенты</Link>
               </Menu.Item>
-              <Menu.Divider style={{backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px'}}/>
-              <Menu.Item key="5" icon={<LogoutOutlined className={style.iconColor}/>}>
+              <Menu.Item key="5" icon={<ShopOutlined className={style.iconColor}/>}>
+                <Link to='/shop'>Магазин</Link>
+              </Menu.Item>
+              <Menu.Divider style={{ backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px' }}/>
+              <Menu.Item key="6" icon={<LogoutOutlined className={style.iconColor}/>}>
                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
               </Menu.Item>
             </Menu>
@@ -76,19 +79,21 @@ const LayoutComponent = () => {
               <Route exact path={'/employer/:id'}>
                 <EmployerProfile/>
               </Route>
+              <Route path="/shop" exact>
+                <ShopPage/>
+              </Route>
               <Route path="/events" exact>
                 <EventsPage/>
               </Route>
               <Route path="/students" exact>
                 <RatingsPage/>
               </Route>
-              <Route path="/profile" exact >
+              <Route path="/profile" exact>
                 <ProfilePage/>
               </Route>
               <Route path="/student/:id" exact>
                 <StudentProfilePage/>
               </Route>
-
               <Redirect to="/profile" exact/>
             </Switch>
           </Content>
