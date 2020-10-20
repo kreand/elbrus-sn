@@ -21,16 +21,16 @@ const RatingOfOneStudent = () => {
     const rating = e.target.rating.value;
     const _id = user._id;
     dispatch(defaultChangeRatingAC({ _id, rating }));
-    hist.push('/students');
+    hist.push('/admin');
   }
 
   return (
 
-    <div style={{width: '100%', marginTop: '6em'}}>
+    <div style={{width: '100%', marginTop: '1em'}} >
       <h2>Изменить рейтинг студента </h2>
       <form onSubmit={changeRatingHandler}>
-        <InputComponent name="rating" placeholder="Изменить" span={12}/>
-        <ButtonComponent title="Изменить"/>
+        <InputComponent name="rating" placeholder="Изменить рейтинг" span={12} justify="left"/>
+        <ButtonComponent title="Изменить" justify="left"/>
       </form>
     </div>
   );

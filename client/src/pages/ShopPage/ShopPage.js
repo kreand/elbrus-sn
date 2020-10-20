@@ -36,7 +36,6 @@ const ShopPage = () => {
   }, [dispatch]);
 
   const deleteItemHandler = (e) => {
-    console.log(e.target.value);
     // dispatch(deleteItemShopAC());
   };
 
@@ -62,8 +61,10 @@ const ShopPage = () => {
         {
           shopItems.map(item => <CardComponent
             key={item._id}
+            id={item._id}
             title={item.title}
-            cover={item.link}
+            value={item._id}
+            // cover={item.link}
             deleteCallback={deleteItemHandler}
             buyCallback={buyCallback}
           />)
