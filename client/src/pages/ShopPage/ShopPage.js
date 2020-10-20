@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import CardComponent from '../../components/Card/CardComponent';
 import InputComponent from '../../components/Input/InputComponent';
-import { addDefaultShopItem, deleteItemShopAC, getDefaultAllShopItemsAC } from '../../redux/actionCreators/shpoAC';
+import { addDefaultShopItem, getDefaultAllShopItemsAC } from '../../redux/actionCreators/shpoAC';
 
 const ShopPage = () => {
   const errors = useSelector(state => state.app.errors);
@@ -35,14 +35,6 @@ const ShopPage = () => {
     dispatch(getDefaultAllShopItemsAC());
   }, [dispatch]);
 
-  const deleteItemHandler = (e) => {
-    // dispatch(deleteItemShopAC());
-  };
-
-  const buyCallback = () => {
-
-  };
-
   return (
     <>
       <form onSubmit={addItemShopHandler}>
@@ -65,8 +57,6 @@ const ShopPage = () => {
             title={item.title}
             value={item._id}
             // cover={item.link}
-            deleteCallback={deleteItemHandler}
-            buyCallback={buyCallback}
           />)
         }
       </div>

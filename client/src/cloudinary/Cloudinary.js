@@ -9,7 +9,7 @@ function Cloudinary({ folder, width }) {
 
   useEffect(() => {
     dispatch(addPhotoUrl(userPhoto));
-  },[dispatch]);
+  },[dispatch,userPhoto]);
 
   const uploadImage = async (e) => {
     const files = e.target.files;
