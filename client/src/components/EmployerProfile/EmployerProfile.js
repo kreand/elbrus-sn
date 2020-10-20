@@ -8,6 +8,7 @@ import RateComponent from '../Rate/RateComponent';
 import EmployerReviewsList from '../EmployerReviewsList/EmployerReviewsList';
 import style from './EmployerProfile.module.css';
 import {DownOutlined, UpOutlined} from '@ant-design/icons';
+import PaginationComponent from '../Pagination/PaginationComponent';
 
 
 const EmployerProfile = () => {
@@ -17,6 +18,7 @@ const EmployerProfile = () => {
   const history = useHistory();
   const [key, setKey] = useState();
   const [btns, setBtns] = useState({date: true, rating: true});
+  const [page, setPage] = useState(1);
 
   const addReview = () => {
     history.push(`add-review-about-employer/${id}`);
@@ -49,6 +51,10 @@ const EmployerProfile = () => {
     });
   };
 
+  const changePagination = (page) => {
+    setPage(page);
+  };
+
   return (
     <Row justify='center'>
       <Col span={20} offset={0}>
@@ -77,7 +83,8 @@ const EmployerProfile = () => {
             </Link>
           </div>
         </div>
-        <EmployerReviewsList allReviews={emp.allReviews} employerId={emp._id}/>
+        <EmployerReviewsList allReviews={emp.allReviews.slice((page - 1) * 10, (page * 10))} employerId={emp._id}/>
+        <PaginationComponent totalPages={emp.allReviews.length} onChange={changePagination} />
       </Col>
     </Row>
   );
