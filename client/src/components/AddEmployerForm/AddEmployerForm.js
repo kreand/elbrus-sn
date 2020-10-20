@@ -13,8 +13,6 @@ import { useHistory } from 'react-router-dom';
 import { Row, Col, message } from 'antd';
 import { hideErrorAC } from '../../redux/actionCreators/appAC';
 
-export default CardComponnt;
-
 const AddEmployerForm = () => {
   const [rating, changeRating] = useState(0);
   const { user } = useSelector(state => state.profile);
