@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
@@ -16,6 +16,7 @@ import { logout } from '../../redux/actionCreators/authAC';
 import { clearEmployersAC } from '../../redux/actionCreators/employerAC';
 import { clearUserAC } from '../../redux/actionCreators/profileAC';
 import style from './LayoutComponent.module.css';
+import AboutPage from '../../pages/AboutPage/AboutPage';
 import StudentProfilePage from '../../pages/StudentProfilePage/StudentProfilePage';
 import EmployerNav from '../EmployerNav/EmployerNav';
 import AddEmployerForm from '../AddEmployerForm/AddEmployerForm';
@@ -24,6 +25,7 @@ import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmpl
 import EmployerProfile from '../EmployerProfile/EmployerProfile';
 
 const LayoutComponent = () => {
+  const [about, setAbout] = useState(false);
   const { Header, Footer, Sider, Content } = Layout;
   const dispatch = useDispatch();
 
@@ -33,6 +35,10 @@ const LayoutComponent = () => {
     dispatch(clearEmployersAC());
     localStorage.clear();
   };
+
+  if (about) {
+    return <AboutPage setAbout={setAbout}/>;
+  }
   return (
     <Layout className={style.body}>
       <Header className={style.header}>
@@ -57,7 +63,8 @@ const LayoutComponent = () => {
               <Menu.Item key="5" icon={<ShopOutlined className={style.iconColor}/>}>
                 <Link to='/shop'>Магазин</Link>
               </Menu.Item>
-              <Menu.Divider style={{ backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px' }}/>
+              <Menu.Divider
+                style={{ backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px' }}/>
               <Menu.Item key="6" icon={<LogoutOutlined className={style.iconColor}/>}>
                 <Link onClick={logoutHandler} to='/auth'>Logout</Link>
               </Menu.Item>
@@ -94,13 +101,19 @@ const LayoutComponent = () => {
               <Route path="/student/:id" exact>
                 <StudentProfilePage/>
               </Route>
-              <Redirect to="/profile" exact/>
+              <Redirect to="/shop" exact/>
             </Switch>
           </Content>
         </Layout>
       </div>
-      <Footer className={style.footer}><a href="https://github.com/NickBGor/elbrus-sn">GitHub</a></Footer>
+      <Footer className={style.footer}>
+        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '0 40%' }}>
+          <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
+          <Link onClick={() => setAbout(true)} to="/about">About us</Link>
+        </div>
+      </Footer>
     </Layout>
+
   );
 };
 
