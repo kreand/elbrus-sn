@@ -13,7 +13,7 @@ import {DownOutlined, UpOutlined} from '@ant-design/icons';
 const EmployerProfile = () => {
   const {id} = useParams();
   const employer = useSelector(state => state.employers.allEmployers).find(emp => emp._id === id);
-  const [emp, setEmp] = useState(employer);
+  const [emp, setEmp] = useState({...employer, allReviews: employer.allReviews.map(rev => ({...rev, date: new Date(rev.date)}))});
   const history = useHistory();
   const [key, setKey] = useState();
   const [btns, setBtns] = useState({date: true, rating: true});
@@ -24,14 +24,14 @@ const EmployerProfile = () => {
 
   useEffect(() => {
     setKey(employer.rating);
-    setEmp(employer);
+    setEmp({...employer, allReviews: employer.allReviews.map(rev => ({...rev, date: new Date(rev.date)}))});
   }, [employer]);
 
   const sortByDate = () => {
     if (btns.date) {
-      setEmp( {...employer, allReviews: {...employer}.allReviews.sort((a, b) => a.date - b.date)});
+      setEmp(prev => ({...prev, allReviews: {...prev}.allReviews.sort((a, b) => a.date - b.date)}));
     } else {
-      setEmp({...employer, allReviews: {...employer}.allReviews.sort((a, b) => b.date - a.date)});
+      setEmp(prev => ({...prev, allReviews: {...prev}.allReviews.sort((a, b) => b.date - a.date)}));
     }
     setBtns(prev => {
       return {...prev, date: !btns.date};
@@ -40,9 +40,9 @@ const EmployerProfile = () => {
 
   const sortByRating = () => {
     if (btns.rating) {
-      setEmp( {...employer, allReviews: {...employer}.allReviews.sort((a, b) => a.rating - b.rating)});
+      setEmp( prev =>({...prev, allReviews: {...prev}.allReviews.sort((a, b) => a.rating - b.rating)}));
     } else {
-      setEmp({...employer, allReviews: {...employer}.allReviews.sort((a, b) => b.rating - a.rating)});
+      setEmp(prev => ({...prev, allReviews: {...prev}.allReviews.sort((a, b) => b.rating - a.rating)}));
     }
     setBtns(prev => {
       return {...prev, rating: !btns.rating};
@@ -69,10 +69,10 @@ const EmployerProfile = () => {
             <div>
               Сортировать:
             </div>
-            <Link to='#' onClick={sortByDate}>
+            <Link to='#' onClick={sortByDate} className={style.text}>
               {btns.date ? <DownOutlined/> : <UpOutlined />}{' Дата'}
             </Link>
-            <Link to='#' style={{marginLeft: 10}} onClick={sortByRating}>
+            <Link to='#' style={{marginLeft: 10}} onClick={sortByRating} className={style.text}>
               {btns.rating ? <DownOutlined/> : <UpOutlined />}{' Рейтинг'}
             </Link>
           </div>

@@ -26,7 +26,8 @@ const AddReviewAboutEmployer = () => {
     const userName = user.name;
     const userId = user._id;
     const employerId = id;
-    dispatch(addReviewAC({employerId, review, userName, userId, rating}));
+    const date = new Date();
+    dispatch(addReviewAC({employerId, review, userName, userId, rating, date}));
   };
 
 
