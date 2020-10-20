@@ -4,6 +4,7 @@ import { addShopItem, getAllShopItemsAC } from '../actionCreators/shpoAC';
 import { ADD_DEFAULT_SHOP_ITEMS, DELETE_DEFAULT_ITEM_SHOP, GET_DEFAULT_SHOP_ALL_ITEMS } from '../actionTypes/types';
 
 function * shopSagaWorker ({ title, link, quantity, price }) {
+  console.log(title, link, quantity, price);
   yield put(showLoaderAC());
   const response = yield call(async () => {
     const response = await fetch('/shop/create', {
