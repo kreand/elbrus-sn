@@ -1,18 +1,17 @@
 .filter,
 .filter:hover,
 .filter:focus {
-    margin-bottom: 15px;
-    margin-top: 0;
-    color: var(--purple_color);
-    border: 1px solid var(--purple_color);
+  margin-bottom: 15px;
+  margin-top: 0;
+  color: var(--purple_color);
+  border: 1px solid var(--purple_color);
 }
 
 .stars:hover {
-    background-color: var(--purple_color);
-    color: var(--white_color);
+  background-color: var(--purple_color);
+  color: var(--white_color);
 }
 
 .stars {
-    color: var(--purple_color);
+  color: var(--purple_color);
 }
-

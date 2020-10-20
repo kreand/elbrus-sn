@@ -1,7 +1,16 @@
-import {call, put, takeEvery} from 'redux-saga/effects';
-import {ADD_REVIEW, CREATE_EMPLOYER, DELETE_REVIEW, GET_EMPLOYERS} from '../actionTypes/types';
-import {addEmployer, addEmployers, changeState} from '../actionCreators/employerAC';
-import {showErrorAC} from '../actionCreators/appAC';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import {
+  ADD_REVIEW,
+  CREATE_EMPLOYER,
+  DELETE_REVIEW,
+  GET_EMPLOYERS,
+} from '../actionTypes/types';
+import {
+  addEmployer,
+  addEmployers,
+  changeState,
+} from '../actionCreators/employerAC';
+import { showErrorAC } from '../actionCreators/appAC';
 
 function* getEmployersSagaWorker() {
   const employers = yield call(async () => {
@@ -10,13 +19,15 @@ function* getEmployersSagaWorker() {
   yield put(addEmployers(employers));
 }
 
-function* createEmployerSagaWorker({payload}) {
+function* createEmployerSagaWorker({ payload }) {
   const response = yield call(async () => {
-    return await (await fetch('/employers/create-employer', {
-      method: 'POST',
-      headers: {'Content-type': 'Application/json'},
-      body: JSON.stringify({payload}),
-    })).json();
+    return await (
+      await fetch('/employers/create-employer', {
+        method: 'POST',
+        headers: { 'Content-type': 'Application/json' },
+        body: JSON.stringify({ payload }),
+      })
+    ).json();
   });
   if (response.error) {
     yield put(showErrorAC(response.message));
@@ -26,13 +37,15 @@ function* createEmployerSagaWorker({payload}) {
   }
 }
 
-function* addReviewSagaWorker({payload}) {
+function* addReviewSagaWorker({ payload }) {
   const response = yield call(async () => {
-    return await (await fetch('/employers/add-review', {
-      method: 'POST',
-      headers: {'Content-type': 'Application/json'},
-      body: JSON.stringify({payload}),
-    })).json();
+    return await (
+      await fetch('/employers/add-review', {
+        method: 'POST',
+        headers: { 'Content-type': 'Application/json' },
+        body: JSON.stringify({ payload }),
+      })
+    ).json();
   });
 
   if (response.error) {
@@ -43,17 +56,19 @@ function* addReviewSagaWorker({payload}) {
   }
 }
 
-function* deleteReviewSagaWorker({payload}) {
+function* deleteReviewSagaWorker({ payload }) {
   const response = yield call(async () => {
-    return await (await fetch('/employers/delete-review', {
-      method: 'DELETE',
-      headers: {'Content-type': 'Application/json'},
-      body: JSON.stringify({payload}),
-    })).json();
+    return await (
+      await fetch('/employers/delete-review', {
+        method: 'DELETE',
+        headers: { 'Content-type': 'Application/json' },
+        body: JSON.stringify({ payload }),
+      })
+    ).json();
   });
-    yield put(addEmployers(response.allEmployers));
+  yield put(addEmployers(response.allEmployers));
 
-    // yield put(changeState(true));
+  // yield put(changeState(true));
 }
 
 export function* getEmployersSagaWatcher() {

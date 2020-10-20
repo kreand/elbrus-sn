@@ -4,43 +4,41 @@ import {
   HIDE_ERROR,
   HIDE_LOADER,
   SHOW_ERROR,
-  SHOW_LOADER
+  SHOW_LOADER,
 } from '../actionTypes/types';
 
 export function showLoaderAC() {
   return {
-    type: SHOW_LOADER
+    type: SHOW_LOADER,
   };
 }
 export function checkTokenShowLoaderAC() {
   return {
-    type: CHECK_TOKEN_SHOW_LOADER
+    type: CHECK_TOKEN_SHOW_LOADER,
   };
 }
 
 export function checkTokenHideLoaderAC() {
   return {
-    type: CHECK_TOKEN_HIDE_LOADER
+    type: CHECK_TOKEN_HIDE_LOADER,
   };
 }
 
 export function hideLoaderAC() {
   return {
-    type: HIDE_LOADER
+    type: HIDE_LOADER,
   };
 }
 
 export function showErrorAC(payload) {
   return {
     type: SHOW_ERROR,
-    payload
+    payload,
   };
 }
 
 export function hideErrorAC() {
   return {
-    type: HIDE_ERROR
+    type: HIDE_ERROR,
   };
 }
-
-

@@ -7,16 +7,16 @@ import { defaultChangeRatingAC } from '../../redux/actionCreators/ratingAC';
 
 const RatingOfOneStudent = () => {
   const [user, setUser] = useState({});
-  const allUsers = useSelector((state) => state.rating.allUsers);
+  const allUsers = useSelector(state => state.rating.allUsers);
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setUser(allUsers.find((user) => user._id === id));
+    setUser(allUsers.find(user => user._id === id));
   }, [allUsers, id]);
   const hist = useHistory();
 
-  function changeRatingHandler (e) {
+  function changeRatingHandler(e) {
     e.preventDefault();
     const rating = e.target.rating.value;
     const _id = user._id;
@@ -25,12 +25,16 @@ const RatingOfOneStudent = () => {
   }
 
   return (
-
-    <div style={{width: '100%', marginTop: '1em'}} >
+    <div style={{ width: '100%', marginTop: '1em' }}>
       <h2>Изменить рейтинг студента </h2>
       <form onSubmit={changeRatingHandler}>
-        <InputComponent name="rating" placeholder="Изменить рейтинг" span={12} justify="left"/>
-        <ButtonComponent title="Изменить" justify="left"/>
+        <InputComponent
+          name="rating"
+          placeholder="Изменить рейтинг"
+          span={12}
+          justify="left"
+        />
+        <ButtonComponent title="Изменить" justify="left" />
       </form>
     </div>
   );

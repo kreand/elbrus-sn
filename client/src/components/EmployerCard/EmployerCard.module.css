@@ -1,20 +1,20 @@
 .card {
-    margin-top: 10px;
-    color: var(--purple_color);
+  margin-top: 10px;
+  color: var(--purple_color);
 }
 
 .card:last-child {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .link {
-    color: var(--purple_color);
+  color: var(--purple_color);
 }
 
 .link:hover {
-    color: var(--orange_color);
+  color: var(--orange_color);
 }
 
 .countReviews {
-    font-size: 11px;
+  font-size: 11px;
 }

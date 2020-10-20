@@ -1,4 +1,4 @@
 .text,
 .text:hover {
-    color: var(--purple_color);
+  color: var(--purple_color);
 }
