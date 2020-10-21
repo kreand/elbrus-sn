@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors')
 
 dotenv.config({ path: '../.env' });
 
@@ -17,6 +18,7 @@ const PORT = process.env.PORT_FOR_DEV || 6000;
 
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const start = () => {
   try {

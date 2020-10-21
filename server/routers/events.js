@@ -4,6 +4,7 @@ const Event = require('../models/event');
 
 router.route('/').get(async (req, res) => {
   try {
+    console.log('GET /EVENTS')
     const events = await Event.find({});
     if (events.length <= 0) {
       return res
