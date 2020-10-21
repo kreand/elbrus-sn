@@ -1,20 +1,21 @@
 <template>
-  <div class="wrapper">
-    <div class="container">
-      <div class="row d-flex align-items-center">
-        <div class="col-md-2">
-          <Logo />
-        </div>
-        <div class="col-md-8">
-          <MainMenu />
-        </div>
-        <div class="col-md-2">
-          <Button title="Личный кабинет" type="danger" />
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <header class="header">
+    <a-row>
+      <a-col :span="16" :offset="4">
+        <a-row type="flex" align="middle" justify="space-between">
+          <a-col :span="2" :xs="16" :sm="2" >
+            <Logo />
+          </a-col>
+          <a-col  :span="8" :xs="0" :lg="9">
+            <MainMenu />
+          </a-col>
+          <a-col  :span="6" :xs="0" :lg="5">
+            <a class="btn" href="http://localhost:3000">Личный кабинет</a>
+          </a-col>
+        </a-row>
+      </a-col>
+    </a-row>
+  </header>
 </template>
 
 <script>
@@ -28,10 +29,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.header {
   width: 100%;
   height: 80px;
   background-color: #4520ab;
+}
+.btn {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffbc5b;
+  border: 2px solid #ffbc5b;
+  border-radius: 5px;
+  padding: 10px 15px;
+  &:hover {
+    color: #bc7b26;
+    border-color: #bc7b26;
+  }
 }
 
 </style>
