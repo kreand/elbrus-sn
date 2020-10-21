@@ -1,0 +1,14 @@
+.listItem {
+  padding: 15px;
+  margin-top: 20px;
+  border: 1px solid var(--purple_color);
+  border-radius: 5px;
+}
+
+.date {
+  font-size: 11px;
+}
+
+.review {
+  color: var(--purple_color);
+}

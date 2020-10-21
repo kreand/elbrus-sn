@@ -1,3 +1,8 @@
+.container {
+  height: 100vh;
+  margin-top: 45vh;
+}
+
 .spinner i {
-    background-color: var(--purple_color);
+  background-color: var(--purple_color);
 }

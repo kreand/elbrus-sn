@@ -1,0 +1,62 @@
+.profileTop {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.containerForUserPhoto {
+  width: 20em;
+  height: 20em;
+  z-index: 0;
+  text-align: center;
+}
+
+.userPhoto {
+  border-radius: 50%;
+  max-height: 20em;
+  z-index: 1;
+}
+
+.userName {
+  margin: 1em 3em 0 3em;
+}
+
+.userGeneralInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.userStatus {
+  border-top: solid 1px orange;
+  border-bottom: solid 1px orange;
+}
+
+.skills {
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-top: solid 1px orange;
+  border-bottom: solid 1px orange;
+  margin: 0 0 2em 0;
+}
+
+.label {
+  color: orange;
+}
+
+.tag {
+  margin: 0.2em;
+}
+
+.buttonEdit {
+  display: flex;
+  justify-content: space-evenly;
+}

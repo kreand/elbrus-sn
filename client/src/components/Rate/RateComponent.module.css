@@ -1,3 +1,8 @@
 .rate {
-    margin-left: 10px;
+  color: var(--orange_color);
+}
+
+.text,
+.text:hover {
+  color: var(--purple_color);
 }

@@ -1,24 +1,43 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import InputComponent from '../../components/Input/InputComponent';
-import {useHistory} from 'react-router-dom'
-
-//Нарисовать как инпут то насколько и тексэриа то за что и
-// все через саги и через них в базу, меняю и в редаксе и в базе
+import { useHistory, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { defaultChangeRatingAC } from '../../redux/actionCreators/ratingAC';
 
 const RatingOfOneStudent = () => {
-    const [points,setPoints] = useState(0)
-const hist = useHistory()
-    return (
-        <div>
-            <h2 style={{marginLeft: 10}}>Имя Фамилия</h2>
-            <h3>{points}</h3>
-            <InputComponent placeholder="Изменить на" justify="left" span="2"/>
-            <textarea style={{marginLeft: 10}} placeholder="Комментарий"></textarea>
-                <ButtonComponent  justify="left" title="Сохранить" size="large"/>
-                <ButtonComponent onClick={() => hist.push('/ratings')} title="назад" size="small" justify="left"/>
-        </div>
-    );
+  const [user, setUser] = useState({});
+  const allUsers = useSelector(state => state.rating.allUsers);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setUser(allUsers.find(user => user._id === id));
+  }, [allUsers, id]);
+  const hist = useHistory();
+
+  function changeRatingHandler(e) {
+    e.preventDefault();
+    const rating = e.target.rating.value;
+    const _id = user._id;
+    dispatch(defaultChangeRatingAC({ _id, rating }));
+    hist.push('/admin');
+  }
+
+  return (
+    <div style={{ width: '100%', marginTop: '1em' }}>
+      <h2>Изменить рейтинг студента </h2>
+      <form onSubmit={changeRatingHandler}>
+        <InputComponent
+          name="rating"
+          placeholder="Изменить рейтинг"
+          span={12}
+          justify="left"
+        />
+        <ButtonComponent title="Изменить" justify="left" />
+      </form>
+    </div>
+  );
 };
 
 export default RatingOfOneStudent;

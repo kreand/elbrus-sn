@@ -1,14 +1,32 @@
-import { all } from 'redux-saga/effects'
-import { authSagaWatcher, registrationSagaWatcher } from './authSaga'
-import { ratingWatcher } from './ratingSaga'
-import { createEmployerSagaWatcher, getEmployersSagaWatcher } from './employerSaga'
+import { all } from 'redux-saga/effects';
+import {
+  authSagaWatcher,
+  checkTokenWatcher,
+  registrationSagaWatcher,
+} from './authSaga';
+import { changeRatingWatcher, getAllUsersWatcher } from './ratingSaga';
+import { editProfileSagaWatcher } from './profileSaga';
+import {
+  addReviewSagaWatcher,
+  createEmployerSagaWatcher,
+  deleteReviewSagaWatcher,
+  getEmployersSagaWatcher,
+} from './employerSaga';
+import { getAllItemsShopWatcher, shopSagaWatcher } from './shopSaga';
 
-export default function * rootSaga () {
+export default function* rootSaga() {
   yield all([
     registrationSagaWatcher(),
     authSagaWatcher(),
-    ratingWatcher(),
+    getAllUsersWatcher(),
+    changeRatingWatcher(),
     getEmployersSagaWatcher(),
-    createEmployerSagaWatcher()
-  ])
+    createEmployerSagaWatcher(),
+    deleteReviewSagaWatcher(),
+    editProfileSagaWatcher(),
+    addReviewSagaWatcher(),
+    checkTokenWatcher(),
+    shopSagaWatcher(),
+    getAllItemsShopWatcher(),
+  ]);
 }

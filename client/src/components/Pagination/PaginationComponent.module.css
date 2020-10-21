@@ -1,0 +1,11 @@
+.pagination {
+  margin: 30px 0 45px 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination button {
+  margin: 0;
+}

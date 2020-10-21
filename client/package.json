@@ -8,9 +8,11 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.7.0",
+    "image-upload": "0.0.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.1",
+    "react-reveal": "^1.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
@@ -24,16 +26,11 @@
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends": "react-app",
     "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
+      "semi": [
+        "error",
+        "always"
       ]
     }
   },
