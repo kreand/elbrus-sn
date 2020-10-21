@@ -1,6 +1,6 @@
-import { message } from 'antd';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {Row, Col, message} from 'antd';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import CardComponent from '../../components/Card/CardComponent';
@@ -9,16 +9,21 @@ import {
   addDefaultShopItem,
   getDefaultAllShopItemsAC,
 } from '../../redux/actionCreators/shpoAC';
+import style from './ShopPage.module.css';
+import {DownloadOutlined} from '@ant-design/icons';
 
 const ShopPage = () => {
   const [link, setLink] = useState('');
   const errors = useSelector(state => state.app.errors);
   const loader = useSelector(state => state.app.isLoading);
   const shopItems = useSelector(state => state.shop);
+  const [fileInput, setFileInput] = useState('Файл не выбран');
   const dispatch = useDispatch();
 
   const uploadFiles = async e => {
-    const files = e.target.files;
+    const {files} = e.target;
+    const fileName = files[0].name;
+    setFileInput(fileName.length > 30 ? `${fileName.slice(0, 30)}...` : fileName);
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'shopGoods');
@@ -36,7 +41,7 @@ const ShopPage = () => {
 
   const addItemShopHandler = async e => {
     e.preventDefault();
-    let { title, quantity, price } = e.target;
+    let {title, quantity, price} = e.target;
     dispatch(
       addDefaultShopItem({
         title: title.value,
@@ -61,35 +66,43 @@ const ShopPage = () => {
 
   return (
     <>
-      <form onSubmit={addItemShopHandler}>
-        <h2 style={{ textAlign: 'center', color: 'var(--purple_color)' }}>
-          Добавить новый товар
-        </h2>
-        <InputComponent
-          name="title"
-          placeholder="Введите название товара"
-          span={12}
-        />
-        <InputComponent
-          onChange={uploadFiles}
-          type="file"
-          name="file"
-          placeholder="Ссылка на фото товара"
-          span={12}
-        />
-        <InputComponent
-          name="quantity"
-          placeholder="Количество имющегося товара"
-          span={12}
-        />
-        <InputComponent name="price" placeholder="Цена товара" span={6} />
-        {loader ? (
-          <ButtonComponent title="Добавить" loading={true} />
-        ) : (
-          <ButtonComponent title="Добавить" />
-        )}
-      </form>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <Row justify='center'>
+        <Col span={12}>
+          <form onSubmit={addItemShopHandler}>
+            <h2 style={{textAlign: 'center', color: 'var(--purple_color)'}}>
+              Добавить новый товар
+            </h2>
+            <InputComponent
+              name="title"
+              placeholder="Введите название товара"
+            />
+            <div className={style.label}>
+              <label htmlFor='file' className={style.inputFile}>
+                {'Выберите фото товара '}{<DownloadOutlined/>}
+              </label>
+              <div className={style.fileinfo}>{fileInput}</div>
+            </div>
+            <input
+              style={{display: 'none'}}
+              onChange={uploadFiles}
+              type="file"
+              name="file"
+              id="file"
+            />
+            <InputComponent
+              name="quantity"
+              placeholder="Количество имеющегося товара"
+            />
+            <InputComponent name="price" placeholder="Цена товара" span={6}/>
+            {loader ? (
+              <ButtonComponent title="Добавить" loading={true}/>
+            ) : (
+              <ButtonComponent title="Добавить"/>
+            )}
+          </form>
+        </Col>
+      </Row>
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
         {shopItems.map(item => (
           <CardComponent
             key={item._id}

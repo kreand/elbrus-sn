@@ -7,6 +7,7 @@ import {addPhotoUrl, editUserBySagaAC} from '../../redux/actionCreators/profileA
 import ProfileComponent from '../../components/ProfileComponent/ProfileComponent';
 import Cloudinary from '../../cloudinary/Cloudinary';
 import {Row, Col} from 'antd';
+import {getAllUsersAC} from '../../redux/actionCreators/ratingAC';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
@@ -18,6 +19,10 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(addPhotoUrl(userPhoto));
   }, [dispatch, userPhoto]);
+
+  useEffect(() => {
+    dispatch(getAllUsersAC());
+  }, [dispatch]);
 
   const changeEditStatus = () => {
     setEditStatus(!editStatus);
@@ -46,40 +51,41 @@ const ProfilePage = () => {
   if (editStatus) {
     return (
       <Row className={style.row}>
-        <Col span={20} offset={1}>
-          <h2>Редактировать профиль</h2>
-          <div className={style.profileTop}>
-            <div className={style.containerForUserPhoto}>
-              <img
-                className={style.userPhoto}
-                alt={user.name || 'default_user_photo'}
-                src={user.photo}
-              />
-            </div>
-            <form onSubmit={profileHandler} className={style.userGeneralInfo}>
-              <label className={style.label}>login</label>
-              <InputComponent
-                span={18}
-                name="name"
-                size="middle"
-                defaultValue={user.name}
-              />
-              <label className={style.label}>skills</label>
-              <InputComponent
-                span={18}
-                name="skills"
-                size="middle"
-                defaultValue={user.skills.length > 0 ? user.skills : null}
-              />
-              <div className={style.buttonEdit}>
-                <ButtonComponent title={'изменить'} type="submit"/>
+        <Col span={22} offset={1}>
+              <h2 className={style.title}>Редактировать профиль</h2>
+          <Row>
+            <Col span={8}>
+              <div className={style.containerForUserPhoto}>
+                {imgUrl ? (
+                  <img src={imgUrl} alt={imgUrl} style={{ width: { imgUrl } }} />
+                ) : (
+                  <img src={userPhoto} alt={userPhoto} style={{ width: { imgUrl } }} />
+                )}
               </div>
-              <div className={style.buttonEdit}>
-                <ButtonComponent title={'назад'} onClick={changeEditStatus}/>
-              </div>
-            </form>
-          </div>
-          <Cloudinary folder={'userPhoto280x280'} width={'280px'}/>
+            </Col>
+            <Col span={12} offset={2}>
+              <form onSubmit={profileHandler} className={style.userGeneralInfo}>
+                <label className={style.label}>Поменять имя</label>
+                <InputComponent
+                  name="name"
+                  size="middle"
+                  defaultValue={user.name}
+                />
+                <label className={style.label}>Редактировать скиллы</label>
+                <InputComponent
+                  name="skills"
+                  size="middle"
+                  defaultValue={user.skills.length > 0 ? user.skills : null}
+                />
+                <label className={style.label}>Заменить фото</label>
+                <Cloudinary folder={'userPhoto280x280'} width={'280px'}/>
+                <div className={style.buttonEdit}>
+                  <ButtonComponent title={'Сохранить'} type="submit"/>
+                  <ButtonComponent title={'Отмена'} onClick={changeEditStatus}/>
+                </div>
+              </form>
+            </Col>
+          </Row>
         </Col>
       </Row>
     );

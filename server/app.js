@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors')
+const path = require('path');
+const cors = require('cors');
 
 dotenv.config({ path: '../.env' });
 
@@ -45,5 +47,11 @@ app.use('/students', studentsRouter);
 app.use('/profile', profileRouter);
 app.use('/shop', shopRouter);
 app.use('/events', eventsRouter);
+
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
+});
 
 start();

@@ -10,15 +10,19 @@ import {Select} from 'antd';
 const {Option} = Select;
 const RatingOfOneStudent = () => {
     const [user, setUser] = useState({});
-    const [select, setSelect] = useState(null);
     const allUsers = useSelector(state => state.rating.allUsers);
     const {id} = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
         setUser(allUsers.find(user => user._id === id));
+        setSelect(allUsers.find(user => user._id === id).status);
     }, [allUsers, id]);
+
     const hist = useHistory();
+
+    const [select, setSelect] = useState(user.status);
+
 
     function changeRatingHandler(e) {
         e.preventDefault();

@@ -13,8 +13,21 @@ router.post('/create-employer', async (req, res) => {
     rating,
     userName,
     userId,
-    userPhoto,
   } = req.body.payload;
+
+  if (!review) {
+    return res.status(400).json({
+      error: true,
+      message: 'Тебе надо написать отзыв',
+    });
+  }
+
+  if (!rating) {
+    return res.status(400).json({
+      error: true,
+      message: 'Тебе надо оценить работодателя (минимум пол звезды)',
+    });
+  }
 
   let employer = await Employer.findOne({ name });
   if (employer) {
@@ -28,7 +41,6 @@ router.post('/create-employer', async (req, res) => {
     rating,
     allReviews: [
       {
-        userPhoto,
         userName,
         userId,
         review,
@@ -49,9 +61,22 @@ router.post('/add-review', async (req, res) => {
     userId,
     rating,
     date,
-    userPhoto,
   } = req.body.payload;
   const employer = await Employer.findById(employerId);
+
+  if (!review) {
+    return res.status(400).json({
+      error: true,
+      message: 'Тебе надо написать отзыв',
+    });
+  }
+
+  if (!rating) {
+    return res.status(400).json({
+      error: true,
+      message: 'Тебе надо оценить работодателя (минимум пол звезды)',
+    });
+  }
 
   const currentReview = employer.allReviews.find(
     (rev) => rev.userId === userId,
@@ -62,14 +87,13 @@ router.post('/add-review', async (req, res) => {
       message: 'Ты уже писал отзыв для данного работодателя',
     });
   }
-  employer.allReviews.push({
+  employer.allReviews = [{
     userName,
     userId,
     review,
     rating,
     date,
-    userPhoto,
-  });
+  }, ...employer.allReviews];
   let midRating = employer.allReviews.reduce((sum, el) => sum + el.rating, 0)
     / employer.allReviews.length;
   midRating = Math.round(midRating * 2) / 2;
@@ -82,16 +106,27 @@ router.post('/add-review', async (req, res) => {
 router.delete('/delete-review', async (req, res) => {
   const { reviewId, employerId } = req.body.payload;
   const employer = await Employer.findById(employerId);
-  employer.allReviews = employer.allReviews.filter(
-    (rev) => rev.id !== reviewId,
-  );
-  let midRating = employer.allReviews.reduce((sum, el) => sum + el.rating, 0)
-    / employer.allReviews.length;
-  midRating = Math.round(midRating * 2) / 2;
-  employer.rating = midRating;
+  if (employer.allReviews.length === 1 && employer.allReviews[0].id === reviewId) {
+    employer.allReviews = [];
+    employer.rating = 0;
+  } else {
+    employer.allReviews = employer.allReviews.filter(
+      (rev) => rev.id !== reviewId,
+    );
+    let midRating = employer.allReviews.reduce((sum, el) => sum + el.rating, 0)
+      / employer.allReviews.length;
+    midRating = Math.round(midRating * 2) / 2;
+    employer.rating = midRating;
+  }
   await employer.save();
   const allEmployers = await Employer.find({});
   res.status(200).json({ allEmployers, message: 'Отзыв удалён' });
+});
+
+router.delete('/delete-employer', async (req, res) => {
+  await Employer.findByIdAndDelete(req.body.payload);
+  const allEmployers = await Employer.find({});
+  res.status(200).json({ allEmployers, message: 'Работодатель удален' });
 });
 
 module.exports = router;

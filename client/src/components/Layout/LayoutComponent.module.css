@@ -17,12 +17,11 @@
 .container {
   width: 1190px;
   margin: 0 auto;
-  height: 100vh;
 }
 
 .sidebar {
   position: sticky;
-  margin-top: 64px;
+  padding-top: 64px;
   background-color: var(--white_color);
 }
 
@@ -44,17 +43,18 @@
 }
 
 .content {
-  padding: 10px;
-  margin-top: 64px;
+  padding: 75px 10px 10px 10px;
+  min-height: 97vh;
   background-color: var(--white_color);
   border-left: 1px solid rgba(69, 32, 171, 0.5);
-  height: 85vh;
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
+  height: 3vh;
   width: 100%;
   background-color: var(--purple_color);
   color: var(--cyan_color);
@@ -63,6 +63,7 @@
 
 .footer a {
   color: var(--cyan_color);
+  margin: 0 30px;
 }
 
 .iconColor {
