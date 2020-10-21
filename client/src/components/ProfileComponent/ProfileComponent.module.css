@@ -37,8 +37,8 @@
 .userStatus {
   margin: 0 auto;
   width: 50%;
-  border-top: solid 1px orange;
-  border-bottom: solid 1px orange;
+  border-top: solid 1px var(--orange_color);
+  border-bottom: solid 1px var(--orange_color);
 }
 
 .skills {
@@ -46,12 +46,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border-top: solid 1px orange;
-  border-bottom: solid 1px orange;
+  border-top: solid 1px var(--orange_color);
+  border-bottom: solid 1px var(--orange_color);
 }
 
 .label {
-  color: orange;
+  color: var(--orange_color);
 }
 
 .tag {

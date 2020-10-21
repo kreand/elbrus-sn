@@ -39,7 +39,7 @@ const ProfilePage = () => {
 
   if (editStatus) {
     return (
-      <div className={style.profileBody}>
+      <div>
         <div className={style.profileTop}>
           <div className={style.containerForUserPhoto}>
             <img
