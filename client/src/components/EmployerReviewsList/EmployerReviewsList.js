@@ -9,6 +9,7 @@ import { deleteReview } from '../../redux/actionCreators/employerAC';
 
 const EmployerReviewsList = ({ allReviews, employerId }) => {
   const { user } = useSelector(state => state.profile);
+  const {allUsers} = useSelector(state => state.rating);
   const dispatch = useDispatch();
 
   const dateToString = date => {
@@ -25,6 +26,10 @@ const EmployerReviewsList = ({ allReviews, employerId }) => {
     )}`;
   };
 
+  const getCurrentUser = (id) => {
+    return allUsers.find(user => user._id === id);
+  };
+
   return (
     <List
       split={false}
@@ -33,9 +38,9 @@ const EmployerReviewsList = ({ allReviews, employerId }) => {
       renderItem={review => (
         <List.Item className={style.listItem}>
           <List.Item.Meta
-            avatar={<Avatar src={review.userPhoto} />}
+            avatar={<Avatar src={getCurrentUser(review.userId).photo} />}
             title={
-              <Link to={`/student/${review.userId}`}>{review.userName}</Link>
+              <Link to={`/student/${review.userId}`}>{getCurrentUser(review.userId).name}</Link>
             }
             description={
               <>

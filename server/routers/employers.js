@@ -13,7 +13,6 @@ router.post('/create-employer', async (req, res) => {
     rating,
     userName,
     userId,
-    userPhoto,
   } = req.body.payload;
 
   let employer = await Employer.findOne({ name });
@@ -28,7 +27,6 @@ router.post('/create-employer', async (req, res) => {
     rating,
     allReviews: [
       {
-        userPhoto,
         userName,
         userId,
         review,
@@ -49,7 +47,6 @@ router.post('/add-review', async (req, res) => {
     userId,
     rating,
     date,
-    userPhoto,
   } = req.body.payload;
   const employer = await Employer.findById(employerId);
 
@@ -62,14 +59,13 @@ router.post('/add-review', async (req, res) => {
       message: 'Ты уже писал отзыв для данного работодателя',
     });
   }
-  employer.allReviews.push({
+  employer.allReviews = [{
     userName,
     userId,
     review,
     rating,
     date,
-    userPhoto,
-  });
+  }, ...employer.allReviews];
   let midRating = employer.allReviews.reduce((sum, el) => sum + el.rating, 0)
     / employer.allReviews.length;
   midRating = Math.round(midRating * 2) / 2;

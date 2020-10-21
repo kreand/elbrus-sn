@@ -17,7 +17,9 @@ const RatingOfOneStudent = () => {
 
     useEffect(() => {
         setUser(allUsers.find(user => user._id === id));
+        setSelect(allUsers.find(user => user._id === id).status);
     }, [allUsers, id]);
+
     const hist = useHistory();
 
     function changeRatingHandler(e) {
