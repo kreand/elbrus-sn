@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './ProfileComponent.module.css';
-import { Tooltip, Tag } from 'antd';
+import { Tooltip, Tag, Row, Col, Divider } from 'antd';
 import {
   tooltipTitle,
   tooltipDefaultOption,
@@ -9,35 +9,54 @@ import ButtonComponent from '../../components/Button/ButtonComponent';
 
 const ProfileComponent = ({ user, isMyProfile, onClick }) => {
   return (
-    <div className={style.profileBody}>
-      <div className={style.profileTop}>
-        <div className={style.containerForUserPhoto}>
-          <img className={style.userPhoto} alt={user.name} src={user.photo} />
-          <Tooltip {...tooltipDefaultOption} title={tooltipTitle.raiting}>
-            <h3 style={{ color: 'orange' }}>RAITING</h3>
-            <h2 className={style.round}>{user.rating}</h2>
+    <div>
+      <Row 
+      gutter={16} 
+      justify="center">
+        <Col 
+        align="middle" 
+        span={10}
+        >
+          <img 
+          alt={user.name} 
+          src={user.photo} 
+          />
+          <Tooltip 
+          {...tooltipDefaultOption} 
+          title={tooltipTitle.raiting}
+          >
+            <h3 style={{ color: "var(--orange_color)" }}>
+              RAITING
+            </h3>
+            <h2>
+              {user.rating}
+            </h2>
           </Tooltip>
-          <h3 style={{ color: 'orange' }}>SKILLS</h3>
-          <h3 className={style.skills}>
-            {user.skills.length > 0
-              ? user.skills.map((skill, index) => (
-                  <Tag key={index} color="purple" className={style.tag}>
-                    {skill}
-                  </Tag>
-                ))
-              : 'Скилы не указаны'}
-          </h3>
           {isMyProfile ? (
-            <ButtonComponent title={'изменить профиль'} onClick={onClick} />
+            <ButtonComponent 
+            title={'изменить профиль'} 
+            onClick={onClick} />
           ) : null}
-        </div>
-        <div className={style.userGeneralInfo}>
-          <h2 className={style.userName}>{user.name}</h2>
-          <Tooltip {...tooltipDefaultOption} title={tooltipTitle.status}>
-            <h2 className={style.userStatus}>{user.status}</h2>
+        </Col>
+        <Col 
+        align="middle" 
+        justify="middle" 
+        span={8}
+        className={style.nameBox}>
+          <h2>
+            {user.name}
+          </h2>
+          <Tooltip 
+          {...tooltipDefaultOption} 
+          title={tooltipTitle.status}>
+            <h2>
+              {user.status}
+            </h2>
           </Tooltip>
           <h2>
-            <Tooltip {...tooltipDefaultOption} title={tooltipTitle.coins}>
+            <Tooltip 
+            {...tooltipDefaultOption} 
+            title={tooltipTitle.coins}>
               <img
                 alt="coin"
                 style={{ width: '1.5em' }}
@@ -46,8 +65,26 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
               x {user.coins}
             </Tooltip>
           </h2>
-        </div>
-      </div>
+          <Divider 
+          className={style.divider}
+          >
+            SKILLS
+          </Divider>
+          <h3>
+            {user.skills.length > 0
+              ? user.skills.map((skill, index) => (
+                  <Tag 
+                  key={index} 
+                  color="purple" 
+                  className={style.tag}
+                  >
+                    {skill}
+                  </Tag>
+                ))
+              : 'Скилы не указаны'}
+          </h3>
+        </Col>
+      </Row>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import style from './Cloudinary.module.css';
 import { addPhotoUrl } from '../redux/actionCreators/profileAC';
 
 function Cloudinary({ folder, width }) {
