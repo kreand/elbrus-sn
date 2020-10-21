@@ -10,5 +10,6 @@
 }
 
 .review {
+  margin: 10px 0;
   color: var(--purple_color);
 }
