@@ -14,12 +14,18 @@ router.post('/change', async (req, res) => {
   let { rating, coins, skills } = req.body;
   let users = await User.find({});
   const user = users.find((el) => el.id === _id);
-  // Меняю рейтинг
-  rating = +rating;
-  user.rating = rating;
+
   // Меняю монеты
   coins = +coins;
   user.coins = coins;
+  // Меняю рейтинг
+  rating = +rating;
+  if (user.rating < rating) {
+    user.coins += rating - user.rating;
+    user.rating = rating;
+  } else {
+    user.rating = rating;
+  }
   // Меняю имя
   user.name = name;
   // Меняю email

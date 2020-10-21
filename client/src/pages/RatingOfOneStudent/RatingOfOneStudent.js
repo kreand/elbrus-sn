@@ -10,7 +10,6 @@ import {Select} from 'antd';
 const {Option} = Select;
 const RatingOfOneStudent = () => {
     const [user, setUser] = useState({});
-    const [select, setSelect] = useState(null);
     const allUsers = useSelector(state => state.rating.allUsers);
     const {id} = useParams();
     const dispatch = useDispatch();
@@ -21,6 +20,9 @@ const RatingOfOneStudent = () => {
     }, [allUsers, id]);
 
     const hist = useHistory();
+
+    const [select, setSelect] = useState(user.status);
+
 
     function changeRatingHandler(e) {
         e.preventDefault();
