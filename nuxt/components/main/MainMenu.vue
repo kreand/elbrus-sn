@@ -1,8 +1,8 @@
 <template>
   <a-row type="flex" justify="center">
     <a-menu  class="menu"  mode="horizontal">
-      <a-menu-item class="menu__item" key="home"> <a-icon type="home" />Главная</a-menu-item>
-      <a-menu-item class="menu__item" key="calendar"> <a-icon type="calendar" />Календарь</a-menu-item>
+      <a-menu-item class="menu__item" key="home"> <a-icon type="home" /><nuxt-link to="/">Главная</nuxt-link></a-menu-item>
+      <a-menu-item class="menu__item" key="calendar"> <a-icon type="calendar" /><nuxt-link to="/events">Главная</nuxt-link></a-menu-item>
     </a-menu>
   </a-row>
 

@@ -15,7 +15,7 @@ export function* getAllUsersWatcher() {
   yield takeEvery(GET_ALL_USERS, getAllUsersWorker);
 }
 
-function* changeRatingWorker({ id, rating }) {
+function* changeRatingWorker({ id, rating, name, email, coins, skills, group, status }) {
   const response = yield call(async () => {
     const response = await fetch('/students/change', {
       method: 'POST',
@@ -25,6 +25,12 @@ function* changeRatingWorker({ id, rating }) {
       body: JSON.stringify({
         _id: id,
         rating: rating,
+        name: name,
+        email: email,
+        coins: coins,
+        skills: skills,
+        group: group,
+        status: status,
       }),
     });
     return await response.json();
