@@ -1,31 +1,10 @@
-.containerForUserPhoto {
-  margin-top: 12px;
-}
-
-.userGeneralInfo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.userStatus {
-  border-top: solid 1px var(--orange_color);
-  border-bottom: solid 1px var(--orange_color);
-}
-
 .edge {
   border-bottom: solid 1px var(--grey_color);
 }
 
 .label {
   color: var(--purple_color);
-  margin: 10px 0 5px 0;
-}
-
-.tag {
-  margin: 0.2em;
+  font-size: larger;
 }
 
 .buttonEdit {
@@ -38,11 +17,11 @@
   margin: 0 15px;
 }
 
-.row {
-  margin-top: 20px;
-}
-
 .title {
   color: var(--purple_color);
-  margin-bottom: 30px;
+  margin: 0.5em 0 0.8em 2em;
+}
+
+.form {
+  margin-top: 1em;
 }
