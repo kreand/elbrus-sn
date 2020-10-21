@@ -2,10 +2,25 @@
   margin: 30px 0 45px 0;
 }
 
-.pagination li {
-  margin: 0 5px;
+.pagination a:hover {
+    color: var(--white_color);
 }
 
-.pagination button {
-  margin: 0;
+.pagination li:hover {
+    border: 1px solid var(--purple_color);
+    background-color: var(--purple_color);
 }
+
+.pagination button:hover svg,
+.pagination button:hover {
+    border: none;
+    color: var(--white_color);
+    background-color: var(--purple_color);
+}
+
+.pagination a:active {
+    border: 1px solid var(--purple_color);
+    background-color: var(--purple_color);
+}
+
+

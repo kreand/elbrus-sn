@@ -57,6 +57,9 @@
 }
 
 .buttonEdit {
-  display: flex;
-  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.row {
+  margin-top: 20px;
 }
