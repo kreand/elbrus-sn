@@ -8,17 +8,29 @@ router.get('/allUsers', async (req, res) => {
 });
 
 router.post('/change', async (req, res) => {
-  const { _id } = req.body;
-  let { rating } = req.body;
+  const {
+    _id, name, email, group, status,
+  } = req.body;
+  let { rating, coins, skills } = req.body;
   let users = await User.find({});
   const user = users.find((el) => el.id === _id);
+  // Меняю рейтинг
   rating = +rating;
-  if (rating > 0) {
-    user.rating += rating;
-    user.coins += rating;
-  } else {
-    user.rating += rating;
-  }
+  user.rating = rating;
+  // Меняю монеты
+  coins = +coins;
+  user.coins = coins;
+  // Меняю имя
+  user.name = name;
+  // Меняю email
+  user.email = email;
+  // Меняю группу
+  user.group = group;
+  // Меняю skills
+  skills = skills.split(',');
+  user.skills = skills;
+  // Меняю статус
+  user.status = status;
   await user.save();
   users = await User.find({});
   res.status(200).json({ message: 'Рейтинг изменен', users, user });
