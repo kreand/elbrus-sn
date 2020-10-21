@@ -19,12 +19,11 @@
 </template>
 
 <script>
-import Button from '~/components/elements/Button'
 import MainMenu from '~/components/main/MainMenu'
 import Logo from '~/components/main/Logo'
 export default {
   name: 'Navbar',
-  components: {Logo, MainMenu, Button},
+  components: {Logo, MainMenu},
 }
 </script>
 
@@ -36,12 +35,12 @@ export default {
 }
 .btn {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: #ffbc5b;
   border: 2px solid #ffbc5b;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 10px;
   &:hover {
     color: #bc7b26;
     border-color: #bc7b26;
