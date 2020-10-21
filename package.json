@@ -6,7 +6,8 @@
   "scripts": {
     "client": "npm run start --prefix client",
     "server": "npm run server --prefix server",
-    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "nuxt": "npm run dev --prefix nuxt",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run nuxt\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

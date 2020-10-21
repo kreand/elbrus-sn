@@ -6,7 +6,6 @@
       @click="clickEvent"
     />
   </li>
-
 </template>
 
 <script>

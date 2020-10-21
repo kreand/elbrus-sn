@@ -75,7 +75,7 @@ const LayoutComponent = () => {
                 key="4"
                 icon={<NotificationOutlined className={style.iconColor} />}
               >
-                <Link to="/events">Эвенты</Link>
+                <a href="http://localhost:4000/events">Эвенты</a>
               </Menu.Item>
               <Menu.Item
                 key="5"
