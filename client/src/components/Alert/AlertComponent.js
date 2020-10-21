@@ -6,7 +6,7 @@ const AlertComponent = ({ title, text, type, justify, span, onClose }) => {
   return (
     <Row justify={justify || 'center'} className={style.alert}>
       <Col span={span || 12}>
-        <Alert message={title} description={text} type={type} closable/>
+        <Alert message={title} description={text} type={type} closable />
       </Col>
     </Row>
   );

@@ -1,24 +1,28 @@
 import React from 'react';
-import {Col, Row, List, Avatar} from 'antd';
-import {Link} from 'react-router-dom';
+import { Col, Row, List, Avatar } from 'antd';
+import { Link } from 'react-router-dom';
 import RateComponent from '../Rate/RateComponent';
 import style from './EmployerReviewsList.module.css';
-import {useDispatch, useSelector} from 'react-redux';
-import {DeleteOutlined} from '@ant-design/icons';
-import {deleteReview} from '../../redux/actionCreators/employerAC';
+import { useDispatch, useSelector } from 'react-redux';
+import { DeleteOutlined } from '@ant-design/icons';
+import { deleteReview } from '../../redux/actionCreators/employerAC';
 
-const EmployerReviewsList = ({allReviews, employerId}) => {
-  const {user} = useSelector(state => state.profile);
+const EmployerReviewsList = ({ allReviews, employerId }) => {
+  const { user } = useSelector(state => state.profile);
   const dispatch = useDispatch();
 
-  const dateToString = (date) => {
+  const dateToString = date => {
     function addZero(num) {
       if (num < 10) {
         return `0${num}`;
       }
       return num;
     }
-    return `${addZero(date.getDate())}.${addZero(date.getMonth() + 1)}.${date.getFullYear()}  ${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
+    return `${addZero(date.getDate())}.${addZero(
+      date.getMonth() + 1,
+    )}.${date.getFullYear()}  ${addZero(date.getHours())}:${addZero(
+      date.getMinutes(),
+    )}`;
   };
 
   return (
@@ -29,28 +33,40 @@ const EmployerReviewsList = ({allReviews, employerId}) => {
       renderItem={review => (
         <List.Item className={style.listItem}>
           <List.Item.Meta
-            avatar={<Avatar src={review.userPhoto}/>}
-            title={<Link to={`/student/${review.userId}`}>{review.userName}</Link>}
-            description={<>
-              <div className={style.date}>
-                {dateToString(review.date)}
-              </div>
-              <RateComponent rate={review.rating} justify='left' disabled={true} key={review._id}/>
-              <p className={style.review}>{review.review}</p>
-              <Row>
-                <Col span={4} offset={20}>
-                  {user._id === review.userId ?
-                    <Link
-                      className={style.review}
-                      to='#'
-                      onClick={() => {
-                        dispatch(deleteReview({reviewId: review._id, employerId}));
-                      }}>
-                      <DeleteOutlined/>{' Удалить отзыв'}</Link>
-                    : null}
-                </Col>
-              </Row>
-            </>}
+            avatar={<Avatar src={review.userPhoto} />}
+            title={
+              <Link to={`/student/${review.userId}`}>{review.userName}</Link>
+            }
+            description={
+              <>
+                <div className={style.date}>{dateToString(review.date)}</div>
+                <RateComponent
+                  rate={review.rating}
+                  justify="left"
+                  disabled={true}
+                  key={review._id}
+                />
+                <p className={style.review}>{review.review}</p>
+                <Row>
+                  <Col span={4} offset={20}>
+                    {user._id === review.userId ? (
+                      <Link
+                        className={style.review}
+                        to="#"
+                        onClick={() => {
+                          dispatch(
+                            deleteReview({ reviewId: review._id, employerId }),
+                          );
+                        }}
+                      >
+                        <DeleteOutlined />
+                        {' Удалить отзыв'}
+                      </Link>
+                    ) : null}
+                  </Col>
+                </Row>
+              </>
+            }
           />
         </List.Item>
       )}

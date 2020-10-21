@@ -1,11 +1,11 @@
 .title {
-    text-align: center;
-    color: var(--purple_color);
-    font-size: 30px;
+  text-align: center;
+  color: var(--purple_color);
+  font-size: 30px;
 }
 
 .container {
-    height: 100vh;
-    padding-top: 20vh;
-    background-color: var(--white_color);
+  height: 100vh;
+  padding-top: 20vh;
+  background-color: var(--white_color);
 }

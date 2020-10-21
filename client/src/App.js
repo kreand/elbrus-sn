@@ -7,7 +7,7 @@ import LoaderComponent from './components/Loader/LoaderComponent';
 import defaultCheckTokenAC from './redux/actionCreators/profileAC';
 import { useRoutes } from './routes';
 
-function App () {
+function App() {
   const dispatch = useDispatch();
   const isAuth = useSelector(state => state.auth);
   const router = useRoutes(isAuth);
@@ -28,16 +28,14 @@ function App () {
         <Header className={style.header}>
           <h1>Elbrus Social Network</h1>
         </Header>
-        <LoaderComponent size='large'/>
-        <Footer className={style.footer}><a href="https://github.com/NickBGor/elbrus-sn">GitHub</a></Footer>
+        <LoaderComponent size="large" />
+        <Footer className={style.footer}>
+          <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
+        </Footer>
       </Layout>
     );
   }
-  return (
-    <BrowserRouter>
-      {router}
-    </BrowserRouter>
-  );
+  return <BrowserRouter>{router}</BrowserRouter>;
 }
 
 export default App;
