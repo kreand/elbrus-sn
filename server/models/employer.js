@@ -6,6 +6,7 @@ const employerSchema = new Schema({
   allReviews: [{
     userName: { type: String },
     userId: { type: String },
+    userPhoto: { type: String },
     rating: { type: Number },
     review: { type: String },
     date: { type: Date, default: new Date() },
