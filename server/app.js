@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors')
 
 dotenv.config({ path: '../.env' });
 
@@ -9,6 +10,7 @@ const employersRouter = require('./routers/employers');
 const studentsRouter = require('./routers/students');
 const profileRouter = require('./routers/profile');
 const shopRouter = require('./routers/shop');
+const eventsRouter = require('./routers/events');
 
 const app = express();
 
@@ -16,6 +18,7 @@ const PORT = process.env.PORT_FOR_DEV || 6000;
 
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const start = () => {
   try {
@@ -41,5 +44,6 @@ app.use('/employers', employersRouter);
 app.use('/students', studentsRouter);
 app.use('/profile', profileRouter);
 app.use('/shop', shopRouter);
+app.use('/events', eventsRouter);
 
 start();
