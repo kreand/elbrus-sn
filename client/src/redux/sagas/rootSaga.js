@@ -8,7 +8,7 @@ import { changeRatingWatcher, getAllUsersWatcher } from './ratingSaga';
 import { editProfileSagaWatcher } from './profileSaga';
 import {
   addReviewSagaWatcher,
-  createEmployerSagaWatcher,
+  createEmployerSagaWatcher, deleteEmployerSagaWatcher,
   deleteReviewSagaWatcher,
   getEmployersSagaWatcher,
 } from './employerSaga';
@@ -23,6 +23,7 @@ export default function* rootSaga() {
     getEmployersSagaWatcher(),
     createEmployerSagaWatcher(),
     deleteReviewSagaWatcher(),
+    deleteEmployerSagaWatcher(),
     editProfileSagaWatcher(),
     addReviewSagaWatcher(),
     checkTokenWatcher(),

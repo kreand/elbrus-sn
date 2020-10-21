@@ -7,7 +7,7 @@
   margin-bottom: 50px;
 }
 
-.link {
+.card a {
   color: var(--purple_color);
 }
 
@@ -17,4 +17,9 @@
 
 .countReviews {
   font-size: 11px;
+}
+
+.bottomOfCard {
+  display: flex;
+  justify-content: space-between;
 }
