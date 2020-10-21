@@ -1,12 +1,17 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {filterUsersAC, getAllUsersAC} from '../../redux/actionCreators/ratingAC';
+import {
+    filterUsersAC,
+    getAllUsersAC,
+} from '../../redux/actionCreators/ratingAC';
 import {Avatar, Col, List, Row} from 'antd';
 import InputComponent from '../../components/Input/InputComponent';
 import {Link} from 'react-router-dom';
 
 const AdminPage = () => {
-    const students = useSelector(state => state.rating.allUsers.sort((a, b) => b.rating - a.rating));
+    const students = useSelector(state =>
+        state.rating.allUsers.sort((a, b) => b.rating - a.rating),
+    );
     const filteredStudents = useSelector(state => state.rating.filteredUsers);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -43,11 +48,11 @@ const AdminPage = () => {
                                         src={student.photo}/>}
                                     title={<Link to={`/student/${student._id}`}>{student.name}</Link>}
                                     description={<div>
-                                    Рейтинг: {student.rating} <br/>
-                                     Группа: {student.group} <br/>
-                                     Монеты: {student.coins} <br/>
-                                     Роль: {student.status}
-                                     </div>}
+                                        Рейтинг: {student.rating} <br/>
+                                        Группа: {student.group} <br/>
+                                        Монеты: {student.coins} <br/>
+                                        Роль: {student.status}
+                                    </div>}
                                 />
                                 <div><Link to={`/admin/edit-student/${student._id}`}>Изменить</Link></div>
                             </List.Item>

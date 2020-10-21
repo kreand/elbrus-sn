@@ -12,7 +12,9 @@ router.post('/edit', async (req, res) => {
       user.name = name;
       user.photo = imgUrl;
       await user.save();
-      return res.status(201).json({ user, message: 'Данные пользователя изменены' });
+      return res
+        .status(201)
+        .json({ user, message: 'Данные пользователя изменены' });
     }
     return res.status(400).json({ error: true, message: 'Изменения отменены' });
   } catch (e) {

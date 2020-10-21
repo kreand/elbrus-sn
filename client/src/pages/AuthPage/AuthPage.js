@@ -5,7 +5,10 @@ import { message } from 'antd';
 import ButtonComponent from '../../components/Button/ButtonComponent';
 import InputComponent from '../../components/Input/InputComponent';
 import { hideErrorAC } from '../../redux/actionCreators/appAC';
-import { getDefaultUserAC, registrationDefaultUserAC } from '../../redux/actionCreators/profileAC';
+import {
+  getDefaultUserAC,
+  registrationDefaultUserAC,
+} from '../../redux/actionCreators/profileAC';
 import style from './AuthPage.module.css';
 
 const AuthPage = () => {
@@ -14,24 +17,23 @@ const AuthPage = () => {
   const errors = useSelector(state => state.app.errors);
   const loading = useSelector(state => state.app.isLoading);
 
-  const authHandler = (e) => {
+  const authHandler = e => {
     e.preventDefault();
     const { email, password } = e.target;
     const user = {
       email: email.value,
-      password: password.value
+      password: password.value,
     };
     dispatch(getDefaultUserAC(user));
-
   };
 
-  const registrationHandler = (e) => {
+  const registrationHandler = e => {
     e.preventDefault();
     const { name, email, password } = e.target;
     const user = {
       name: name.value,
       email: email.value,
-      password: password.value
+      password: password.value,
     };
     dispatch(registrationDefaultUserAC(user));
   };
@@ -51,8 +53,7 @@ const AuthPage = () => {
   }, [errors.errorMessage]);
 
   useEffect(() => {
-    if (errors.errorMessage)
-      info();
+    if (errors.errorMessage) info();
   }, [errors, info]);
 
   if (registration) {
@@ -60,18 +61,48 @@ const AuthPage = () => {
       <div className={style.container}>
         <h1 className={style.title}>Регистрация</h1>
         <form onSubmit={registrationHandler}>
-          <InputComponent name='name' type='text' placeholder='Ваше имя' span={6} size='large'/>
-          <InputComponent name='email' type='email' placeholder='Ваш email' span={6} size='large'/>
-          <InputComponent name='password' type='password' placeholder='Ваш пароль' span={6} size='large'/>
-          {
-            loading
-              ? <ButtonComponent title='Зарегистрироваться' size='large' loading={true}/>
-              : <ButtonComponent title='Зарегистрироваться' size='large'/>
-          }
+          <InputComponent
+            name="name"
+            type="text"
+            placeholder="Ваше имя"
+            span={6}
+            size="large"
+          />
+          <InputComponent
+            name="email"
+            type="email"
+            placeholder="Ваш email"
+            span={6}
+            size="large"
+          />
+          <InputComponent
+            name="password"
+            type="password"
+            placeholder="Ваш пароль"
+            span={6}
+            size="large"
+          />
+          {loading ? (
+            <ButtonComponent
+              title="Зарегистрироваться"
+              size="large"
+              loading={true}
+            />
+          ) : (
+            <ButtonComponent title="Зарегистрироваться" size="large" />
+          )}
         </form>
         <div style={{ marginTop: '25px', textAlign: 'center' }}>
-        <span style={{ fontSize: '16px', color: 'var(--purple_color)', cursor: 'pointer' }}
-              onClick={changeRegistrationHandler}>Авторизация</span>
+          <span
+            style={{
+              fontSize: '16px',
+              color: 'var(--purple_color)',
+              cursor: 'pointer',
+            }}
+            onClick={changeRegistrationHandler}
+          >
+            Авторизация
+          </span>
         </div>
       </div>
     );
@@ -80,20 +111,48 @@ const AuthPage = () => {
     <div className={style.container}>
       <form onSubmit={authHandler}>
         <h1 className={style.title}>Авторизация</h1>
-        <InputComponent name='email' type='email' placeholder='Ваш email' span={6} size='large'/>
-        <InputComponent name='password' type='password' placeholder='Ваш пароль' span={6} size='large'/>
-        {
-          loading
-            ? <ButtonComponent name='password' title='Авторизоваться' size='large' loading={true}/>
-            : <ButtonComponent name='password' title='Авторизоваться' size='large'/>
-        }
+        <InputComponent
+          name="email"
+          type="email"
+          placeholder="Ваш email"
+          span={6}
+          size="large"
+        />
+        <InputComponent
+          name="password"
+          type="password"
+          placeholder="Ваш пароль"
+          span={6}
+          size="large"
+        />
+        {loading ? (
+          <ButtonComponent
+            name="password"
+            title="Авторизоваться"
+            size="large"
+            loading={true}
+          />
+        ) : (
+          <ButtonComponent
+            name="password"
+            title="Авторизоваться"
+            size="large"
+          />
+        )}
       </form>
       <div style={{ marginTop: '25px', textAlign: 'center' }}>
-        <span style={{ fontSize: '16px', color: 'var(--purple_color)', cursor: 'pointer' }}
-              onClick={changeRegistrationHandler}>Регистрация</span>
+        <span
+          style={{
+            fontSize: '16px',
+            color: 'var(--purple_color)',
+            cursor: 'pointer',
+          }}
+          onClick={changeRegistrationHandler}
+        >
+          Регистрация
+        </span>
       </div>
     </div>
-
   );
 };
 

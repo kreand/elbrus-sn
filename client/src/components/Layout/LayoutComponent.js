@@ -3,11 +3,13 @@ import { Layout, Menu } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import {
-
   DollarCircleOutlined,
-  LogoutOutlined, NotificationOutlined,
-  OrderedListOutlined, ShopOutlined,
-  UserOutlined, EyeOutlined
+  LogoutOutlined,
+  NotificationOutlined,
+  OrderedListOutlined,
+  ShopOutlined,
+  UserOutlined,
+  EyeOutlined,
 } from '@ant-design/icons';
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
@@ -39,9 +41,8 @@ const LayoutComponent = () => {
     localStorage.clear();
   };
 
-
   if (about) {
-    return <AboutPage setAbout={setAbout}/>;
+    return <AboutPage setAbout={setAbout} />;
   }
   return (
     <Layout className={style.body}>
@@ -52,81 +53,116 @@ const LayoutComponent = () => {
         <Layout>
           <Sider className={style.sidebar}>
             <Menu defaultSelectedKeys={['1']}>
-              <Menu.Item key="1" icon={<UserOutlined className={style.iconColor}/>}>
-                <Link to='/profile'>Профиль</Link>
+              <Menu.Item
+                key="1"
+                icon={<UserOutlined className={style.iconColor} />}
+              >
+                <Link to="/profile">Профиль</Link>
               </Menu.Item>
-              <Menu.Item key="2" icon={<DollarCircleOutlined className={style.iconColor}/>}>
-                <Link to='/employers'>Работодатели</Link>
+              <Menu.Item
+                key="2"
+                icon={<DollarCircleOutlined className={style.iconColor} />}
+              >
+                <Link to="/employers">Работодатели</Link>
               </Menu.Item>
-              <Menu.Item key="3" icon={<OrderedListOutlined className={style.iconColor}/>}>
-                <Link to='/students'>Рейтинг студентов</Link>
+              <Menu.Item
+                key="3"
+                icon={<OrderedListOutlined className={style.iconColor} />}
+              >
+                <Link to="/students">Рейтинг студентов</Link>
               </Menu.Item>
-              <Menu.Item key="4" icon={<NotificationOutlined className={style.iconColor}/>}>
-                <Link to='/events'>Эвенты</Link>
+              <Menu.Item
+                key="4"
+                icon={<NotificationOutlined className={style.iconColor} />}
+              >
+                <Link to="/events">Эвенты</Link>
               </Menu.Item>
-              <Menu.Item key="5" icon={<ShopOutlined className={style.iconColor}/>}>
-                <Link to='/shop'>Магазин</Link>
+              <Menu.Item
+                key="5"
+                icon={<ShopOutlined className={style.iconColor} />}
+              >
+                <Link to="/shop">Магазин</Link>
               </Menu.Item>
               <Menu.Divider
-                style={{ backgroundColor: 'var(--purple_color)', opacity: '.5', margin: '10px' }}/>
-              <Menu.Item key="6" icon={<LogoutOutlined className={style.iconColor}/>}>
-                <Link onClick={logoutHandler} to='/auth'>Logout</Link>
+                style={{
+                  backgroundColor: 'var(--purple_color)',
+                  opacity: '.5',
+                  margin: '10px',
+                }}
+              />
+              <Menu.Item
+                key="6"
+                icon={<LogoutOutlined className={style.iconColor} />}
+              >
+                <Link onClick={logoutHandler} to="/auth">
+                  Logout
+                </Link>
               </Menu.Item>
-              <Menu.Item key="7" icon={<EyeOutlined className={style.iconColor}/>}>
-                <Link to='/admin'>Admin</Link>
+              <Menu.Item
+                key="7"
+                icon={<EyeOutlined className={style.iconColor} />}
+              >
+                <Link to="/admin">Admin</Link>
               </Menu.Item>
             </Menu>
           </Sider>
           <Content className={style.content}>
             <Switch>
               <Route exact path={'/employer/add-review-about-employer/:id'}>
-                <AddReviewAboutEmployer/>
+                <AddReviewAboutEmployer />
               </Route>
               <Route path="/admin/edit-student/:id" exact>
-                <AdminEditStudentPage/>
+                <AdminEditStudentPage />
               </Route>
               <Route exact path={'/employer/:id'}>
-                <EmployerProfile/>
+                <EmployerProfile />
               </Route>
               <Route path="/student/:id" exact>
-                <StudentProfilePage/>
+                <StudentProfilePage />
               </Route>
               <Route exact path={'/add-employer'}>
-                <EmployerNav/>
-                <AddEmployerForm/>
+                <EmployerNav />
+                <AddEmployerForm />
               </Route>
               <Route exact path={'/employers'}>
-                <EmployerNav/>
-                <AllEmployers/>
+                <EmployerNav />
+                <AllEmployers />
               </Route>
               <Route path="/shop" exact>
-                <ShopPage/>
+                <ShopPage />
               </Route>
               <Route path="/events" exact>
-                <EventsPage/>
+                <EventsPage />
               </Route>
               <Route path="/students" exact>
-                <RatingsPage/>
+                <RatingsPage />
               </Route>
               <Route path="/profile" exact>
-                <ProfilePage/>
+                <ProfilePage />
               </Route>
               <Route path="/admin" exact>
-                <AdminPage/>
+                <AdminPage />
               </Route>
-              <Redirect to="/profile" exact/>
+              <Redirect to="/profile" exact />
             </Switch>
           </Content>
         </Layout>
       </div>
       <Footer className={style.footer}>
-        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '0 40%' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            margin: '0 40%',
+          }}
+        >
           <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
-          <Link onClick={() => setAbout(true)} to="/about">About us</Link>
+          <Link onClick={() => setAbout(true)} to="/about">
+            About us
+          </Link>
         </div>
       </Footer>
     </Layout>
-
   );
 };
 

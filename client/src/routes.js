@@ -5,11 +5,7 @@ import AuthLayoutComponent from './components/AuthLayoutComponent/AuthLayoutComp
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
-    return (
-      <LayoutComponent/>
-    );
+    return <LayoutComponent />;
   }
-  return (
-    <AuthLayoutComponent/>
-  );
+  return <AuthLayoutComponent />;
 };

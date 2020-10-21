@@ -14,11 +14,13 @@ const AuthLayoutComponent = () => {
         </Header>
         <Switch>
           <Route path="/auth" exact>
-            <AuthPage/>
+            <AuthPage />
           </Route>
-          <Redirect to="/auth"/>
+          <Redirect to="/auth" />
         </Switch>
-        <Footer className={style.footer}><a href="https://github.com/NickBGor/elbrus-sn">GitHub</a></Footer>
+        <Footer className={style.footer}>
+          <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
+        </Footer>
       </Layout>
     </>
   );
