@@ -1,0 +1,44 @@
+@import "bootstrap-reboot.min";
+@import "bootstrap-grid.min";
+
+html {
+  font-family: RF Rostin, Arial, sans-serif;
+}
+
+//.mt-1 {
+//  margin-top: 10px;
+//}
+//
+//.mt-2 {
+//  margin-top: 20px;
+//}
+//
+//.mt-3 {
+//  margin-top: 30px;
+//}
+//
+//.mt-4 {
+//  margin-top: 40px;
+//}
+//
+//.mt-5 {
+//  margin-top: 50px;
+//}
+
+
+.h5 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.text-orange {
+  color: #ffbc5b;
+}
+
+.text-violet {
+  color: #4520ab;
+}

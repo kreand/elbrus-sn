@@ -7,7 +7,7 @@ export const tooltipTitle = {
 };
 
 export const tooltipDefaultOption = {
-  placement: "top",
+  placement: 'top',
   mouseEnterDelay: '0.2',
   mouseLeaveDelay: '0.6',
   color: 'var(--purple_color)',

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {Row, Col} from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'antd';
 import EmployerCard from '../EmployerCard/EmployerCard';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addLocalEmployers,
   changeActiveEmpBtn,
@@ -13,9 +13,9 @@ import FilterRatingEmployers from '../FilterRatingEmployers/FilterRatingEmployer
 import PaginationComponent from '../Pagination/PaginationComponent';
 
 const AllEmployers = () => {
-  const {allEmployers} = useSelector(state => state.employers);
-  const {filterEmployers} = useSelector(state => state.employers);
-  const {findEmployers} = useSelector(state => state.employers);
+  const { allEmployers } = useSelector(state => state.employers);
+  const { filterEmployers } = useSelector(state => state.employers);
+  const { findEmployers } = useSelector(state => state.employers);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
@@ -32,25 +32,42 @@ const AllEmployers = () => {
     dispatch(addLocalEmployers(filterEmployers));
   }, [dispatch, filterEmployers]);
 
-  const searchEmployer = (e) => {
-    dispatch(addLocalEmployers(filterEmployers.filter(emp => {
-      return emp.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1;
-    })));
+  const searchEmployer = e => {
+    dispatch(
+      addLocalEmployers(
+        filterEmployers.filter(emp => {
+          return (
+            emp.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
+          );
+        }),
+      ),
+    );
   };
 
-  const changePagination = (page) => {
+  const changePagination = page => {
     setPage(page);
   };
 
   return (
     <>
-      <Row justify='center'>
+      <Row justify="center">
         <Col span={20} offset={0}>
-          <FilterRatingEmployers/>
-          <InputComponent placeholder='Найти работодателя' onChange={searchEmployer}/>
-          {findEmployers.length ? findEmployers.slice((page - 1) * 10, (page * 10)).map((employer) => <EmployerCard key={employer._id}
-                                                                                employer={employer}/>) : null}
-          <PaginationComponent totalPages={findEmployers.length} onChange={changePagination} />
+          <FilterRatingEmployers />
+          <InputComponent
+            placeholder="Найти работодателя"
+            onChange={searchEmployer}
+          />
+          {findEmployers.length
+            ? findEmployers
+                .slice((page - 1) * 10, page * 10)
+                .map(employer => (
+                  <EmployerCard key={employer._id} employer={employer} />
+                ))
+            : null}
+          <PaginationComponent
+            totalPages={findEmployers.length}
+            onChange={changePagination}
+          />
         </Col>
       </Row>
     </>
