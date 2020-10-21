@@ -1,6 +1,7 @@
 import React from 'react';
 import {Pagination, Col, Row} from 'antd';
 import style from './PaginationComponent.module.css';
+import './PagComponent.css';
 
 const PaginationComponent = ({page, totalPages, justify, onChange, defaultPageSize = 10}) => {
   return (
