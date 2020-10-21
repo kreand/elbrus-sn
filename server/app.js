@@ -9,6 +9,7 @@ const employersRouter = require('./routers/employers');
 const studentsRouter = require('./routers/students');
 const profileRouter = require('./routers/profile');
 const shopRouter = require('./routers/shop');
+const eventsRouter = require('./routers/events');
 
 const app = express();
 
@@ -41,5 +42,6 @@ app.use('/employers', employersRouter);
 app.use('/students', studentsRouter);
 app.use('/profile', profileRouter);
 app.use('/shop', shopRouter);
+app.use('/events', eventsRouter);
 
 start();
