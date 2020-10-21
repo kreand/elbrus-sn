@@ -1,37 +1,38 @@
 <template>
-<div class="container ">
-  <h1>Календарь мероприятий</h1>
+  <a-row>
+    <a-col :sm="{offset: 2, span: 20}">
+      <h1 class="text-center">Календарь мероприятий</h1>
 
-  <a-calendar :locale="locale">
-    <ul slot="dateCellRender" slot-scope="value" class="events">
-      <Event
-        v-for="event in getListData(value)"
-        :key="event.id"
-        :event="event"
-        @showEvent="showModal"
-      />
-    </ul>
-  </a-calendar>
+      <a-calendar :locale="locale">
+        <ul slot="dateCellRender" slot-scope="value" class="events">
+          <Event
+            v-for="event in getListData(value)"
+            :key="event.id"
+            :event="event"
+            @showEvent="showModal"
+          />
+        </ul>
+      </a-calendar>
 
-  <a-modal
-    :title="event.title"
-    :visible="visible"
-    :confirm-loading="confirmLoading"
-    :ok-button-props="{ style: {display: 'none'} }"
-    cancel-text="Закрыть"
-    @ok="handleOk"
-    @cancel="handleCancel"
-  >
-    <div class="h5">Формат: <span class="text-violet h5">{{ event.format }}</span></div>
-    <div class="h5">Город: <span class="text-violet h5">{{ event.city }}</span></div>
-    <div class="h5">Описание</div>
-    <p>{{ event.body }}</p>
-    <div class="h5">Дата и время: {{event.day}}.{{event.month + 1}}.{{event.year}} в {{event.time}}</div>
+      <a-modal
+        :title="event.title"
+        :visible="visible"
+        :confirm-loading="confirmLoading"
+        :ok-button-props="{ style: {display: 'none'} }"
+        cancel-text="Закрыть"
+        @ok="handleOk"
+        @cancel="handleCancel"
+      >
+        <div class="h5">Формат: <span class="text-violet h5">{{ event.format }}</span></div>
+        <div class="h5">Город: <span class="text-violet h5">{{ event.city }}</span></div>
+        <div class="h5">Описание</div>
+        <p>{{ event.body }}</p>
+        <div class="h5">Дата и время: {{event.day}}.{{event.month + 1}}.{{event.year}} в {{event.time}}</div>
 
-  </a-modal>
-  <CreateEvent/>
-
-</div>
+      </a-modal>
+      <CreateEvent/>
+    </a-col>
+  </a-row>
 </template>
 
 <script>
@@ -143,7 +144,8 @@ export default {
 .notes-month section {
   font-size: 28px;
 }
-.ant-radio-group .ant-radio-group-outline .ant-radio-group-default {
+
+.ant-radio-button-wrapper {
   display: none;
 }
 
