@@ -29,9 +29,7 @@
     <div class="h5">Дата и время: {{event.day}}.{{event.month + 1}}.{{event.year}} в {{event.time}}</div>
 
   </a-modal>
-  <CreateEvent
-    @createEvent="showDate"
-  />
+  <CreateEvent/>
 
 </div>
 </template>
@@ -93,10 +91,6 @@ export default {
     event: {}
   }),
   methods: {
-    showDate(data) {
-      console.log(data)
-    },
-
     getListData(value) {
 
       const listData = this.events.filter(event => (
@@ -148,6 +142,9 @@ export default {
 }
 .notes-month section {
   font-size: 28px;
+}
+.ant-radio-group .ant-radio-group-outline .ant-radio-group-default {
+  display: none;
 }
 
 </style>

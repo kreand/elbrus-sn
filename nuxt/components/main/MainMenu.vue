@@ -1,46 +1,12 @@
 <template>
-  <ul class="main-menu d-flex">
-    <li class="menu-item">
-      <nuxt-link exact to="/" class="menu-item__link">Главная</nuxt-link>
-    </li>
-    <li class="menu-item">
-      <nuxt-link to="/about" class="menu-item__link">О школе</nuxt-link>
-    </li>
-    <li class="menu-item">
-      <nuxt-link to="#" class="menu-item__link">Программа</nuxt-link>
-    </li>
-    <li class="menu-item">
-      <nuxt-link to="/events" class="menu-item__link">Мероприятия</nuxt-link>
-    </li>
-    <li class="menu-item">
-      <nuxt-link to="/faq" class="menu-item__link">FAQ</nuxt-link>
-    </li>
-    <li class="menu-item">
-      <nuxt-link to="/contacts" class="menu-item__link">Контакты</nuxt-link>
-    </li>
-    <li class="menu-item">
+  <a-row type="flex" justify="center">
+    <a-menu  class="menu"  mode="horizontal">
+      <a-menu-item class="menu__item" key="home"> <a-icon type="home" />Главная</a-menu-item>
+      <a-menu-item class="menu__item" key="calendar"> <a-icon type="calendar" />Календарь</a-menu-item>
+    </a-menu>
+  </a-row>
 
-    </li>
 
-  </ul>
-<!--  <a-menu mode="horizontal">-->
-<!--    <a-menu-item><nuxt-link to="/">Главная</nuxt-link></a-menu-item>-->
-<!--    <a-menu-item><nuxt-link to="/about">О школе</nuxt-link></a-menu-item>-->
-<!--    <a-sub-menu>-->
-<!--        <span slot="title" class="submenu-title-wrapper"-->
-<!--        >Программа</span-->
-<!--        >-->
-<!--      <a-menu-item key="setting:1">-->
-<!--        <nuxt-link to="/program">Очный буткэмп</nuxt-link>-->
-<!--      </a-menu-item>-->
-<!--      <a-menu-item key="setting:2">-->
-<!--        <nuxt-link to="/program/online">Онлайн буткэмп</nuxt-link>-->
-<!--      </a-menu-item>-->
-<!--    </a-sub-menu>-->
-<!--    <a-menu-item><nuxt-link to="/events">Мероприятия</nuxt-link></a-menu-item>-->
-<!--    <a-menu-item><nuxt-link to="/faq">FAQ</nuxt-link></a-menu-item>-->
-<!--    <a-menu-item><nuxt-link to="/contacts">Контакты</nuxt-link></a-menu-item>-->
-<!--  </a-menu>-->
 </template>
 
 <script>
@@ -50,6 +16,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.menu {
+  color: #3a8eed;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  &__item {
+    &:hover {
+      color: #29edff;
+    }
+  }
+}
+
 .main-menu {
   list-style: none;
   margin: 0;
