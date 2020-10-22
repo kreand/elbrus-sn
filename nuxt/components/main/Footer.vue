@@ -12,7 +12,7 @@ name: "Footer"
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .footer {
   height: 100px;
   background-color: #4520ab;
@@ -25,5 +25,4 @@ name: "Footer"
     color: #29edff;
   }
 }
-
 </style>

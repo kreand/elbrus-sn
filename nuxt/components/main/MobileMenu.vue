@@ -13,7 +13,7 @@
         class="burger__btn"
         @click="onClick"
       >
-        <img class="burger__btn-img" src="/power.svg" alt="close">
+        <img class="burger__btn-img" src="/close.svg" alt="close">
       </div>
     </div>
     <div
@@ -67,9 +67,7 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
+<style lang="scss" scoped>
 .burger {
   &__btn {
     cursor: pointer;
@@ -121,5 +119,4 @@ export default {
     min-height: 120px;
   }
 }
-
 </style>
