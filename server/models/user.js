@@ -5,7 +5,7 @@ const userSchema = new Schema({
   photo: {
     type: String,
     default:
-      'https://res.cloudinary.com/elbrus-coding-bootcamp/image/upload/v1603113809/images/default-user-icon-13_vsliun.png',
+      'https://res.cloudinary.com/elbrus-coding-bootcamp/image/upload/v1603361614/images/impg2ijecm9ajxdwypbe.png',
   },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
