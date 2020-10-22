@@ -20,9 +20,11 @@
 }
 
 .sidebar {
-  position: sticky;
+  position: fixed;
   padding-top: 64px;
+  min-height: 100vh;
   background-color: var(--white_color);
+  border-right: 1px solid rgba(69, 32, 171, 0.5);
 }
 
 .sidebar ul {
@@ -43,10 +45,9 @@
 }
 
 .content {
-  padding: 75px 10px 10px 10px;
+  padding: 75px 10px 10px 210px;
   min-height: 97vh;
   background-color: var(--white_color);
-  border-left: 1px solid rgba(69, 32, 171, 0.5);
 }
 
 .footer {
@@ -54,7 +55,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  height: 3vh;
+  min-height: 3vh;
   width: 100%;
   background-color: var(--purple_color);
   color: var(--cyan_color);

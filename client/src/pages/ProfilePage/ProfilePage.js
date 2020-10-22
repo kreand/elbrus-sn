@@ -11,6 +11,7 @@ import ProfileComponent from '../../components/ProfileComponent/ProfileComponent
 import Cloudinary from '../../cloudinary/Cloudinary';
 import { Row, Col } from 'antd';
 import { getAllUsersAC } from '../../redux/actionCreators/ratingAC';
+import {getAllOrders} from '../../redux/actionCreators/orderAC';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
@@ -25,6 +26,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(getAllUsersAC());
+    dispatch(getAllOrders());
   }, [dispatch]);
 
   const changeEditStatus = () => {
