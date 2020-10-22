@@ -38,7 +38,7 @@ const EmployerCard = ({ employer }) => {
           <span
             className={style.countReviews}
           >{`Количество отзывов: ${allReviews.length}`}</span>
-          {user.status === 'teacher' ? <Link to='#' onClick={deleteThisEmployer}>
+          {user.status === 'Ментор' ? <Link to='#' onClick={deleteThisEmployer}>
             <DeleteOutlined />
             {' Удалить работодателя'}
           </Link> : null}
