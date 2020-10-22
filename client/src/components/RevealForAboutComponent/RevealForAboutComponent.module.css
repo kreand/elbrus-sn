@@ -1,7 +1,7 @@
 .block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
   background: #000;
   height: 100vh;
   border-bottom: 1px solid var(--white_color);
@@ -22,4 +22,9 @@ li {
 }
 .title a:hover {
   color: var(--cyan_color);
+}
+
+#asd {
+display: flex;
+  justify-content: space-between;
 }
