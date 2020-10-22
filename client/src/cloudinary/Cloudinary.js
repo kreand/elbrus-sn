@@ -3,7 +3,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import style from './Cloudinary.module.css';
 import {addPhotoUrl} from '../redux/actionCreators/profileAC';
 import {Row, Col} from 'antd';
-import {DownloadOutlined, LoadingOutlined} from '@ant-design/icons';
+import {
+  DownloadOutlined, 
+  LoadingOutlined
+} from '@ant-design/icons';
 
 function Cloudinary({folder, width}) {
   const dispatch = useDispatch();
@@ -35,10 +38,17 @@ function Cloudinary({folder, width}) {
 
   return (
     <Row justify='center'>
-      <Col >
+      <Col>
         <div className={style.label}>
-          <label htmlFor='file' className={style.inputFile}>
-            {'Выберите фото '}{isLoading ? <LoadingOutlined /> : <DownloadOutlined/>}
+          <label 
+          htmlFor='file' 
+          className={style.inputFile}
+          >
+            {'Выберите фото '}
+            {isLoading 
+            ? <LoadingOutlined /> 
+            : <DownloadOutlined/>
+            }
           </label>
         </div>
         <input
