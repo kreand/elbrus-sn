@@ -30,18 +30,15 @@ export default {
   name: 'Navbar',
   components: {MobileMenu, Logo, MainMenu},
 }
-
 </script>
 
 <style lang="scss" scoped>
-
-
-
 .header {
   width: 100%;
   height: 80px;
   background-color: #4520ab;
 }
+
 .btn {
   text-decoration: none;
   font-size: 14px;
@@ -55,5 +52,4 @@ export default {
     border-color: #bc7b26;
   }
 }
-
 </style>

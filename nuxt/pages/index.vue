@@ -126,7 +126,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .btn {
   display: inline-block;
   text-align: center;
@@ -202,6 +201,7 @@ export default {
   color: #4520ab;
   text-align: center;
 }
+
 .statistic-item {
   padding-bottom: 30px;
   &__count {
@@ -251,7 +251,7 @@ export default {
       }
       &:after {
         content: ' />';
-    }
+      }
     }
   }
 }
