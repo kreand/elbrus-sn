@@ -89,7 +89,7 @@ const ShopPage = () => {
     <>
       <Row justify='center'>
         <Col span={12}>
-          <form onSubmit={addItemShopHandler}>
+          {user.status === 'Ментор' ? <form onSubmit={addItemShopHandler}>
             <h2 style={{textAlign: 'center', color: 'var(--purple_color)'}}>
               Добавить новый товар
             </h2>
@@ -120,7 +120,7 @@ const ShopPage = () => {
             ) : (
               <ButtonComponent title="Добавить"/>
             )}
-          </form>
+          </form> : null}
         </Col>
       </Row>
       <div style={{display: 'flex', flexWrap: 'wrap'}}>

@@ -8,7 +8,7 @@ import style from './FilterRatingEmployers.module.css';
 
 const FilterRatingEmployers = () => {
   const dispatch = useDispatch();
-  const ratings = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5];
+  const ratings = [5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5, 0];
   const { allEmployers } = useSelector(state => state.employers);
 
   const filterOnRating = e => {
