@@ -3,22 +3,39 @@
   margin: 0.2em;
 }
 
-.nameBox {
-  margin-top: 5em;
+.photo {
+  margin-top: 1em;
+}
+
+.box {
+  margin-top: 2.8em;
+}
+
+.button {
+  margin-top: 1.3em;
+}
+
+.lvl {
+  color: var(--orange_color);
+  font-weight: bolder;
+}
+
+.status{
+  color: var(--purple_color);
 }
 
 .divider span{
-  margin-top: 2em;
   color: var(--orange_color);
+  margin-top: 1em;
+  font-size: large;
 }
 
 .divider::after{
-  margin-top: 2em;
   color: var(--orange_color);
+  margin-top: 1em;
 }
 
-
 .divider::before{
-  margin-top: 2em;
   color: var(--orange_color);
+  margin-top: 1em;
 }
