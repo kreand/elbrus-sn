@@ -100,7 +100,7 @@
       <a-row class="additional-buttons__content" type="flex" justify="center" align="middle">
         <a-col >
           <nuxt-link class="btn btn--orange m-3" to="/events">Календарь</nuxt-link>
-          <a :href="baseURL" class="btn btn--blue m-3">Личный кабинет</a>
+          <a href="http://localhost:3000" class="btn btn--blue m-3">Личный кабинет</a>
         </a-col>
       </a-row>
     </section>

@@ -9,14 +9,14 @@ import {
 } from '../../redux/actionCreators/profileAC';
 import ProfileComponent from '../../components/ProfileComponent/ProfileComponent';
 import Cloudinary from '../../cloudinary/Cloudinary';
-import {Row, Col} from 'antd';
-import {getAllUsersAC} from '../../redux/actionCreators/ratingAC';
+import { Row, Col } from 'antd';
+import { getAllUsersAC } from '../../redux/actionCreators/ratingAC';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
-  const user = useSelector((state) => state.profile.user);
-  const imgUrl = useSelector((state) => state.profile.imgUrl);
-  const userPhoto = useSelector((state) => state.profile.user.photo);
+  const user = useSelector(state => state.profile.user);
+  const imgUrl = useSelector(state => state.profile.imgUrl);
+  const userPhoto = useSelector(state => state.profile.user.photo);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const ProfilePage = () => {
     setEditStatus(!editStatus);
   };
 
-  const profileHandler = (e) => {
+  const profileHandler = e => {
     e.preventDefault();
     let arraySkills = [];
     const {
@@ -55,82 +55,39 @@ const ProfilePage = () => {
     return (
       <div>
         <Row>
-          <h2 
-            className={style.title}
-            >Редактировать профиль
-          </h2>
+          <h2 className={style.title}>Редактировать профиль</h2>
         </Row>
-        <Row 
-        gutter={16}
-        justify="start">
-          <Col 
-          align="middle"
-          span={8} 
-          >
+        <Row gutter={16} justify="start">
+          <Col align="middle" span={8}>
             {imgUrl ? (
-                <img 
-                src={imgUrl} 
-                alt={imgUrl} 
-                style={{ width: 
-                  { imgUrl } 
-                }}/>
-              ) : (
-                <img
+              <img src={imgUrl} alt={imgUrl} style={{ width: { imgUrl } }} />
+            ) : (
+              <img
                 src={userPhoto}
                 alt={userPhoto}
-                style={{ width: 
-                  { imgUrl }
-                }}/>
-              )}
+                style={{ width: { imgUrl } }}
+              />
+            )}
           </Col>
-          <Col 
-          align="middle"
-          justify="middle"
-          span={10}
-          offset={1} 
-          >
-            <form 
-            className={style.form}
-            onSubmit={profileHandler} 
-            >
-              <label 
-              className={style.label}>
-                Поменять имя
-              </label>
+          <Col align="middle" justify="middle" span={10} offset={1}>
+            <form className={style.form} onSubmit={profileHandler}>
+              <label className={style.label}>Поменять имя</label>
               <InputComponent
                 name="name"
                 size="middle"
                 defaultValue={user.name}
               />
-              <label 
-              className={style.label}>
-                Редактировать скиллы
-              </label>
+              <label className={style.label}>Редактировать скиллы</label>
               <InputComponent
                 name="skills"
                 size="middle"
-                defaultValue={user.skills.length > 0 
-                  ? user.skills 
-                  : null
-                }
+                defaultValue={user.skills.length > 0 ? user.skills : null}
               />
-              <label 
-              className={style.label}>
-                Заменить фото
-              </label>
-              <Cloudinary 
-              folder={'userPhoto280x280'} 
-              width={'280px'} 
-              />
+              <label className={style.label}>Заменить фото</label>
+              <Cloudinary folder={'userPhoto280x280'} width={'280px'} />
               <div className={style.buttonEdit}>
-                <ButtonComponent 
-                title={'Сохранить'} 
-                type="submit" 
-                />
-                <ButtonComponent 
-                title={'Отмена'} 
-                onClick={changeEditStatus} 
-                />
+                <ButtonComponent title={'Сохранить'} type="submit" />
+                <ButtonComponent title={'Отмена'} onClick={changeEditStatus} />
               </div>
             </form>
           </Col>
@@ -140,11 +97,7 @@ const ProfilePage = () => {
   }
   return (
     <Row>
-      <Col 
-      span={20} 
-      justify="middle"
-      align="middle"
-      >
+      <Col span={20} justify="middle" align="middle">
         <ProfileComponent
           user={user}
           isMyProfile={true}
