@@ -11,6 +11,7 @@ import ProfileComponent from '../../components/ProfileComponent/ProfileComponent
 import Cloudinary from '../../cloudinary/Cloudinary';
 import { Row, Col } from 'antd';
 import { getAllUsersAC } from '../../redux/actionCreators/ratingAC';
+import {getAllOrders} from '../../redux/actionCreators/orderAC';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
@@ -25,6 +26,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(getAllUsersAC());
+    dispatch(getAllOrders());
   }, [dispatch]);
 
   const changeEditStatus = () => {
@@ -54,11 +56,14 @@ const ProfilePage = () => {
   if (editStatus) {
     return (
       <div>
-        <Row>
-          <h2 className={style.title}>Редактировать профиль</h2>
+
+        <Row gutter={16} justify="start">
+          <Col offset={2} className={style.title}>
+            Редактировать профиль
+          </Col>
         </Row>
         <Row gutter={16} justify="start">
-          <Col align="middle" span={8}>
+          <Col align="middle" span={10}>
             {imgUrl ? (
               <img src={imgUrl} alt={imgUrl} style={{ width: { imgUrl } }} />
             ) : (
@@ -69,8 +74,9 @@ const ProfilePage = () => {
               />
             )}
           </Col>
-          <Col align="middle" justify="middle" span={10} offset={1}>
-            <form className={style.form} onSubmit={profileHandler}>
+
+          <Col align="middle" justify="middle" span={10}>
+            <form onSubmit={profileHandler}>
               <label className={style.label}>Поменять имя</label>
               <InputComponent
                 name="name"

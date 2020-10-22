@@ -7,6 +7,7 @@ import {
 import {Avatar, Col, List, Row} from 'antd';
 import InputComponent from '../../components/Input/InputComponent';
 import {Link} from 'react-router-dom';
+import style from '../RatingsPage/RatingsPage.module.css';
 
 const AdminPage = () => {
     const students = useSelector(state =>
@@ -44,6 +45,7 @@ const AdminPage = () => {
                         renderItem={student => (
                             <List.Item>
                                 <List.Item.Meta
+                                    className={style.link}
                                     avatar={<Avatar
                                         src={student.photo}/>}
                                     title={<Link to={`/student/${student._id}`}>{student.name}</Link>}
@@ -54,7 +56,7 @@ const AdminPage = () => {
                                         Роль: {student.status}
                                     </div>}
                                 />
-                                <div><Link to={`/admin/edit-student/${student._id}`}>Изменить</Link></div>
+                                <div className={style.link}><Link to={`/admin/edit-student/${student._id}`}>Изменить</Link></div>
                             </List.Item>
                         )}
                     />

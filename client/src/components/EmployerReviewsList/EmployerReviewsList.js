@@ -54,7 +54,7 @@ const EmployerReviewsList = ({ allReviews, employerId }) => {
                 <p className={style.review}>{review.review}</p>
                 <Row>
                   <Col span={4} offset={20}>
-                    {(user._id === review.userId || user.status === 'teacher') ? (
+                    {(user._id === review.userId || user.status === 'Ментор') ? (
                       <Link
                         className={style.review}
                         to="#"
