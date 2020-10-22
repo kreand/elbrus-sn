@@ -29,7 +29,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
               icon={<EditOutlined />}
             />
           ) : null}
-        </Col>    
+        </Col>
       </Row>
       <Row gutter={16} justify="start">
         <Col align="middle" span={10} offset={1} className={style.photo}>
@@ -55,10 +55,10 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
           <h3>
             {user.skills.length > 0
               ? user.skills.map((skill, index) => (
-                  <Tag key={index} color="purple" className={style.tag}>
-                    {skill}
-                  </Tag>
-                ))
+                <Tag key={index} color="purple" className={style.tag}>
+                  {skill}
+                </Tag>
+              ))
               : 'Скилы не указаны'}
           </h3>
         </Col>

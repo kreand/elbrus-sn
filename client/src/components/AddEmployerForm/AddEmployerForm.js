@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Row, Col, message } from 'antd';
 import { hideErrorAC } from '../../redux/actionCreators/appAC';
+import style from './AddEmployerForm.module.css';
 
 const AddEmployerForm = () => {
   const [rating, changeRating] = useState(0);
@@ -68,7 +69,9 @@ const AddEmployerForm = () => {
             placeholder="Твоё мнение о данной организации"
             minRows={2}
           />
-          <ButtonComponent title="Добавить" />
+          <div className={style.btn}>
+            <ButtonComponent title="Добавить" />
+          </div>
         </form>
       </Col>
     </Row>
