@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const Event = require('../models/event');
 
-
 router.route('/').get(async (req, res) => {
   try {
-    console.log('GET /EVENTS')
+    console.log('GET /EVENTS');
     const events = await Event.find({});
     if (events.length <= 0) {
       return res
@@ -23,7 +22,7 @@ router.route('/').get(async (req, res) => {
 router.route('/create').post(async (req, res) => {
   try {
     const {
-      title, type, group, format, city, year, month, day, time, body
+      title, type, group, format, city, year, month, day, time, body,
     } = req.body;
 
     const event = await new Event({
@@ -36,10 +35,10 @@ router.route('/create').post(async (req, res) => {
       month,
       day,
       time,
-      body
+      body,
     });
     await event.save();
-    res.status(200).end()
+    res.status(200).end();
   } catch (e) {
     res
       .status(500)

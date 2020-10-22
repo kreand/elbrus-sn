@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Cloudinary.module.css';
-import {addPhotoUrl} from '../redux/actionCreators/profileAC';
-import {Row, Col} from 'antd';
-import {DownloadOutlined, LoadingOutlined} from '@ant-design/icons';
+import { addPhotoUrl } from '../redux/actionCreators/profileAC';
+import { Row, Col } from 'antd';
+import { DownloadOutlined, LoadingOutlined } from '@ant-design/icons';
 
-function Cloudinary({folder, width}) {
+function Cloudinary({ folder, width }) {
   const dispatch = useDispatch();
   const userPhoto = useSelector(state => state.profile.user.photo);
   const [isLoading, changeLoading] = useState(false);
@@ -34,15 +34,16 @@ function Cloudinary({folder, width}) {
   };
 
   return (
-    <Row justify='center'>
-      <Col >
+    <Row justify="center">
+      <Col>
         <div className={style.label}>
-          <label htmlFor='file' className={style.inputFile}>
-            {'Выберите фото '}{isLoading ? <LoadingOutlined /> : <DownloadOutlined/>}
+          <label htmlFor="file" className={style.inputFile}>
+            {'Выберите фото '}
+            {isLoading ? <LoadingOutlined /> : <DownloadOutlined />}
           </label>
         </div>
         <input
-          style={{visibility: 'hidden'}}
+          style={{ visibility: 'hidden' }}
           type="file"
           name="file"
           id="file"

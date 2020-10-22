@@ -3,6 +3,8 @@
     <ul class="menu">
       <li class="menu__item">
         <nuxt-link class="menu__item-link" active-class="menu__item-link-active" exact to="/">Главная</nuxt-link>
+      </li>
+      <li class="menu__item">
         <nuxt-link class="menu__item-link" active-class="menu__item-link-active" to="/events">Мероприятия</nuxt-link>
       </li>
     </ul>
@@ -19,6 +21,7 @@ export default {
 <style lang="scss" scoped>
 
 .menu {
+  display: flex;
   list-style: none;
   margin: 0;
   &__item {

@@ -98,7 +98,7 @@
 
     <section class="additional-buttons">
       <a-row class="additional-buttons__content" type="flex" justify="center" align="middle">
-        <a-col >
+        <a-col class="text-center">
           <nuxt-link class="btn btn--orange m-3" to="/events">Календарь</nuxt-link>
           <a href="http://localhost:3000" class="btn btn--blue m-3">Личный кабинет</a>
         </a-col>
@@ -112,16 +112,11 @@ export default {
   name: 'Home',
   head: {
     title: 'Elbrus Social Network - единое пространство для всех участников Эльбрус Буткэмп'
-  }
+  },
 }
 </script>
 
-<style lang="scss">
-@media (max-width: 768px) {
-  .network-description {
-    font-size: 20px;
-  }
-}
+<style lang="scss" scoped>
 
 .btn {
   display: inline-block;
@@ -266,6 +261,12 @@ export default {
   &__content {
     background-color: #efefef;
     min-height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .network-description {
+    font-size: 20px;
   }
 }
 </style>
