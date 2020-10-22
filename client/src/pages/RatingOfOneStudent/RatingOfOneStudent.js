@@ -28,13 +28,12 @@ const RatingOfOneStudent = () => {
         e.preventDefault();
         const rating = e.target.rating.value;
         const name = e.target.name.value;
-        const coins = e.target.coins.value;
         const email = e.target.email.value;
         const skills = e.target.skills.value;
         const group = e.target.group.value;
         const status = select;
         const _id = user._id;
-        dispatch(defaultChangeRatingAC({_id, rating, name, email, coins, skills, group, status }));
+        dispatch(defaultChangeRatingAC({_id, rating, name, email, skills, group, status }));
         hist.push('/admin');
     }
 
@@ -69,20 +68,12 @@ const RatingOfOneStudent = () => {
                     justify="left"
                     defaultValue={user.rating}
                 />
-                <h2>Изменить количество монет </h2>
-                <InputComponent
-                    key={user.coins+200}
-                    name="coins"
-                    placeholder="Изменить монеты"
-                    span={7}
-                    justify="left"
-                    defaultValue={user.coins}
-                />
                 <h2>Изменить роль</h2>
                 <Select key={user.status} defaultValue={user.status} name="status" placeholder={'Выбрать роль'}
                         onChange={value => setSelect(value)}>
                     <Option value={'Гость'}>Гость</Option>
                     <Option value={'Студент'}>Студент</Option>
+                    <Option value={'Выпускник'}>Выпускник</Option>
                     <Option value={'Ментор'}>Ментор</Option>
                 </Select>
                 <h2>Изменить группу</h2>
