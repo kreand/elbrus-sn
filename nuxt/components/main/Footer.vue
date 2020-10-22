@@ -1,7 +1,7 @@
 <template>
   <footer>
     <a-row class="footer" type="flex" align="middle" justify="center">
-      <a href="#" target="_blank">GitHub</a>
+      <a class="link" href="https://github.com/NickBGor/elbrus-sn" target="_blank">GitHub</a>
     </a-row>
   </footer>
 </template>
@@ -17,4 +17,13 @@ name: "Footer"
   height: 100px;
   background-color: #4520ab;
 }
+
+.link {
+  text-decoration: none;
+  color: #29edff;
+  &:hover {
+    color: #29edff;
+  }
+}
+
 </style>

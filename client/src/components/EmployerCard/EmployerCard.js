@@ -3,9 +3,19 @@ import { Card } from 'antd';
 import RateComponent from '../Rate/RateComponent';
 import style from './EmployerCard.module.css';
 import { Link } from 'react-router-dom';
+import {DeleteOutlined} from '@ant-design/icons';
+import {useDispatch, useSelector} from 'react-redux';
+import {deleteEmployer} from '../../redux/actionCreators/employerAC';
 
 const EmployerCard = ({ employer }) => {
   const { rating, allReviews } = employer;
+  const {user} = useSelector(state => state.profile);
+  const dispatch = useDispatch();
+
+  const deleteThisEmployer = () => {
+    dispatch(deleteEmployer(employer._id));
+  };
+
   return (
     <>
       <Card
@@ -24,9 +34,15 @@ const EmployerCard = ({ employer }) => {
           title="Рейтинг работодателя:"
           justify="left"
         />
-        <span
-          className={style.countReviews}
-        >{`Количество отзывов: ${allReviews.length}`}</span>
+        <div className={style.bottomOfCard}>
+          <span
+            className={style.countReviews}
+          >{`Количество отзывов: ${allReviews.length}`}</span>
+          {user.status === 'teacher' ? <Link to='#' onClick={deleteThisEmployer}>
+            <DeleteOutlined />
+            {' Удалить работодателя'}
+          </Link> : null}
+        </div>
       </Card>
     </>
   );

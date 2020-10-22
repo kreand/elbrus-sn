@@ -9,7 +9,8 @@ import {
 } from '../../redux/actionCreators/profileAC';
 import ProfileComponent from '../../components/ProfileComponent/ProfileComponent';
 import Cloudinary from '../../cloudinary/Cloudinary';
-import { Row, Col } from 'antd';
+import {Row, Col} from 'antd';
+import {getAllUsersAC} from '../../redux/actionCreators/ratingAC';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
@@ -21,6 +22,10 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(addPhotoUrl(userPhoto));
   }, [dispatch, userPhoto]);
+
+  useEffect(() => {
+    dispatch(getAllUsersAC());
+  }, [dispatch]);
 
   const changeEditStatus = () => {
     setEditStatus(!editStatus);

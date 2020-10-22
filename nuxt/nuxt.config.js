@@ -39,6 +39,6 @@ export default {
   build: {
   },
 
-  //
+  // Build dir
   buildDir: 'dist'
 }

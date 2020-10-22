@@ -29,9 +29,8 @@ const AddEmployerForm = () => {
     } = e.target;
     const userName = user.name;
     const userId = user._id;
-    const userPhoto = user.photo;
     dispatch(
-      createEmployer({ name, review, rating, userName, userId, userPhoto }),
+      createEmployer({ name, review, rating, userName, userId }),
     );
   };
 
