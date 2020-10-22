@@ -3,7 +3,7 @@
     <a-col :sm="{offset: 2, span: 20}">
       <h1 class="text-center">Календарь мероприятий</h1>
 
-      <a-calendar :locale="locale">
+      <a-calendar>
         <ul slot="dateCellRender" slot-scope="value" class="events">
           <Event
             v-for="event in getListData(value)"
@@ -47,45 +47,6 @@ export default {
   },
   components: {CreateEvent, Event},
   data: () => ({
-    locale: {
-      "lang": {
-        "placeholder": "Select date",
-        "rangePlaceholder": ["Start date", "End date"],
-        "today": "Today",
-        "now": "Now",
-        "backToToday": "Back to today",
-        "ok": "Ok",
-        "clear": "Clear",
-        "month": "Месяц",
-        "year": "Год",
-        "timeSelect": "Выбрать время",
-        "dateSelect": "Выбрать дату",
-        "monthSelect": "Choose a month",
-        "yearSelect": "Choose a year",
-        "decadeSelect": "Choose a decade",
-        "yearFormat": "YYYY",
-        "dateFormat": "M/D/YYYY",
-        "dayFormat": "D",
-        "dateTimeFormat": "M/D/YYYY HH:mm:ss",
-        "monthFormat": "MMMM",
-        "monthBeforeYear": true,
-        "previousMonth": "Previous month (PageUp)",
-        "nextMonth": "Next month (PageDown)",
-        "previousYear": "Last year (Control + left)",
-        "nextYear": "Next year (Control + right)",
-        "previousDecade": "Last decade",
-        "nextDecade": "Next decade",
-        "previousCentury": "Last century",
-        "nextCentury": "Next century"
-      },
-      "timePickerLocale": {
-        "placeholder": "Выбрать время"
-      },
-      "dateFormat": "YYYY-MM-DD",
-      "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
-      "weekFormat": "YYYY-wo",
-      "monthFormat": "YYYY-MM"
-    },
     events: [],
     visible: false,
     confirmLoading: false,
@@ -130,6 +91,7 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 .events .ant-badge-status {
   overflow: hidden;
   white-space: nowrap;
@@ -137,10 +99,12 @@ export default {
   text-overflow: ellipsis;
   font-size: 12px;
 }
+
 .notes-month {
   text-align: center;
   font-size: 28px;
 }
+
 .notes-month section {
   font-size: 28px;
 }
@@ -148,5 +112,4 @@ export default {
 .ant-radio-button-wrapper {
   display: none;
 }
-
 </style>

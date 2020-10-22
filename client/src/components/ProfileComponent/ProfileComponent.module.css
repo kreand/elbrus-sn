@@ -5,12 +5,15 @@
 
 .lvl {
   color: var(--orange_color);
+  margin-top: 10px;
   font-weight: bolder;
   justify-content: center;
 }
 
 .h2 {
   color: var(--purple_color);
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .status{
@@ -21,12 +24,15 @@
 .divider span{
   color: var(--purple_color);
   font-size: large;
+  margin-top: 10px;
 }
 
 .divider::after{
   color: var(--orange_color);
+  margin-top: 10px;
 }
 
 .divider::before{
   color: var(--orange_color);
+  margin-top: 10px;
 }

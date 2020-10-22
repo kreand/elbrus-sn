@@ -15,9 +15,9 @@ import {getAllOrders} from '../../redux/actionCreators/orderAC';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
-  const user = useSelector(state => state.profile.user);
-  const imgUrl = useSelector(state => state.profile.imgUrl);
-  const userPhoto = useSelector(state => state.profile.user.photo);
+  const user = useSelector((state) => state.profile.user);
+  const imgUrl = useSelector((state) => state.profile.imgUrl);
+  const userPhoto = useSelector((state) => state.profile.user.photo);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ProfilePage = () => {
     setEditStatus(!editStatus);
   };
 
-  const profileHandler = e => {
+  const profileHandler = (e) => {
     e.preventDefault();
     let arraySkills = [];
     const {
@@ -56,7 +56,6 @@ const ProfilePage = () => {
   if (editStatus) {
     return (
       <div>
-
         <Row gutter={16} justify="start">
           <Col offset={2} className={style.title}>
             Редактировать профиль
@@ -74,7 +73,6 @@ const ProfilePage = () => {
               />
             )}
           </Col>
-
           <Col align="middle" justify="middle" span={10}>
             <form onSubmit={profileHandler}>
               <label className={style.label}>Поменять имя</label>
