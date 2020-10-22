@@ -3,25 +3,19 @@
 }
 
 .label {
-  color: var(--orange_color);
-  font-size: larger;
+  color: var(--purple_color);
+  font-size: large;
 }
 
 .buttonEdit {
-  margin-top: 30px;
   display: flex;
-  justify-content: center;
-}
-
-.buttonEdit button {
-  margin: 0 15px;
+  justify-content: space-evenly;
+  margin: 0 50px 0 50px;
 }
 
 .title {
   color: var(--purple_color);
-  margin: 0.5em 0 0.8em 2em;
-}
-
-.form {
-  margin-top: 1em;
+  font-size: large;
+  margin-bottom: 14px;
+  margin-top: 20px;
 }
