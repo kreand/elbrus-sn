@@ -31,7 +31,7 @@ import AdminEditStudentPage from '../../pages/AdminEditStudentPage/AdminEditStud
 
 const LayoutComponent = () => {
   const [about, setAbout] = useState(false);
-  const { Header, Footer, Sider, Content } = Layout;
+  const { Header, Sider, Content } = Layout;
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
@@ -148,20 +148,12 @@ const LayoutComponent = () => {
           </Content>
         </Layout>
       </div>
-      <Footer className={style.footer}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            margin: '0 40%',
-          }}
-        >
-          <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
-          <Link onClick={() => setAbout(true)} to="/about">
-            About us
-          </Link>
-        </div>
-      </Footer>
+      <footer className={style.footer}>
+            <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
+            <Link onClick={() => setAbout(true)} to="/about">
+              About us
+            </Link>
+      </footer>
     </Layout>
   );
 };

@@ -34,7 +34,6 @@ const AddReviewAboutEmployer = () => {
     const userName = user.name;
     const userId = user._id;
     const employerId = id;
-    const userPhoto = user.photo;
     const date = new Date();
     dispatch(
       addReviewAC({
@@ -44,7 +43,6 @@ const AddReviewAboutEmployer = () => {
         userId,
         rating,
         date,
-        userPhoto,
       }),
     );
   };

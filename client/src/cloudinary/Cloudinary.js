@@ -9,7 +9,6 @@ function Cloudinary({folder, width}) {
   const dispatch = useDispatch();
   const userPhoto = useSelector(state => state.profile.user.photo);
   const [isLoading, changeLoading] = useState(false);
-  console.log(isLoading);
 
   useEffect(() => {
     dispatch(addPhotoUrl(userPhoto));

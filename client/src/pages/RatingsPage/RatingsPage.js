@@ -8,6 +8,7 @@ import {
 } from '../../redux/actionCreators/ratingAC';
 import { Link } from 'react-router-dom';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
+import style from './RatingsPage.module.css';
 
 const RatingsPage = () => {
   const students = useSelector(state =>
@@ -60,9 +61,11 @@ const RatingsPage = () => {
             renderItem={student => (
               <List.Item>
                 <List.Item.Meta
-                  avatar={<Avatar src={student.photo} />}
+                  avatar={<Avatar src={student.photo}/>}
+                  className={style.link}
                   title={
-                    <Link to={`/student/${student._id}`}>{student.name}</Link>
+                    <Link  to={`/student/${student._id}`}>
+                        {student.name}</Link>
                   }
                   description={`Рейтинг: ${student.rating} Группа: ${student.group}`}
                 />

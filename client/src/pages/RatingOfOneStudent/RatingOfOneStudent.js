@@ -18,6 +18,7 @@ const RatingOfOneStudent = () => {
         setUser(allUsers.find(user => user._id === id));
         setSelect(allUsers.find(user => user._id === id).status);
     }, [allUsers, id]);
+
     const hist = useHistory();
 
     const [select, setSelect] = useState(user.status);
@@ -80,9 +81,9 @@ const RatingOfOneStudent = () => {
                 <h2>Изменить роль</h2>
                 <Select key={user.status} defaultValue={user.status} name="status" placeholder={'Выбрать роль'}
                         onChange={value => setSelect(value)}>
-                    <Option value={'guest'}>guest</Option>
-                    <Option value={'student'}>student</Option>
-                    <Option value={'teacher'}>teacher</Option>
+                    <Option value={'Гость'}>Гость</Option>
+                    <Option value={'Студент'}>Студент</Option>
+                    <Option value={'Ментор'}>Ментор</Option>
                 </Select>
                 <h2>Изменить группу</h2>
                 <InputComponent
