@@ -6,7 +6,7 @@ import ButtonComponent from '../../components/Button/ButtonComponent';
 import CardComponent from '../../components/Card/CardComponent';
 import InputComponent from '../../components/Input/InputComponent';
 import {
-  addDefaultShopItem,
+  addDefaultShopItem, buyDefaultItemShopAC, deleteDefaultItemShopAC,
   getDefaultAllShopItemsAC,
 } from '../../redux/actionCreators/shpoAC';
 import style from './ShopPage.module.css';
@@ -17,13 +17,14 @@ const ShopPage = () => {
   const errors = useSelector(state => state.app.errors);
   const loader = useSelector(state => state.app.isLoading);
   const shopItems = useSelector(state => state.shop);
+  const { user } = useSelector(state => state.profile);
   const [fileInput, setFileInput] = useState('Файл не выбран');
   const dispatch = useDispatch();
 
   const uploadFiles = async e => {
     const {files} = e.target;
     const fileName = files[0].name;
-    setFileInput(fileName.length > 30 ? `${fileName.slice(0, 30)}...` : fileName);
+    setFileInput(fileName.length > 32 ? `${fileName.slice(0, 32)}...` : fileName);
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'shopGoods');
@@ -52,6 +53,26 @@ const ShopPage = () => {
     );
   };
 
+  function getId(el) {
+    if (el.localName && el.localName === 'span') {
+      return el.outerHTML.match(/value="\w+/)[0].replace('value="', '');
+    } else if (el.localName) return getId(el.parentElement);
+  }
+
+  const deleteItem = (e) => {
+    const id = getId(e.target);
+    if (id) {
+      dispatch(deleteDefaultItemShopAC(id));
+    }
+  };
+
+  const buyItem = (e) => {
+    const id = getId(e.target);
+    if (id) {
+      dispatch(buyDefaultItemShopAC({itemId: id, userId: user._id}));
+    }
+  };
+
   const info = useCallback(() => {
     message.error(errors.errorMessage, 1.5);
   }, [errors.errorMessage]);
@@ -78,7 +99,7 @@ const ShopPage = () => {
             />
             <div className={style.label}>
               <label htmlFor='file' className={style.inputFile}>
-                {'Выберите фото товара '}{<DownloadOutlined/>}
+                {'Добавить фото '}{<DownloadOutlined/>}
               </label>
               <div className={style.fileinfo}>{fileInput}</div>
             </div>
@@ -105,6 +126,8 @@ const ShopPage = () => {
       <div style={{display: 'flex', flexWrap: 'wrap'}}>
         {shopItems.map(item => (
           <CardComponent
+            deleteCallback={deleteItem}
+            buyCallback={buyItem}
             key={item._id}
             id={item._id}
             title={item.title}

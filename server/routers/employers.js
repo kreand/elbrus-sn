@@ -15,10 +15,10 @@ router.post('/create-employer', async (req, res) => {
     userId,
   } = req.body.payload;
 
-  if (!review) {
+  if (!name) {
     return res.status(400).json({
       error: true,
-      message: 'Тебе надо написать отзыв',
+      message: 'Введи название организации',
     });
   }
 
@@ -26,6 +26,13 @@ router.post('/create-employer', async (req, res) => {
     return res.status(400).json({
       error: true,
       message: 'Тебе надо оценить работодателя (минимум пол звезды)',
+    });
+  }
+
+  if (!review) {
+    return res.status(400).json({
+      error: true,
+      message: 'Тебе надо написать отзыв',
     });
   }
 

@@ -12,7 +12,13 @@ import {
   deleteReviewSagaWatcher,
   getEmployersSagaWatcher,
 } from './employerSaga';
-import { getAllItemsShopWatcher, shopSagaWatcher } from './shopSaga';
+import {
+  buyItemShopWatcher,
+  deleteItemShopWatcher, deleteOrderWatcher,
+  getAllItemsShopWatcher,
+  getAllOrdersWatcher,
+  shopSagaWatcher,
+} from './shopSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -29,5 +35,9 @@ export default function* rootSaga() {
     checkTokenWatcher(),
     shopSagaWatcher(),
     getAllItemsShopWatcher(),
+    deleteItemShopWatcher(),
+    buyItemShopWatcher(),
+    getAllOrdersWatcher(),
+    deleteOrderWatcher(),
   ]);
 }

@@ -10,6 +10,7 @@ import {
   ShopOutlined,
   UserOutlined,
   EyeOutlined,
+  ShoppingCartOutlined,
 } from '@ant-design/icons';
 import EventsPage from '../../pages/EventsPage/EventsPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
@@ -28,6 +29,7 @@ import AddReviewAboutEmployer from '../AddReviewAboutEmployer/AddReviewAboutEmpl
 import EmployerProfile from '../EmployerProfile/EmployerProfile';
 import AdminPage from '../../pages/AdminPage/AdminPage';
 import AdminEditStudentPage from '../../pages/AdminEditStudentPage/AdminEditStudentPage';
+import ShoppingListPage from '../../pages/ShoppingListPage/ShoppingListPage';
 
 const LayoutComponent = () => {
   const [about, setAbout] = useState(false);
@@ -104,6 +106,12 @@ const LayoutComponent = () => {
               >
                 <Link to="/admin">Admin</Link>
               </Menu.Item>
+              <Menu.Item
+                key="8"
+                icon={<ShoppingCartOutlined className={style.iconColor} />}
+              >
+                <Link to="/shopping-list">Список заказов</Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Content className={style.content}>
@@ -142,6 +150,9 @@ const LayoutComponent = () => {
               </Route>
               <Route path="/admin" exact>
                 <AdminPage />
+              </Route>
+              <Route path="/shopping-list" exact>
+                <ShoppingListPage />
               </Route>
               <Redirect to="/profile" exact />
             </Switch>

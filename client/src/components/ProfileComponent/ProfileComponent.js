@@ -10,19 +10,19 @@ import ButtonComponent from '../../components/Button/ButtonComponent';
 const ProfileComponent = ({ user, isMyProfile, onClick }) => {
   return (
     <div>
-      <Row 
-      gutter={16} 
+      <Row
+      gutter={16}
       justify="center">
-        <Col 
-        align="middle" 
+        <Col
+        align="middle"
         span={10}
         >
-          <img 
-          alt={user.name} 
-          src={user.photo} 
+          <img
+          alt={user.name}
+          src={user.photo}
           />
-          <Tooltip 
-          {...tooltipDefaultOption} 
+          <Tooltip
+          {...tooltipDefaultOption}
           title={tooltipTitle.raiting}
           >
             <h3 style={{ color: "var(--orange_color)" }}>
@@ -33,29 +33,29 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
             </h2>
           </Tooltip>
           {isMyProfile ? (
-            <ButtonComponent 
-            title={'изменить профиль'} 
+            <ButtonComponent
+            title={'Изменить профиль'}
             onClick={onClick} />
           ) : null}
         </Col>
-        <Col 
-        align="middle" 
-        justify="middle" 
+        <Col
+        align="middle"
+        justify="middle"
         span={8}
         className={style.nameBox}>
           <h2>
             {user.name}
           </h2>
-          <Tooltip 
-          {...tooltipDefaultOption} 
+          <Tooltip
+          {...tooltipDefaultOption}
           title={tooltipTitle.status}>
             <h2>
               {user.status}
             </h2>
           </Tooltip>
           <h2>
-            <Tooltip 
-            {...tooltipDefaultOption} 
+            <Tooltip
+            {...tooltipDefaultOption}
             title={tooltipTitle.coins}>
               <img
                 alt="coin"
@@ -65,7 +65,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
               x {user.coins}
             </Tooltip>
           </h2>
-          <Divider 
+          <Divider
           className={style.divider}
           >
             SKILLS
@@ -73,9 +73,9 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
           <h3>
             {user.skills.length > 0
               ? user.skills.map((skill, index) => (
-                  <Tag 
-                  key={index} 
-                  color="purple" 
+                  <Tag
+                  key={index}
+                  color="purple"
                   className={style.tag}
                   >
                     {skill}

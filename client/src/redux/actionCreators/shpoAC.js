@@ -1,8 +1,7 @@
 import {
   ADD_DEFAULT_SHOP_ITEMS,
-  ADD_SHOP_ITEMS,
+  ADD_SHOP_ITEMS, BUY_DEFAULT_ITEM_SHOP,
   DELETE_DEFAULT_ITEM_SHOP,
-  DELETE_ITEM_SHOP,
   GET_ALL_SHOP_ITEMS,
   GET_DEFAULT_SHOP_ALL_ITEMS,
 } from '../actionTypes/types';
@@ -37,15 +36,16 @@ export function addDefaultShopItem({ title, link, quantity, price }) {
   };
 }
 
-export function delteDefaultItemShopAC(payload) {
+export function deleteDefaultItemShopAC(payload) {
   return {
     type: DELETE_DEFAULT_ITEM_SHOP,
     payload,
   };
 }
 
-export function deleteItemShopAC() {
+export function buyDefaultItemShopAC(payload) {
   return {
-    type: DELETE_ITEM_SHOP,
+    type: BUY_DEFAULT_ITEM_SHOP,
+    payload
   };
 }
