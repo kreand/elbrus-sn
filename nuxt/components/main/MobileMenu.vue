@@ -6,15 +6,43 @@
         class="burger__btn"
         @click="onClick"
       >
-       <img class="burger__btn-img" src="https://www.flaticon.com/svg/static/icons/svg/1250/1250975.svg" alt="open">
+       <img class="burger__btn-img" src="/menu.svg" alt="open">
       </div>
       <div
         v-if="isActive"
         class="burger__btn"
         @click="onClick"
       >
-        <img class="burger__btn-img" src="https://www.flaticon.com/svg/static/icons/svg/32/32554.svg" alt="close">
+        <img class="burger__btn-img" src="/power.svg" alt="close">
       </div>
+    </div>
+    <div
+      v-if="isActive"
+      @scroll="onScroll"
+      class="menu-wrapper">
+      <ul class="mob-menu__list">
+        <li class="mob-menu__item">
+          <nuxt-link
+            active-class="mob-menu__item-link-active"
+            class="mob-menu__item-link"
+            to="/"
+          >
+            Главная
+          </nuxt-link>
+        </li>
+        <li class="mob-menu__item">
+          <nuxt-link
+            active-class="mob-menu__item-link-active"
+            class="mob-menu__item-link"
+            to="/events"
+          >
+            Мероприятия
+          </nuxt-link>
+        </li>
+        <li class="mob-menu__item">
+          <a class="mob-menu__item-link" href="http://localhost:3000">Личный кабинет</a>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
@@ -28,12 +56,19 @@ export default {
   methods: {
     onClick() {
       this.isActive = !this.isActive
+    },
+    onScroll() {
+      if (this.isActive) this.isActive = !this.isActive
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
   }
 }
 </script>
 
 <style lang="scss">
+
 .burger {
   &__btn {
     cursor: pointer;
@@ -41,6 +76,47 @@ export default {
       width: 40px;
       height: 40px;
     }
+  }
+}
+
+.menu-wrapper {
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  width: 250px;
+  min-height: 150px;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 2px 2px 2px #fff;
+}
+
+.mob-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mob-menu__item {
+  padding: 5px 0;
+  &-link {
+    text-decoration: none;
+    color: #4520ab;
+    &-active {
+      color: #29edff;
+    }
+    &:hover {
+      color: #29edff;
+    }
+
+  }
+}
+
+@media (max-width: 375px) {
+  .menu-wrapper {
+    padding: 20px;
+    right: 30px;
+    width: 220px;
+    min-height: 120px;
   }
 }
 

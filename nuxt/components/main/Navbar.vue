@@ -12,7 +12,7 @@
           <a-col  :span="6" :xs="0" :lg="5">
             <a class="btn" href="http://localhost:3000">Личный кабинет</a>
           </a-col>
-          <a-col>
+          <a-col :xs="2" :lg="0">
             <MobileMenu />
           </a-col>
         </a-row>
@@ -29,14 +29,14 @@ import MobileMenu from '@/components/main/MobileMenu'
 export default {
   name: 'Navbar',
   components: {MobileMenu, Logo, MainMenu},
-  asyncData: () => ({
-    baseURL: process.env.baseUrl,
-  }),
 }
 
 </script>
 
 <style lang="scss" scoped>
+
+
+
 .header {
   width: 100%;
   height: 80px;

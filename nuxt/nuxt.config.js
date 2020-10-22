@@ -41,9 +41,4 @@ export default {
 
   // Build dir
   buildDir: 'dist',
-
-  // ENV
-  env: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000'
-  }
 }
