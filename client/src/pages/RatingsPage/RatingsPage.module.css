@@ -1,0 +1,6 @@
+.link a:hover {
+    color: var(--orange_color);
+}
+.link a {
+    color: var(--purple_color);
+}
