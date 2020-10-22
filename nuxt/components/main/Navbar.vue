@@ -12,6 +12,9 @@
           <a-col  :span="6" :xs="0" :lg="5">
             <a class="btn" href="http://localhost:3000">Личный кабинет</a>
           </a-col>
+          <a-col :xs="2" :lg="0">
+            <MobileMenu />
+          </a-col>
         </a-row>
       </a-col>
     </a-row>
@@ -19,15 +22,21 @@
 </template>
 
 <script>
+
 import MainMenu from '~/components/main/MainMenu'
 import Logo from '~/components/main/Logo'
+import MobileMenu from '@/components/main/MobileMenu'
 export default {
   name: 'Navbar',
-  components: {Logo, MainMenu},
+  components: {MobileMenu, Logo, MainMenu},
 }
+
 </script>
 
 <style lang="scss" scoped>
+
+
+
 .header {
   width: 100%;
   height: 80px;
