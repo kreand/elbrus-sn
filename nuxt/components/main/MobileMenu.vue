@@ -25,6 +25,7 @@
           <nuxt-link
             active-class="mob-menu__item-link-active"
             class="mob-menu__item-link"
+            exact
             to="/"
           >
             Главная
@@ -80,13 +81,14 @@ export default {
 }
 
 .menu-wrapper {
+  z-index: 2;
   padding: 20px;
   position: absolute;
   top: 0;
   right: 50px;
   width: 250px;
   min-height: 150px;
-  background: rgba(255, 255, 255, .95);
+  background: rgba(239, 239, 239, .95);
   box-shadow: 2px 2px 2px #fff;
 }
 
