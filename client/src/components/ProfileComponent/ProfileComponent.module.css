@@ -1,24 +1,32 @@
-
-.tag {
-  margin: 0.2em;
+.header {
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
-.nameBox {
-  margin-top: 5em;
+.lvl {
+  color: var(--orange_color);
+  font-weight: bolder;
+  justify-content: center;
+}
+
+.h2 {
+  color: var(--purple_color);
+}
+
+.status{
+  color: var(--purple_color);
+  font-size: large;
 }
 
 .divider span{
-  margin-top: 2em;
-  color: var(--orange_color);
+  color: var(--purple_color);
+  font-size: large;
 }
 
 .divider::after{
-  margin-top: 2em;
   color: var(--orange_color);
 }
 
-
 .divider::before{
-  margin-top: 2em;
   color: var(--orange_color);
 }

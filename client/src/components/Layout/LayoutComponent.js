@@ -77,7 +77,7 @@ const LayoutComponent = () => {
                 key="4"
                 icon={<NotificationOutlined className={style.iconColor} />}
               >
-                <a href="http://localhost:4000/events">Эвенты</a>
+                <a href={`${process.env.REACT_APP_URL_DEFAULT}:4000/events`}>Эвенты</a>
               </Menu.Item>
               <Menu.Item
                 key="5"

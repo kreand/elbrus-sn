@@ -1,11 +1,14 @@
 <template>
   <a-row type="flex" justify="center">
-    <a-menu  class="menu"  mode="horizontal">
-      <a-menu-item class="menu__item" key="home"> <a-icon type="home" /><nuxt-link to="/">Главная</nuxt-link></a-menu-item>
-      <a-menu-item class="menu__item" key="calendar"> <a-icon type="calendar" /><nuxt-link to="/events">Главная</nuxt-link></a-menu-item>
-    </a-menu>
+    <ul class="menu">
+      <li class="menu__item">
+        <nuxt-link class="menu__item-link" active-class="menu__item-link-active" exact to="/">Главная</nuxt-link>
+      </li>
+      <li class="menu__item">
+        <nuxt-link class="menu__item-link" active-class="menu__item-link-active" to="/events">Мероприятия</nuxt-link>
+      </li>
+    </ul>
   </a-row>
-
 
 </template>
 
@@ -18,35 +21,23 @@ export default {
 <style lang="scss" scoped>
 
 .menu {
-  color: #3a8eed;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 400;
-  background: none;
-  border: none;
-  &__item {
-    &:hover {
-      color: #29edff;
-    }
-  }
-}
-
-.main-menu {
+  display: flex;
   list-style: none;
   margin: 0;
-}
-
-.menu-item {
-  &__link {
-    margin-right: 20px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #3a8eed;
-    text-decoration: none;
-    &-active {
-      color: #29edff;
+  &__item {
+    &-link {
+      color: #3a8eed;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 0 20px;
+      &:hover {
+        color: #29edff;
+      }
+      &-active {
+        color: #29edff;
+      }
     }
   }
 }
-
 </style>
