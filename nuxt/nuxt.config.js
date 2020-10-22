@@ -8,8 +8,8 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -32,7 +32,7 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    '@nuxtjs/axios',
+    '@nuxtjs/axios'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -40,5 +40,10 @@ export default {
   },
 
   // Build dir
-  buildDir: 'dist'
+  buildDir: 'dist',
+
+  // ENV
+  env: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+  }
 }
