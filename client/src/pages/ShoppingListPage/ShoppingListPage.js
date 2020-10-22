@@ -4,6 +4,7 @@ import {List, Avatar, Row, Col} from 'antd';
 import {Link} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import {deleteOrder} from '../../redux/actionCreators/orderAC';
+import style from './ShoppingListPage.module.css';
 
 const ShoppingListPage = () => {
   const {shoppingList} = useSelector(state => state.order);
@@ -11,7 +12,7 @@ const ShoppingListPage = () => {
 
   return (
     <Row justify={'center'} style={{marginTop: 20}}>
-      <Col span={20}>
+      <Col span={20} className={style.item}>
         <h2 style={{color: 'var(--purple_color)'}}>Список заказанных товаров</h2>
         <List
           itemLayout="horizontal"
