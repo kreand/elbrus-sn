@@ -10,7 +10,7 @@
             <MainMenu />
           </a-col>
           <a-col  :span="6" :xs="0" :lg="5">
-            <a class="btn" :href="baseURL">Личный кабинет</a>
+            <a class="btn" href="http://localhost:3000">Личный кабинет</a>
           </a-col>
           <a-col>
             <MobileMenu />
