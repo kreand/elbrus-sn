@@ -49,7 +49,7 @@
           <a-col class="about-col" :xs="{span: 20, offset: 2}" :lg="{span: 8, offset: 3}" :xl="{span: 6, offset: 2}">
             <div class="about-item">
               <h3 class="about-item__title">Продвинутая регистрация</h3>
-              <p>Используется современные система регистрации с применением Passport JS, JWT токенов и большого количества всевозможных проверок и верификаций.</p>
+              <p>Используется современные система регистрации с применением JWT токенов и большого количества всевозможных проверок и верификаций.</p>
             </div>
             <div class="about-item">
               <h3 class="about-item__title">Рейтинг работодателей</h3>
@@ -126,7 +126,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .btn {
   display: inline-block;
   text-align: center;
@@ -202,6 +201,7 @@ export default {
   color: #4520ab;
   text-align: center;
 }
+
 .statistic-item {
   padding-bottom: 30px;
   &__count {
@@ -251,7 +251,7 @@ export default {
       }
       &:after {
         content: ' />';
-    }
+      }
     }
   }
 }

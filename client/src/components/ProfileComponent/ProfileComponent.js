@@ -11,12 +11,12 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
   return (
     <div>
       <Row gutter={16} justify="start" >
-        <Col className={style.header} span={4} offset={4}>
+        <Col className={style.header} span={12} align="middle">
           <Tooltip {...tooltipDefaultOption} title={tooltipTitle.status}>
             <span className={style.status}>{user.status}</span>
           </Tooltip>
         </Col>
-        <Col offset={14} className={style.header}>
+        <Col offset={10} className={style.header}>
           {isMyProfile ? (
             <Button
               style={{
@@ -41,16 +41,16 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
         <Col align="middle" justify="middle" span={10} offset={1} className={style.box}>
           <Divider className={style.divider}>{user.group}</Divider>
           <h2 className={style.h2}>{user.name}</h2>
-          <h2>
-            <Tooltip {...tooltipDefaultOption} title={tooltipTitle.coins}>
+          <Tooltip {...tooltipDefaultOption} title={tooltipTitle.coins}>
+            <h2>
               <img
                 alt="coin"
                 style={{ width: '1.1em' }}
                 src="https://res.cloudinary.com/elbrus-coding-bootcamp/image/upload/v1603113844/images/964cf112c8928c7c75312f7f15e6b1e0_x9i0lf.png"
               />{' '}
               <span className={style.h2}>x {user.coins}</span>
-            </Tooltip>
-          </h2>
+            </h2>
+          </Tooltip>
           <Divider className={style.divider}>НАВЫКИ</Divider>
           <h3>
             {user.skills.length > 0
@@ -59,7 +59,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
                   {skill}
                 </Tag>
               ))
-              : 'Скилы не указаны'}
+              : 'Скиллы не указаны'}
           </h3>
         </Col>
       </Row>

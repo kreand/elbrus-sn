@@ -13,7 +13,7 @@
         class="burger__btn"
         @click="onClick"
       >
-        <img class="burger__btn-img" src="/power.svg" alt="close">
+        <img class="burger__btn-img" src="/close.svg" alt="close">
       </div>
     </div>
     <div
@@ -67,9 +67,7 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
+<style lang="scss" scoped>
 .burger {
   &__btn {
     cursor: pointer;
@@ -88,8 +86,9 @@ export default {
   right: 50px;
   width: 250px;
   min-height: 150px;
-  background: rgba(239, 239, 239, .95);
-  box-shadow: 2px 2px 2px #fff;
+  border-radius: 4px;
+  background: rgb(239, 239, 239);
+  box-shadow: 5px 5px 20px #000;
 }
 
 .mob-menu__list {
@@ -121,5 +120,4 @@ export default {
     min-height: 120px;
   }
 }
-
 </style>
