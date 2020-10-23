@@ -4,13 +4,14 @@ const User = require('../models/user');
 router.post('/edit', async (req, res) => {
   try {
     const {
-      name, userId, skills, imgUrl,
+      name, userId, skills, imgUrl, contacts,
     } = req.body;
     const user = await User.findById(userId);
     if (user) {
       user.skills = skills;
       user.name = name;
       user.photo = imgUrl;
+      user.contacts = contacts;
       await user.save();
       return res
         .status(201)

@@ -1,5 +1,4 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { authUserAC } from '../actionCreators/profileAC';
 import { GET_ALL_USERS, DEFAULT_CHANGE_RATING } from '../actionTypes/types';
 import { addAllUsersAC, getAllUsersAC } from '../actionCreators/ratingAC';
 
@@ -35,7 +34,6 @@ function* changeRatingWorker({ id, rating, name, email, skills, group, status })
     return await response.json();
   });
   yield put(getAllUsersAC(response));
-  yield put(authUserAC(response.user));
 }
 
 export function* changeRatingWatcher() {

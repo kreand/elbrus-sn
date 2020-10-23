@@ -78,7 +78,7 @@ const LayoutComponent = () => {
                 key="4"
                 icon={<NotificationOutlined className={style.iconColor} />}
               >
-                <a href={`${process.env.REACT_APP_URL_DEFAULT}:4000/events`}>Эвенты</a>
+                <a href={`${process.env.REACT_APP_URL_DEFAULT}:4000/events?role=${user.status}`}>Эвенты</a>
               </Menu.Item>
               {user.status === 'Гость' ? null : <Menu.Item
                 key="5"
