@@ -177,7 +177,7 @@ export default {
 .promo {
   min-height: 400px;
   padding: 30px;
-  background: url('~assets/raccoon.svg') center center/cover no-repeat;
+  background: url('~assets/raccoon-blue.svg') center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   text-align: center;
