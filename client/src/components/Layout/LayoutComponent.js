@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import {
   DollarCircleOutlined,
@@ -33,6 +33,7 @@ import ShoppingListPage from '../../pages/ShoppingListPage/ShoppingListPage';
 
 const LayoutComponent = () => {
   const [about, setAbout] = useState(false);
+  const {user} = useSelector(state => state.profile);
   const { Header, Sider, Content } = Layout;
   const dispatch = useDispatch();
 
@@ -79,12 +80,12 @@ const LayoutComponent = () => {
               >
                 <a href={`${process.env.REACT_APP_URL_DEFAULT}:4000/events`}>Эвенты</a>
               </Menu.Item>
-              <Menu.Item
+              {user.status === 'Гость' ? null : <Menu.Item
                 key="5"
-                icon={<ShopOutlined className={style.iconColor} />}
+                icon={<ShopOutlined className={style.iconColor}/>}
               >
                 <Link to="/shop">Магазин</Link>
-              </Menu.Item>
+              </Menu.Item>}
               <Menu.Divider
                 style={{
                   backgroundColor: 'var(--purple_color)',
@@ -97,21 +98,22 @@ const LayoutComponent = () => {
                 icon={<LogoutOutlined className={style.iconColor} />}
               >
                 <Link onClick={logoutHandler} to="/auth">
-                  Logout
+                  Выход
                 </Link>
               </Menu.Item>
-              <Menu.Item
-                key="7"
-                icon={<EyeOutlined className={style.iconColor} />}
-              >
-                <Link to="/admin">Admin</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="8"
-                icon={<ShoppingCartOutlined className={style.iconColor} />}
-              >
-                <Link to="/shopping-list">Список заказов</Link>
-              </Menu.Item>
+              {user.status === 'Ментор' ?
+                <><Menu.Item
+                  key="7"
+                  icon={<EyeOutlined className={style.iconColor} />}
+                >
+                  <Link to="/admin">Admin</Link>
+                </Menu.Item>
+                  <Menu.Item
+                    key="8"
+                    icon={<ShoppingCartOutlined className={style.iconColor} />}
+                  >
+                    <Link to="/shopping-list">Список заказов</Link>
+                  </Menu.Item></> : null}
             </Menu>
           </Sider>
           <Content className={style.content}>
