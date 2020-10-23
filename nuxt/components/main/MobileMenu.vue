@@ -86,8 +86,9 @@ export default {
   right: 50px;
   width: 250px;
   min-height: 150px;
-  background: rgba(239, 239, 239, .95);
-  box-shadow: 2px 2px 2px #fff;
+  border-radius: 4px;
+  background: rgb(239, 239, 239);
+  box-shadow: 5px 5px 20px #000;
 }
 
 .mob-menu__list {

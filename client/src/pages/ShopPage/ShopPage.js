@@ -120,7 +120,7 @@ const ShopPage = () => {
             ) : (
               <ButtonComponent title="Добавить"/>
             )}
-          </form> : null}
+          </form> : <h2 style={{textAlign: 'center', color: 'var(--purple_color)', marginTop: 10}}>Магазин</h2>}
         </Col>
       </Row>
       <div style={{display: 'flex', flexWrap: 'wrap'}}>

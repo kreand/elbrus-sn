@@ -49,7 +49,7 @@ const CardComponent = ({
             />] : null)
           }
         >
-          <Meta title={title || 'title'} description={description} />
+          <Meta title={title || 'title'} description={description}/>
         </Card>
       </Col>
     </Row>
