@@ -54,6 +54,7 @@ router.route('/registration').post(
           skills: user.skills,
           _id: user._id,
           group: user.group,
+          contacts: user.contacts,
         },
       });
     } catch (e) {
@@ -109,6 +110,7 @@ router
             skills: user.skills,
             _id: user._id,
             group: user.group,
+            contacts: user.contacts,
           },
         });
       } catch (e) {
@@ -138,6 +140,7 @@ router.route('/check').post(async (req, res) => {
         skills: user.skills,
         _id: user._id,
         group: user.group,
+        contacts: user.contacts,
       },
     });
   } catch (e) {

@@ -10,6 +10,7 @@ const TextareaComponent = ({
   placeholder,
   name,
   justify,
+  defaultValue,
 }) => {
   return (
     <Row justify={justify || 'center'}>
@@ -19,6 +20,7 @@ const TextareaComponent = ({
           className={style.input}
           autoSize={{ minRows }}
           placeholder={placeholder}
+          defaultValue={defaultValue}
         />
       </Col>
     </Row>

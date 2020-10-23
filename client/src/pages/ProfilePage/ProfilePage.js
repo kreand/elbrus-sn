@@ -12,6 +12,7 @@ import Cloudinary from '../../cloudinary/Cloudinary';
 import { Row, Col } from 'antd';
 import { getAllUsersAC } from '../../redux/actionCreators/ratingAC';
 import {getAllOrders} from '../../redux/actionCreators/orderAC';
+import TextareaComponent from '../../components/Textarea/TextareaComponent';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
@@ -39,6 +40,7 @@ const ProfilePage = () => {
     const {
       name,
       skills: { value: skills },
+      contacts: {value: contacts}
     } = e.target;
     if (skills) {
       arraySkills = skills.split(',');
@@ -47,6 +49,7 @@ const ProfilePage = () => {
       name: name.value,
       skills: arraySkills,
       userId: user._id,
+      contacts,
       imgUrl,
     };
     dispatch(editUserBySagaAC(updateUserInfo));
@@ -86,6 +89,12 @@ const ProfilePage = () => {
                 name="skills"
                 size="middle"
                 defaultValue={user.skills.length > 0 ? user.skills : null}
+              />
+              <label className={style.label}>Контактная информация</label>
+              <TextareaComponent
+                name="contacts"
+                size="middle"
+                defaultValue={user.contacts ? user.contacts : null}
               />
               <label className={style.label}>Заменить фото</label>
               <Cloudinary folder={'userPhoto280x280'} width={'280px'} />

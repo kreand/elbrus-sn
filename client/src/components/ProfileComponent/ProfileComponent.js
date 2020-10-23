@@ -61,6 +61,10 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
               ))
               : 'Скиллы не указаны'}
           </h3>
+          <Divider className={style.divider}>КОНТАКТЫ</Divider>
+            {user.contacts
+              ? user.contacts.split('\n').map(el => <div style={{color: 'var(--purple_color)'}}>{el}</div>)
+              :  <div style={{color: 'var(--purple_color)'}}>Контактная информация не указана</div>}
         </Col>
       </Row>
     </div>
