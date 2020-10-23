@@ -30,7 +30,7 @@
         <div class="h5">Дата и время: {{event.day}}.{{event.month + 1}}.{{event.year}} в {{event.time}}</div>
 
       </a-modal>
-      <CreateEvent/>
+      <CreateEvent v-if="role === 'Ментор'" />
     </a-col>
   </a-row>
 </template>
@@ -50,7 +50,8 @@ export default {
     events: [],
     visible: false,
     confirmLoading: false,
-    event: {}
+    event: {},
+    role: ''
   }),
   methods: {
     getListData(value) {
@@ -79,9 +80,10 @@ export default {
     }
   },
   async mounted() {
+    this.role = this.$route.query.role
     await this.$store.dispatch('events/getEvents')
     this.events = this.$store.getters['events/events']
-  }
+  },
 }
 </script>
 
