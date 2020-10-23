@@ -46,7 +46,7 @@
 
 .content {
   padding: 75px 10px 10px 210px;
-  min-height: 97vh;
+  min-height: 95vh;
   background-color: var(--white_color);
 }
 
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
-  min-height: 3vh;
+  min-height: 5vh;
   width: 100%;
   background-color: var(--purple_color);
   color: var(--cyan_color);
