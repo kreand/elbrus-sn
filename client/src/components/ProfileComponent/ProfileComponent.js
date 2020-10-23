@@ -13,7 +13,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
       <Row gutter={16} justify="start" >
         <Col className={style.header} span={12} align="middle">
           <Tooltip {...tooltipDefaultOption} title={tooltipTitle.status}>
-            <span className={style.status}>{user.status}</span>
+            <span className={style.status}>Роль в кампусе: {user.status}</span>
           </Tooltip>
         </Col>
         <Col offset={10} className={style.header}>
@@ -35,7 +35,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
         <Col align="middle" span={10} offset={1} className={style.photo}>
           <img alt={user.name} src={user.photo} />
           <Tooltip {...tooltipDefaultOption} title={tooltipTitle.raiting}>
-            <h3 className={style.lvl}>МОЙ РЕЙТИНГ {user.rating}</h3>
+            <h3 className={style.lvl}>МОЙ РЕЙТИНГ: {user.rating}</h3>
           </Tooltip>
         </Col>
         <Col align="middle" justify="middle" span={10} offset={1} className={style.box}>
