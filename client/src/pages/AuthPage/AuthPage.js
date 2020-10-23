@@ -75,13 +75,15 @@ const AuthPage = () => {
             span={6}
             size="large"
           />
-          <InputComponent
-            name="password"
-            type="password"
-            placeholder="Ваш пароль"
-            span={6}
-            size="large"
-          />
+          <div style={{ marginBottom: '20px' }}>
+            <InputComponent
+              name="password"
+              type="password"
+              placeholder="Ваш пароль"
+              span={6}
+              size="large"
+            />
+          </div>
           {loading ? (
             <ButtonComponent
               title="Зарегистрироваться"
@@ -118,13 +120,15 @@ const AuthPage = () => {
           span={6}
           size="large"
         />
-        <InputComponent
-          name="password"
-          type="password"
-          placeholder="Ваш пароль"
-          span={6}
-          size="large"
-        />
+        <div style={{ marginBottom: '20px' }}>
+          <InputComponent
+            name="password"
+            type="password"
+            placeholder="Ваш пароль"
+            span={6}
+            size="large"
+          />
+        </div>
         {loading ? (
           <ButtonComponent
             name="password"
