@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import {
   DollarCircleOutlined,
@@ -33,7 +33,7 @@ import ShoppingListPage from '../../pages/ShoppingListPage/ShoppingListPage';
 
 const LayoutComponent = () => {
   const [about, setAbout] = useState(false);
-  const {user} = useSelector(state => state.profile);
+  const { user } = useSelector(state => state.profile);
   const { Header, Sider, Content } = Layout;
   const dispatch = useDispatch();
 
@@ -78,14 +78,20 @@ const LayoutComponent = () => {
                 key="4"
                 icon={<NotificationOutlined className={style.iconColor} />}
               >
-                <a href={`${process.env.REACT_APP_URL_DEFAULT}:4000/events?role=${user.status}`}>Эвенты</a>
+                <a
+                  href={`${process.env.REACT_APP_URL_DEFAULT}:4000/events?role=${user.status}`}
+                >
+                  Эвенты
+                </a>
               </Menu.Item>
-              {user.status === 'Гость' ? null : <Menu.Item
-                key="5"
-                icon={<ShopOutlined className={style.iconColor}/>}
-              >
-                <Link to="/shop">Магазин</Link>
-              </Menu.Item>}
+              {user.status === 'Гость' ? null : (
+                <Menu.Item
+                  key="5"
+                  icon={<ShopOutlined className={style.iconColor} />}
+                >
+                  <Link to="/shop">Магазин</Link>
+                </Menu.Item>
+              )}
               <Menu.Divider
                 style={{
                   backgroundColor: 'var(--purple_color)',
@@ -93,27 +99,30 @@ const LayoutComponent = () => {
                   margin: '10px',
                 }}
               />
+              {user.status === 'Ментор' ? (
+                <>
+                  <Menu.Item
+                    key="6"
+                    icon={<EyeOutlined className={style.iconColor} />}
+                  >
+                    <Link to="/admin">Ментор</Link>
+                  </Menu.Item>
+                  <Menu.Item
+                    key="7"
+                    icon={<ShoppingCartOutlined className={style.iconColor} />}
+                  >
+                    <Link to="/shopping-list">Список заказов</Link>
+                  </Menu.Item>
+                </>
+              ) : null}
               <Menu.Item
-                key="6"
+                key="8"
                 icon={<LogoutOutlined className={style.iconColor} />}
               >
                 <Link onClick={logoutHandler} to="/auth">
                   Выход
                 </Link>
               </Menu.Item>
-              {user.status === 'Ментор' ?
-                <><Menu.Item
-                  key="7"
-                  icon={<EyeOutlined className={style.iconColor} />}
-                >
-                  <Link to="/admin">Admin</Link>
-                </Menu.Item>
-                  <Menu.Item
-                    key="8"
-                    icon={<ShoppingCartOutlined className={style.iconColor} />}
-                  >
-                    <Link to="/shopping-list">Список заказов</Link>
-                  </Menu.Item></> : null}
             </Menu>
           </Sider>
           <Content className={style.content}>
@@ -162,10 +171,10 @@ const LayoutComponent = () => {
         </Layout>
       </div>
       <footer className={style.footer}>
-            <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
-            <Link onClick={() => setAbout(true)} to="/about">
-              About us
-            </Link>
+        <a href="https://github.com/NickBGor/elbrus-sn">GitHub</a>
+        <Link onClick={() => setAbout(true)} to="/about">
+          About us
+        </Link>
       </footer>
     </Layout>
   );

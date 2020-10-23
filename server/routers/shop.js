@@ -91,7 +91,6 @@ router.get('/orders', async (req, res) => {
 });
 
 router.delete('/delete-order', async (req, res) => {
-  console.log(req.body.orderId);
   await Order.findByIdAndDelete(req.body.orderId);
   const orders = await Order.find({});
   res.status(200).json({ orders, message: 'Товар удалён' });
