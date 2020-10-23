@@ -26,6 +26,7 @@ function* checkTokenWorker({ token }) {
     });
     return await response.json();
   });
+  console.log(response);
   if (response.errors) {
     yield put(hideLoaderAC());
   }

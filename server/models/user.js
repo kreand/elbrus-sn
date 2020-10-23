@@ -15,6 +15,7 @@ const userSchema = new Schema({
   coins: { type: Number, default: 0 },
   // rating: All coins for all time
   rating: { type: Number, default: 0 },
+  contacts: { type: String, default: '' },
   skills: [String],
   history: [
     {
