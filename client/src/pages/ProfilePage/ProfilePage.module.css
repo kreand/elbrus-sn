@@ -4,7 +4,7 @@
 
 .label {
   color: var(--purple_color);
-  font-size: large;
+  font-size: 14px;
 }
 
 .buttonEdit {

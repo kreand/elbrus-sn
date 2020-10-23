@@ -10,7 +10,7 @@ const userSchema = new Schema({
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   // status: student, teacher, guest, Gosha
-  status: { type: String, default: 'guest' },
+  status: { type: String, default: 'Гость' },
   group: { type: String, default: '' },
   coins: { type: Number, default: 0 },
   // rating: All coins for all time
