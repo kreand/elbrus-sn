@@ -10,7 +10,7 @@ import {
 const ProfileComponent = ({ user, isMyProfile, onClick }) => {
   return (
     <div>
-      <Row gutter={16} justify="start" >
+      <Row gutter={16} justify="start">
         <Col className={style.header} span={12} align="middle">
           <Tooltip {...tooltipDefaultOption} title={tooltipTitle.status}>
             <span className={style.status}>Роль в кампусе: {user.status}</span>
@@ -38,8 +38,16 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
             <h3 className={style.lvl}>МОЙ РЕЙТИНГ: {user.rating}</h3>
           </Tooltip>
         </Col>
-        <Col align="middle" justify="middle" span={10} offset={1} className={style.box}>
-          <Divider className={style.divider}>{user.group}</Divider>
+        <Col
+          align="middle"
+          justify="middle"
+          span={10}
+          offset={1}
+          className={style.box}
+        >
+          {user.group ? (
+            <Divider className={style.divider}>{user.group}</Divider>
+          ) : null}
           <h2 className={style.h2}>{user.name}</h2>
           <Tooltip {...tooltipDefaultOption} title={tooltipTitle.coins}>
             <h2>
@@ -55,16 +63,24 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
           <h3>
             {user.skills.length > 0
               ? user.skills.map((skill, index) => (
-                <Tag key={index} color="purple" className={style.tag}>
-                  {skill}
-                </Tag>
-              ))
+                  <Tag key={index} color="purple" className={style.tag}>
+                    {skill}
+                  </Tag>
+                ))
               : 'Скиллы не указаны'}
           </h3>
           <Divider className={style.divider}>КОНТАКТЫ</Divider>
-            {user.contacts
-              ? user.contacts.split('\n').map((el, i) => <div key={i} style={{color: 'var(--purple_color)'}}>{el}</div>)
-              :  <div style={{color: 'var(--purple_color)'}}>Контактная информация не указана</div>}
+          {user.contacts ? (
+            user.contacts.split('\n').map((el, i) => (
+              <div key={i} style={{ color: 'var(--purple_color)' }}>
+                {el}
+              </div>
+            ))
+          ) : (
+            <div style={{ color: 'var(--purple_color)' }}>
+              Контактная информация не указана
+            </div>
+          )}
         </Col>
       </Row>
     </div>
