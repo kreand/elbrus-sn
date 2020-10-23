@@ -59,7 +59,7 @@ const ProfileComponent = ({ user, isMyProfile, onClick }) => {
                   {skill}
                 </Tag>
               ))
-              : 'Скилы не указаны'}
+              : 'Скиллы не указаны'}
           </h3>
         </Col>
       </Row>

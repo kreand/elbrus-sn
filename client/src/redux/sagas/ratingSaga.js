@@ -35,7 +35,7 @@ function* changeRatingWorker({ id, rating, name, email, skills, group, status })
     return await response.json();
   });
   yield put(getAllUsersAC(response));
-  yield put(authUserAC(response.user));
+  // yield put(authUserAC(response.user));
 }
 
 export function* changeRatingWatcher() {

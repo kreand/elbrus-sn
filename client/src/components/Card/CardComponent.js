@@ -1,5 +1,5 @@
 import { Col, Row, Card } from 'antd';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { DollarOutlined, CloseOutlined } from '@ant-design/icons';
 import Meta from 'antd/es/card/Meta';
 import React from 'react';
 import {useSelector} from 'react-redux';
@@ -42,14 +42,14 @@ const CardComponent = ({
                 style={{ color: 'var(--red_color)' }}
               />
               ,
-            ] : (user.status !== 'Гость' ? [<CheckOutlined
+            ] : (user.status !== 'Гость' ? [<DollarOutlined
               value={id || null}
               onClick={buyCallback || null}
-              style={{ color: 'var(--purple_color)' }}
+              style={{ color: 'green' }}
             />] : null)
           }
         >
-          <Meta title={title || 'title'} description={description} />
+          <Meta title={title || 'title'} description={description}/>
         </Card>
       </Col>
     </Row>
