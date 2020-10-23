@@ -35,7 +35,7 @@ const AdminPage = () => {
                     <InputComponent
                         onChange={searchOfStudent}
                         size="large"
-                        placeholder="Search of student"
+                        placeholder="Поиск по имени"
                         span="24"
                         justify="left"
                         offset="0"/>
