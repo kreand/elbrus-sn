@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const eventSchema = new Schema({
   title: { type: String, required: true },
-  type: { type: String, required: true, default: 'warning'},
+  type: { type: String, required: true, default: 'warning' },
   group: { type: String, required: true, default: 'public' },
   format: { type: String, required: true },
   city: { type: String },
@@ -11,8 +11,6 @@ const eventSchema = new Schema({
   day: { type: Number, required: true },
   time: { type: String, required: true },
   body: { type: String, required: true },
-
-  // Подумать над моделью тегов
   tags: [String],
 });
 

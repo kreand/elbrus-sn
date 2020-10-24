@@ -30,9 +30,7 @@ const AddEmployerForm = () => {
     } = e.target;
     const userName = user.name;
     const userId = user._id;
-    dispatch(
-      createEmployer({ name, review, rating, userName, userId }),
-    );
+    dispatch(createEmployer({ name, review, rating, userName, userId }));
   };
 
   if (errors.isError) {

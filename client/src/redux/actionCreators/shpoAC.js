@@ -1,6 +1,7 @@
 import {
   ADD_DEFAULT_SHOP_ITEMS,
-  ADD_SHOP_ITEMS, BUY_DEFAULT_ITEM_SHOP,
+  ADD_SHOP_ITEMS,
+  BUY_DEFAULT_ITEM_SHOP,
   DELETE_DEFAULT_ITEM_SHOP,
   GET_ALL_SHOP_ITEMS,
   GET_DEFAULT_SHOP_ALL_ITEMS,
@@ -46,6 +47,6 @@ export function deleteDefaultItemShopAC(payload) {
 export function buyDefaultItemShopAC(payload) {
   return {
     type: BUY_DEFAULT_ITEM_SHOP,
-    payload
+    payload,
   };
 }

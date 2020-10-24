@@ -14,7 +14,15 @@ export function* getAllUsersWatcher() {
   yield takeEvery(GET_ALL_USERS, getAllUsersWorker);
 }
 
-function* changeRatingWorker({ id, rating, name, email, skills, group, status }) {
+function* changeRatingWorker({
+  id,
+  rating,
+  name,
+  email,
+  skills,
+  group,
+  status,
+}) {
   const response = yield call(async () => {
     const response = await fetch('/students/change', {
       method: 'POST',

@@ -9,7 +9,7 @@ import { deleteReview } from '../../redux/actionCreators/employerAC';
 
 const EmployerReviewsList = ({ allReviews, employerId }) => {
   const { user } = useSelector(state => state.profile);
-  const {allUsers} = useSelector(state => state.rating);
+  const { allUsers } = useSelector(state => state.rating);
   const dispatch = useDispatch();
 
   const dateToString = date => {
@@ -26,7 +26,7 @@ const EmployerReviewsList = ({ allReviews, employerId }) => {
     )}`;
   };
 
-  const getCurrentUser = (id) => {
+  const getCurrentUser = id => {
     return allUsers.find(user => user._id === id);
   };
 
@@ -40,7 +40,9 @@ const EmployerReviewsList = ({ allReviews, employerId }) => {
           <List.Item.Meta
             avatar={<Avatar src={getCurrentUser(review.userId).photo} />}
             title={
-              <Link to={`/student/${review.userId}`}>{getCurrentUser(review.userId).name}</Link>
+              <Link to={`/student/${review.userId}`}>
+                {getCurrentUser(review.userId).name}
+              </Link>
             }
             description={
               <>
@@ -54,7 +56,7 @@ const EmployerReviewsList = ({ allReviews, employerId }) => {
                 <p className={style.review}>{review.review}</p>
                 <Row>
                   <Col span={4} offset={20}>
-                    {(user._id === review.userId || user.status === 'Ментор') ? (
+                    {user._id === review.userId || user.status === 'Ментор' ? (
                       <Link
                         className={style.review}
                         to="#"

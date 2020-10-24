@@ -8,13 +8,15 @@ import { changeRatingWatcher, getAllUsersWatcher } from './ratingSaga';
 import { editProfileSagaWatcher } from './profileSaga';
 import {
   addReviewSagaWatcher,
-  createEmployerSagaWatcher, deleteEmployerSagaWatcher,
+  createEmployerSagaWatcher,
+  deleteEmployerSagaWatcher,
   deleteReviewSagaWatcher,
   getEmployersSagaWatcher,
 } from './employerSaga';
 import {
   buyItemShopWatcher,
-  deleteItemShopWatcher, deleteOrderWatcher,
+  deleteItemShopWatcher,
+  deleteOrderWatcher,
   getAllItemsShopWatcher,
   getAllOrdersWatcher,
   shopSagaWatcher,

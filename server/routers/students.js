@@ -9,13 +9,16 @@ router.get('/allUsers', async (req, res) => {
 
 router.post('/change', async (req, res) => {
   const {
-    _id, name, email, group, status,
+    _id,
+    name,
+    email,
+    group,
+    status,
   } = req.body;
   let { rating, skills } = req.body;
   let users = await User.find({});
   const user = users.find((el) => el.id === _id);
 
-  // Меняю рейтинг
   rating = +rating;
   if (user.rating < rating) {
     user.coins += rating - user.rating;
@@ -23,16 +26,11 @@ router.post('/change', async (req, res) => {
   } else {
     user.rating = rating;
   }
-  // Меняю имя
   user.name = name;
-  // Меняю email
   user.email = email;
-  // Меняю группу
   user.group = group;
-  // Меняю skills
   skills = skills.split(',');
   user.skills = skills;
-  // Меняю статус
   user.status = status;
   await user.save();
   users = await User.find({});

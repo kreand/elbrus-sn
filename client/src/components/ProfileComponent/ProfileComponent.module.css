@@ -16,23 +16,23 @@
   margin-top: 20px;
 }
 
-.status{
+.status {
   color: var(--purple_color);
   font-size: large;
 }
 
-.divider span{
+.divider span {
   color: var(--purple_color);
   font-size: large;
   margin-top: 10px;
 }
 
-.divider::after{
+.divider::after {
   color: var(--orange_color);
   margin-top: 10px;
 }
 
-.divider::before{
+.divider::before {
   color: var(--orange_color);
   margin-top: 10px;
 }

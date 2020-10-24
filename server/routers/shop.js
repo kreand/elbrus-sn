@@ -6,7 +6,10 @@ const Order = require('../models/order');
 router.route('/create').post(async (req, res) => {
   try {
     const {
-      title, link, quantity, price,
+      title,
+      link,
+      quantity,
+      price,
     } = req.body;
     if (typeof quantity !== 'number') {
       return res
@@ -46,10 +49,17 @@ router.put('/buy', async (req, res) => {
   const user = await User.findById(userId);
 
   if (item.quantity <= 0) {
-    return res.status(500).json({ error: true, message: 'Извини, товара нет в наличии' });
+    return res
+      .status(500)
+      .json({ error: true, message: 'Извини, товара нет в наличии' });
   }
   if (item.price > user.coins) {
-    return res.status(500).json({ error: true, message: 'У тебя недостаточно элькоинов для покупки данного товара' });
+    return res
+      .status(500)
+      .json({
+        error: true,
+        message: 'У тебя недостаточно элькоинов для покупки данного товара',
+      });
   }
   const order = new Order({
     product: item,
@@ -65,7 +75,10 @@ router.put('/buy', async (req, res) => {
   const orders = await Order.find({});
   const items = await Item.find({});
   return res.status(200).json({
-    items, user, orders, message: 'Операция покупки товара прошла успешно',
+    items,
+    user,
+    orders,
+    message: 'Операция покупки товара прошла успешно',
   });
 });
 

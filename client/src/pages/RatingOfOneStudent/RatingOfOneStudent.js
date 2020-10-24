@@ -50,7 +50,9 @@ const RatingOfOneStudent = () => {
       <Col span={20} offset={2}>
         <div style={{ width: '100%', marginTop: '1em' }}>
           <form onSubmit={changeRatingHandler}>
-            <h3 style={{marginTop: '15px', color: 'var(--purple_color)'}}>Изменить имя </h3>
+            <h3 style={{ marginTop: '15px', color: 'var(--purple_color)' }}>
+              Изменить имя{' '}
+            </h3>
             <InputComponent
               key={user.name}
               name="name"
@@ -59,7 +61,9 @@ const RatingOfOneStudent = () => {
               justify="left"
               defaultValue={user.name}
             />
-            <h3 style={{marginTop: '15px', color: 'var(--purple_color)'}}>Изменить e-mail</h3>
+            <h3 style={{ marginTop: '15px', color: 'var(--purple_color)' }}>
+              Изменить e-mail
+            </h3>
             <InputComponent
               key={user.email}
               name="email"
@@ -68,7 +72,9 @@ const RatingOfOneStudent = () => {
               span={7}
               defaultValue={user.email}
             />
-            <h3 style={{marginTop: '15px', color: 'var(--purple_color)'}}>Изменить рейтинг </h3>
+            <h3 style={{ marginTop: '15px', color: 'var(--purple_color)' }}>
+              Изменить рейтинг{' '}
+            </h3>
             <InputComponent
               key={user.rating}
               name="rating"
@@ -77,7 +83,9 @@ const RatingOfOneStudent = () => {
               justify="left"
               defaultValue={user.rating}
             />
-            <h3 style={{marginTop: '15px', color: 'var(--purple_color)'}}>Изменить роль</h3>
+            <h3 style={{ marginTop: '15px', color: 'var(--purple_color)' }}>
+              Изменить роль
+            </h3>
             <Row>
               <Col span={7}>
                 <Select
@@ -85,7 +93,7 @@ const RatingOfOneStudent = () => {
                     width: '100%',
                     border: '1px solid var(--purple_color)',
                     outline: 'none',
-                    color: 'var(--purple_color)'
+                    color: 'var(--purple_color)',
                   }}
                   key={user.status}
                   defaultValue={user.status}
@@ -101,7 +109,9 @@ const RatingOfOneStudent = () => {
               </Col>
             </Row>
 
-            <h3 style={{marginTop: '15px', color: 'var(--purple_color)'}}>Изменить группу</h3>
+            <h3 style={{ marginTop: '15px', color: 'var(--purple_color)' }}>
+              Изменить группу
+            </h3>
             <InputComponent
               key={user.group}
               name="group"
@@ -110,7 +120,9 @@ const RatingOfOneStudent = () => {
               span={7}
               defaultValue={user.group}
             />
-            <h3 style={{marginTop: '15px', color: 'var(--purple_color)'}}>Изменить skills</h3>
+            <h3 style={{ marginTop: '15px', color: 'var(--purple_color)' }}>
+              Изменить skills
+            </h3>
             <InputComponent
               key={user.skills}
               name="skills"

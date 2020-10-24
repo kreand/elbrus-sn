@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {Col, Row} from 'antd';
-import {useDispatch, useSelector} from 'react-redux';
-import {changeActiveEmpBtn} from '../../redux/actionCreators/employerAC';
+import { Link } from 'react-router-dom';
+import { Col, Row } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeActiveEmpBtn } from '../../redux/actionCreators/employerAC';
 import style from './EmployersNav.module.css';
 
 const EmployerNav = () => {
-  const {activeTab} = useSelector(state => state.employers);
-  const {user} = useSelector(state => state.profile);
+  const { activeTab } = useSelector(state => state.employers);
+  const { user } = useSelector(state => state.profile);
   const dispatch = useDispatch();
 
   const handleClick = e => {
@@ -16,8 +16,10 @@ const EmployerNav = () => {
 
   return (
     <>
-        <Row justify="center" style={{marginBottom: 40, marginTop: 10}}>
-          {user.status === 'Гость' ? <Col> </Col> :
+      <Row justify="center" style={{ marginBottom: 40, marginTop: 10 }}>
+        {user.status === 'Гость' ? (
+          <Col> </Col>
+        ) : (
           <Col>
             <Link
               to={'/employers'}
@@ -40,8 +42,8 @@ const EmployerNav = () => {
               Добавить работодателя
             </Link>
           </Col>
-      }
-        </Row>
+        )}
+      </Row>
     </>
   );
 };
