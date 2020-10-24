@@ -1,25 +1,25 @@
 .inputFile {
-    color: var(--purple_color);
-    border: 1px solid var(--purple_color);
-    border-radius: 2px;
-    padding: 5px 5px 5px 10px;
-    width: 32%;
+  color: var(--purple_color);
+  border: 1px solid var(--purple_color);
+  border-radius: 2px;
+  padding: 5px 5px 5px 10px;
+  width: 32%;
 }
 
 .inputFile:hover {
-    box-shadow: 0 0 0 2px var(--purple_color);
+  box-shadow: 0 0 0 2px var(--purple_color);
 }
 
 .label {
-    margin-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .fileinfo {
-    color: var(--purple_color);
-    border: 1px solid var(--purple_color);
-    border-radius: 2px;
-    padding: 5px 5px 5px 7px;
-    width: 67%;
+  color: var(--purple_color);
+  border: 1px solid var(--purple_color);
+  border-radius: 2px;
+  padding: 5px 5px 5px 7px;
+  width: 67%;
 }

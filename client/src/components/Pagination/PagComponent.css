@@ -1,20 +1,20 @@
 .ant-pagination-item-active a {
-    color: var(--purple_color);
-    border-color: var(--purple_color);
+  color: var(--purple_color);
+  border-color: var(--purple_color);
 }
 
 .ant-pagination-item-active {
-    border-color: var(--purple_color);
+  border-color: var(--purple_color);
 }
 
 .ant-pagination-item-active:focus,
 .ant-pagination-item-active:focus a {
-    color: var(--purple_color);
-    border-color: var(--purple_color);
+  color: var(--purple_color);
+  border-color: var(--purple_color);
 }
 
 .ant-pagination-item-active:hover,
 .ant-pagination-item-active:hover a {
-    border-color: var(--purple_color);
-    color: var(--white_color);
+  border-color: var(--purple_color);
+  color: var(--white_color);
 }

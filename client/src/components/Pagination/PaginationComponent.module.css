@@ -3,24 +3,22 @@
 }
 
 .pagination a:hover {
-    color: var(--white_color);
+  color: var(--white_color);
 }
 
 .pagination li:hover {
-    border: 1px solid var(--purple_color);
-    background-color: var(--purple_color);
+  border: 1px solid var(--purple_color);
+  background-color: var(--purple_color);
 }
 
 .pagination button:hover svg,
 .pagination button:hover {
-    border: none;
-    color: var(--white_color);
-    background-color: var(--purple_color);
+  border: none;
+  color: var(--white_color);
+  background-color: var(--purple_color);
 }
 
 .pagination a:active {
-    border: 1px solid var(--purple_color);
-    background-color: var(--purple_color);
+  border: 1px solid var(--purple_color);
+  background-color: var(--purple_color);
 }
-
-

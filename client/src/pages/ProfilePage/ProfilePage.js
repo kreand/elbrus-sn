@@ -11,14 +11,14 @@ import ProfileComponent from '../../components/ProfileComponent/ProfileComponent
 import Cloudinary from '../../cloudinary/Cloudinary';
 import { Row, Col } from 'antd';
 import { getAllUsersAC } from '../../redux/actionCreators/ratingAC';
-import {getAllOrders} from '../../redux/actionCreators/orderAC';
+import { getAllOrders } from '../../redux/actionCreators/orderAC';
 import TextareaComponent from '../../components/Textarea/TextareaComponent';
 
 const ProfilePage = () => {
   const [editStatus, setEditStatus] = useState(false);
-  const user = useSelector((state) => state.profile.user);
-  const imgUrl = useSelector((state) => state.profile.imgUrl);
-  const userPhoto = useSelector((state) => state.profile.user.photo);
+  const user = useSelector(state => state.profile.user);
+  const imgUrl = useSelector(state => state.profile.imgUrl);
+  const userPhoto = useSelector(state => state.profile.user.photo);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,13 +34,13 @@ const ProfilePage = () => {
     setEditStatus(!editStatus);
   };
 
-  const profileHandler = (e) => {
+  const profileHandler = e => {
     e.preventDefault();
     let arraySkills = [];
     const {
       name,
       skills: { value: skills },
-      contacts: {value: contacts}
+      contacts: { value: contacts },
     } = e.target;
     if (skills) {
       arraySkills = skills.split(',');

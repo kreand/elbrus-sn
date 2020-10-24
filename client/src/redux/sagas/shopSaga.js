@@ -6,12 +6,15 @@ import {
 } from '../actionCreators/appAC';
 import { addShopItem, getAllShopItemsAC } from '../actionCreators/shpoAC';
 import {
-  ADD_DEFAULT_SHOP_ITEMS, BUY_DEFAULT_ITEM_SHOP,
-  DELETE_DEFAULT_ITEM_SHOP, DELETE_ORDER, GET_ALL_ORDERS,
+  ADD_DEFAULT_SHOP_ITEMS,
+  BUY_DEFAULT_ITEM_SHOP,
+  DELETE_DEFAULT_ITEM_SHOP,
+  DELETE_ORDER,
+  GET_ALL_ORDERS,
   GET_DEFAULT_SHOP_ALL_ITEMS,
 } from '../actionTypes/types';
-import {editUserProfileAC} from '../actionCreators/profileAC';
-import {changeOrderAC} from '../actionCreators/orderAC';
+import { editUserProfileAC } from '../actionCreators/profileAC';
+import { changeOrderAC } from '../actionCreators/orderAC';
 
 function* shopSagaWorker({ title, link, quantity, price }) {
   yield put(showLoaderAC());
@@ -63,12 +66,11 @@ export function* getAllItemsShopWatcher() {
 }
 
 function* deleteItemShopWorker({ payload }) {
-
-  const response = yield call (async () => {
+  const response = yield call(async () => {
     const response = await fetch('/shop/delete', {
       method: 'DELETE',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({itemId: payload})
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ itemId: payload }),
     });
     return await response.json();
   });
@@ -80,11 +82,11 @@ export function* deleteItemShopWatcher() {
 }
 
 function* buyItemShopWorker({ payload }) {
-  const response = yield call (async () => {
+  const response = yield call(async () => {
     const response = await fetch('/shop/buy', {
       method: 'PUT',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({itemId: payload.itemId, userId: payload.userId})
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ itemId: payload.itemId, userId: payload.userId }),
     });
     return await response.json();
   });
@@ -112,13 +114,15 @@ export function* getAllOrdersWatcher() {
   yield takeEvery(GET_ALL_ORDERS, getAllOrdersWorker);
 }
 
-function* deleteOrderWorker({payload}) {
+function* deleteOrderWorker({ payload }) {
   const response = yield call(async () => {
-    return await (await fetch('/shop/delete-order', {
-      method: 'DELETE',
-      headers: {'Content-type': 'Application/json'},
-      body: JSON.stringify({orderId: payload})
-    })).json();
+    return await (
+      await fetch('/shop/delete-order', {
+        method: 'DELETE',
+        headers: { 'Content-type': 'Application/json' },
+        body: JSON.stringify({ orderId: payload }),
+      })
+    ).json();
   });
   yield put(changeOrderAC(response.orders));
 }

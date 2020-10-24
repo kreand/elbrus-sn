@@ -1,7 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import {
   ADD_REVIEW,
-  CREATE_EMPLOYER, DELETE_EMPLOYER,
+  CREATE_EMPLOYER,
+  DELETE_EMPLOYER,
   DELETE_REVIEW,
   GET_EMPLOYERS,
 } from '../actionTypes/types';

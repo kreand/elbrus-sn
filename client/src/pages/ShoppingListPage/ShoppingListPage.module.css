@@ -1,7 +1,7 @@
 .item a {
-    color: var(--purple_color);
+  color: var(--purple_color);
 }
 
 .item a:hover {
-    color: var(--orange_color);
+  color: var(--orange_color);
 }

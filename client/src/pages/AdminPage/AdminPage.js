@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   filterUsersAC,
   getAllUsersAC,
 } from '../../redux/actionCreators/ratingAC';
-import {Avatar, Col, List, Row} from 'antd';
+import { Avatar, Col, List, Row } from 'antd';
 import InputComponent from '../../components/Input/InputComponent';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from '../RatingsPage/RatingsPage.module.css';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
@@ -23,9 +23,16 @@ const AdminPage = () => {
   }, [dispatch]);
 
   function searchOfStudent(e) {
-    dispatch(filterUsersAC(students.filter((student) => {
-      return student.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1;
-    })));
+    dispatch(
+      filterUsersAC(
+        students.filter(student => {
+          return (
+            student.name.toLowerCase().indexOf(e.target.value.toLowerCase()) >
+            -1
+          );
+        }),
+      ),
+    );
   }
 
   const changePagination = page => {
@@ -45,7 +52,8 @@ const AdminPage = () => {
             placeholder="Поиск по имени"
             span="24"
             justify="left"
-            offset="0"/>
+            offset="0"
+          />
           <List
             itemLayout="horizontal"
             dataSource={filteredStudents.slice((page - 1) * 10, page * 10)}
@@ -53,17 +61,24 @@ const AdminPage = () => {
               <List.Item>
                 <List.Item.Meta
                   className={style.link}
-                  avatar={<Avatar
-                    src={student.photo}/>}
-                  title={<Link to={`/student/${student._id}`}>{student.name}</Link>}
-                  description={<div>
-                    Рейтинг: {student.rating} <br/>
-                    Группа: {student.group} <br/>
-                    Монеты: {student.coins} <br/>
-                    Роль: {student.status}
-                  </div>}
+                  avatar={<Avatar src={student.photo} />}
+                  title={
+                    <Link to={`/student/${student._id}`}>{student.name}</Link>
+                  }
+                  description={
+                    <div>
+                      Рейтинг: {student.rating} <br />
+                      Группа: {student.group} <br />
+                      Монеты: {student.coins} <br />
+                      Роль: {student.status}
+                    </div>
+                  }
                 />
-                <div className={style.link}><Link to={`/admin/edit-student/${student._id}`}>Изменить</Link></div>
+                <div className={style.link}>
+                  <Link to={`/admin/edit-student/${student._id}`}>
+                    Изменить
+                  </Link>
+                </div>
               </List.Item>
             )}
           />

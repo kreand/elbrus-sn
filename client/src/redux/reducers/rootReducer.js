@@ -5,7 +5,7 @@ import { profileReducer } from './profileReducer';
 import { ratingReducer } from './ratingReducer';
 import { employerReducer } from './employerReducer';
 import { shopReducer } from './shopReducer';
-import {orderReducer} from './orderReducer';
+import { orderReducer } from './orderReducer';
 
 export const rootReducer = combineReducers({
   profile: profileReducer,
